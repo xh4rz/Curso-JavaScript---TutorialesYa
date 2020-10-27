@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedad navigator del objeto window</title>
+</head>
+
+<body onload="verificar()">
+    <p>
+        Contiene información sobre el navegador web. La implementación de este objeto varía entre navegadores (Chrome,
+        Edge, IExplorer, FireFox, Opera, etc.)
+        <br>
+
+        Las propiedades comunes a estos navegadores son: <br><br>
+
+        appName : almacena el nombre oficial del navegador. <br>
+        appVersion : almacena la versión del navegador. <br>
+        cookieEnabled : almacena si las cookies están activas en el navegador. <br>
+        platform : almacena la plataforma donde el navegador se está ejecutando.<br>
+        plugins : almacena un array de los plugin cargados en el navegador.<br><br>
+        Este pequeño programa muestra los valores de las propiedades antes anunciadas:
+    </p>
+
+    <script>
+        document.write('Valores de las propiedades del objeto navigator:<br>');
+        document.write('appName: ' + navigator.appName + '<br>');
+        document.write('appVersion: ' + navigator.appVersion + '<br>');
+        document.write('cookieEnable: ' + navigator.cookieEnabled + '<br>');
+        document.write('plugins: ' + navigator.plugins.length + '<br>');
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Una vez que se cargue la página mostrar un alert indicando si el navegador tiene activas las cookies.
+    </p>
+
+    <script>
+        function verificar(){
+            if(navigator.cookieEnabled == true){
+                alert('Acceso a cookies activadas')
+            }else{
+                alert('No se encuentran activadas las cookies en este navegador');
+            }
+        }
+    </script>
+
+    <h1>Bienvenidos</h1>
+</body>
+
+</html>

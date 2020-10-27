@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores lógicos || (o)</title>
+</head>
+
+<body>
+
+    <h1>Ejemplo:</h1>
+    <p> Se carga una fecha (día, mes y año) por teclado. Mostrar un mensaje si corresponde al primer trimestre
+        del año (enero, febrero o marzo).
+
+        Cargar por teclado el valor numérico del día, mes y año por separado.</p>
+
+    <script>
+        var dia, mes, año;
+
+        dia = prompt('Ingrese día:', '');
+        mes = prompt('Ingrese mes:', '');
+        año = prompt('Ingrese año:', '');
+
+        dia = parseInt(dia);
+        mes = parseInt(mes);
+        año = parseInt(año);
+
+        if(mes == 1 || mes == 2 || mes==3){
+            document.write('corresponde al primer trimestre del año.');
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        Se ingresan por teclado tres números, si al menos uno de los valores ingresados es menores a 10, imprimir en la
+        página la leyenda 'Alguno de los números es menor a diez'.
+    </p>
+
+    <script>
+        var num1,num2,num3;
+
+        num1 = prompt('Ingrese primer valor:','');
+        num2 = prompt('Ingrese segundo valor:','');
+        num3 = prompt('Ingrese tercero valor:','');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        num3 = parseInt(num3);
+
+        if(num1 < 10 || num2 < 10 || num3 < 10)
+        {
+          document.write('Alguno de los números es menor a diez');
+        }
+
+    </script>
+</body>
+
+</html>

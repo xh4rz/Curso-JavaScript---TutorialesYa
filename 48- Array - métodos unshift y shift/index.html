@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: métodos unshift y shift</title>
+</head>
+
+<body>
+    <p>
+        Así como el método push inserta un elemento al final del vector el método unshift inserta un elemento al
+        principio del vector y desplaza el resto una posición. <br>
+
+        El método shift extrae el primer elemento del vector y desplaza hacia delante el resto de elementos del vector.
+    </p>
+
+    <h1>EJEMPLO</h1>
+    <p>
+        ingresar valores por teclado. <br><br>
+
+        Los valores menores a 100 ingresarlos al principio del vector y los mayores oiguales a 100 ingresarlos al
+        final. <br><br>
+
+        Se finaliza la carga de datos al ingresar el cero. <br><br>
+
+        Cuando sale del do/while extraer el último valor ingresado que es el cero del vector. <br><br>
+
+        Imprimir el vector en la página</p>
+</body>
+
+<script>
+    var vec = [];
+    var f;
+    var valor;
+
+    do{
+        valor = prompt('Ingrese un valor (0 para finzalizar):','');
+        valor = parseInt(valor);
+
+        if(valor<100){
+            vec.unshift(valor);
+        }else{
+            vec.push(valor);
+        }
+    }while (valor!=0)
+
+    vec.shift();
+    for(f=0; f<vec.length; f++){
+        document.write(vec[f]+'<br>');
+    }
+</script>
+
+</html>

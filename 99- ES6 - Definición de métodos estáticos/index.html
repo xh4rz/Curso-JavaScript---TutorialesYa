@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Definición de métodos estáticos</title>
+</head>
+
+<body>
+
+    <p>
+        Con esta nueva actualización de JavaScript tenemos la posibilidad de definir métodos estáticos en una clase.
+        <br><br>
+
+        Un método estático pertenece a la clase y no a una instancia u objeto de una clase. Para llamar luego a un
+        método estático lo hacemos directamente antecediendo el nombre de la clase. <br><br>
+
+        Se las utiliza para definir funcionalidades que pertenecen a una clase pero que no dependan de instancias de
+        dicha clase. <br><br>
+
+        Los métodos estáticos no pueden acceder a los atributos de la clase mediante this.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Plantear una clase llamada 'Matematica' que defina una serie de métodos estáticos que nos retorne el primero el
+        mayor de dos enteros y el segundo el menor. Además agregar un tercer método estático que retorne un valor
+        aleatorio entre dos valores enteros que le enviamos como parámetros.
+    </p>
+
+    <script>
+        class Matematica {
+
+            static mayor(v1, v2) {
+                if (v1 > v2)
+                    return v1;
+                else
+                    return v2;
+            }
+
+            static menor(v1, v2) {
+                if (v1 < v2)
+                    return v1;
+                else
+                    return v2;
+            }
+
+            static aleatorio(inicio, fin) {
+                return Math.trunc((Math.random() * (fin + 1 - inicio)) + inicio);
+            }
+        }
+
+        let x1 = Matematica.aleatorio(1, 10);
+        let x2 = Matematica.aleatorio(1, 10);
+        document.write(`El mayor entre ${x1} y ${x2} es ${Matematica.mayor(x1,x2)}<br>`);
+        document.write(`El menor entre ${x1} y ${x2} es ${Matematica.menor(x1,x2)}<br>`);
+    </script>
+
+    <!-- Utilizamos la palabra clave 'static' para definir éste tipo de métodos:
+
+    static mayor(v1,v2) {
+    if (v1>v2)
+    return v1;
+    else
+    return v2;
+    }
+    
+    Un método estático normalmente implementa un algoritmo para procesar los datos que llegan como parámetro.
+
+    Para la llamada a un método estático lo hacemos antecediendo el nombre de la clase y no un objeto de la clase:
+
+    let x1=Matematica.aleatorio(1,10); -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Declarar una clase llamada 'Fecha' con dos métodos estáticos: <br><br>
+
+        static retornarMes(mes) <br>
+        Retorna el nombre de mes a partir de un valor de 1 a 12. <br>
+        static fechaCompleta() <br>
+        Retorna el día, mes y año actual separado por guiones.
+    </p>
+
+    <script>
+        class Fecha {
+
+            static retornarMes(mes) {
+                switch (mes) {
+                    case 1:
+                        return 'Enero';
+                    case 2:
+                        return 'Febrero';
+                    case 3:
+                        return 'Marzo';
+                    case 4:
+                        return 'Abril';
+                    case 5:
+                        return 'Mayo';
+                    case 6:
+                        return 'Junio';
+                    case 7:
+                        return 'Julio';
+                    case 8:
+                        return 'Agosto';
+                    case 9:
+                        return 'Septiembre';
+                    case 10:
+                        return 'Octubre';
+                    case 11:
+                        return 'Noviembre';
+                    case 12:
+                        return 'Diciembre';
+                }
+            }
+
+            static fechaCompleta() {
+                const fecha = new Date();
+                return `${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getFullYear()}`;
+            }
+        }
+
+        document.write(`La fecha actual es ${Fecha.fechaCompleta()}<br>`);
+        document.write(Fecha.retornarMes(12));
+    </script>
+
+
+
+</body>
+
+</html>

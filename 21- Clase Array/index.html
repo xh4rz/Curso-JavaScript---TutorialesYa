@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo 1</h1>
+    <p>
+        Crear un vector para almacenar los cinco sueldos de operarios y luego mostrar el total de gastos en sueldos
+        (cada
+        actividad en una función)
+    </p>
+
+    <script>
+        function cargar(sueldos) {
+            var f;
+            for (f = 0; f < sueldos.length; f++) {
+                var v;
+                v = prompt('Ingrese sueldo:', '');
+                sueldos[f] = parseInt(v);
+            }
+        }
+
+        function calcularGastos(sueldos) {
+            var total = 0;
+            var f;
+            for (f = 0; f < sueldos.length; f++) {
+                total = total + sueldos[f];
+            }
+            document.write('Listado de sueldos:<br>');
+            for (f = 0; f < sueldos.length; f++) {
+                document.write(sueldos[f] + '<br>');
+            }
+            document.write('Total de gastos en sueldos: ' + total)
+        }
+        var sueldos;
+        sueldos = new Array(5);
+        cargar(sueldos);
+        calcularGastos(sueldos);
+    </script>
+
+    <h1>Ejemplo 2 </h1>
+    <p>
+        Crear un vector con elementos de tipo string. Almacenar los meses del año. En una función solicitar el
+        ingreso de un número entre 1 y 12. Mostrar a qué mes corresponde y cuántos días tiene dicho mes.
+    </p>
+
+    <script>
+        function mostrarFecha(meses, dias) {
+            var num;
+            num = prompt('Ingrese número de mes:', '');
+            num = parseInt(num);
+
+            document.write('Corresponde al mes: ' + meses[num - 1]);
+            document.write('<br>');
+            document.write('Tiene ' + dias[num - 1] + ' días')
+        }
+
+        var meses;
+        meses = new Array(12);
+
+        meses[0] = 'Enero';
+        meses[1] = 'Febrero';
+        meses[2] = 'Marzo';
+        meses[3] = 'Abril';
+        meses[4] = 'Mayo';
+        meses[5] = 'Junio';
+        meses[6] = 'Julio';
+        meses[7] = 'Agosto';
+        meses[8] = 'Septiembre';
+        meses[9] = 'Octubre';
+        meses[10] = 'Noviembre';
+        meses[11] = 'Diciembre';
+
+        var dias;
+        dias = new Array(12);
+        dias[0] = 31;
+        dias[1] = 28;
+        dias[2] = 31;
+        dias[3] = 30;
+        dias[4] = 31;
+        dias[5] = 30;
+        dias[6] = 31;
+        dias[7] = 31;
+        dias[8] = 30;
+        dias[9] = 31;
+        dias[10] = 30;
+        dias[11] = 31;
+
+        mostrarFecha(meses, dias);
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1-Desarrollar un programa que permita ingresar un vector de 8 elementos, e informe:
+        El valor acumulado de todos los elementos del vector.
+        El valor acumulado de los elementos del vector que sean mayores a 36.
+        Cantidad de valores mayores a 50.
+    </p>
+
+    <script>
+        function cargar(vector) {
+            var f;
+            for (f = 0; f < vector.length; f++) {
+
+                var valor;
+                valor = prompt('Ingrese Vector', '');
+                vector[f] = parseInt(valor);
+            }
+        }
+
+        function sumar(vector) {
+            var f;
+            var suma = 0;
+
+            for (f = 0; f < vector.length; f++) {
+                suma = suma + vector[f];
+            }
+            document.write('El valor acumulado de todos los elementos del vector es: ' + suma + '<br>');
+        }
+
+        function sumarMayor36(vector) {
+            var f;
+            var suma = 0;
+
+            for (f = 0; f < vector.length; f++) {
+                if (vector[f] > 36) {
+                    suma = suma + vector[f];
+                }
+            }
+            document.write('El valor acumulado de los elementos del vector que sean mayores a 36 es: ' + suma + '<br>');
+        }
+
+        function cantidadMayores50(vector) {
+            var f;
+            var cantidad = 0;
+
+            for (f = 0; f < vector.length; f++) {
+                if (vector[f] > 50) {
+                    cantidad = cantidad + 1;
+                }
+            }
+            document.write('Cantidad de valores mayores a 50 es: ' + cantidad + '<br>');
+        }
+
+        var vector;
+        vector = new Array(8);
+        cargar(vector);
+        sumar(vector);
+        sumarMayor36(vector);
+        cantidadMayores50(vector);
+    </script>
+
+    <p>2- Realizar un programa que pida la carga de dos vectores numéricos. Obtener la suma de los dos vectores, dicho
+        resultado guardarlo en un tercer vector del mismo tamaño. Sumar componente a componente.
+        El tamaño del vector es a elección.</p>
+
+    <script>
+        function cargarVectores(vector1, vector2) {
+            var f;
+
+            for (f = 0; f < vector1.length; f++) {
+                var valor;
+                valor = prompt('Ingrese componente del primer vector:', '');
+                vector1[f] = parseInt(valor);
+            }
+            for (f = 0; f < vector2.length; f++) {
+                var valor;
+                valor = prompt('Ingrese componente del segundo vector:', '');
+                vector2[f] = parseInt(valor);
+            }
+        }
+
+        function sumarVectores(vector1, vector2) {
+
+            var f;
+            for (f = 0; f < vecsuma.length; f++) {
+                vecsuma[f] = vector1[f] + vector2[f];
+            }
+        }
+
+        function imprimirVector(vecsuma) {
+            var f;
+            for (f = 0; f < vecsuma.length; f++) {
+                document.write(vecsuma[f] + ' ');
+            }
+        }
+
+        var vector1;
+        vector1 = new Array(5);
+
+        var vector2;
+        vector2 = new Array(5);
+
+        var vecsuma;
+        vecsuma = new Array(5);
+
+        cargarVectores(vector1, vector2);
+        sumarVectores(vector1, vector2);
+        imprimirVector(vecsuma);
+    </script>
+
+
+</body>
+
+</html>

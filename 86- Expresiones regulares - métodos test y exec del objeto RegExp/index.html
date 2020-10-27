@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares: métodos test y exec del objeto RegExp</title>
+</head>
+<body>
+
+    <p>
+        Hasta ahora siempre hemos empleado el método test que retorna un valor true si el string cumple el patrón
+        propuesto o false en caso contrario. <br><br>
+
+        La clase RegExp cuenta con otro método llamado exec que retorna un vector con más datos en caso que el string
+        cumpla el patrón propuesto o null si no cumple el patrón. <br><br>
+
+        Veamos con un problema que datos extras retorna este vector.
+    </p>
+
+    <script>
+        var oracion = 'Saliendo de la casa que esta en la montaña';
+        var patron1 = /la/;
+        var vector1 = patron1.exec(oracion);
+
+        document.write(vector1.index);
+        document.write('<br>');
+        document.write(vector1.input);
+        document.write('<br>');
+
+        var patron2 = /lax/;
+        var vector2 = patron2.exec(oracion);
+        document.write(vector2);
+    </script>
+
+    <p>
+        Hemos definido en la variable oracion el valor : 'saliendo de la casa que esta en la montaña'. El primer patrón
+        de búsqueda es verificar si contiene los caracteres 'la' la oración: <br><br>
+
+        var oracion='saliendo de la casa que esta en la montaña'; <br>
+        var patron1=/la/; <br>
+        var vector1=patron1.exec(oracion); <br><br>
+
+        El método exec retornará un valor distinto a null (tener en cuenta que retorna un vector) ya que la palabra 'la' está contenida en la oración. <br><br>
+
+        El vector devuelto por el método exec tiene dos propiedades llamadas index e input: <br><br>
+
+        La propiedad index almacena la posición dentro del string donde se cumple el patrón, en nuestro ejemplo retorna un 12 que es la posición donde se encuentra la l: <br><br>
+
+        saliendo de la casa que esta en la montaña <br><br>
+
+        La propiedad input almacena la cadena que se está analizando. <br><br>
+
+        La segundo parte del problema define un segundo patrón: <br><br>
+
+        var patron2=/lax/; <br>
+        var vector2=patron2.exec(oracion); <br><br>
+
+        Como no se encuentra en el string la cadena 'lax' el método exec retorna un valor null, es decir no retorna un
+        vector.
+    </p>
+    
+</body>
+</html>

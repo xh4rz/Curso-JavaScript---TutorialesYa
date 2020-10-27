@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - nombres de métodos abreviados</title>
+</head>
+
+<body>
+
+    <p>
+        Con ES6 disponemos una nueva sintaxis para definir nombres de métodos abreviados cuando definimos objetos
+        literales. Veamos la sintaxis anterior con JavaScript: <br><br>
+
+        var operacion = { <br>
+        valor1: 10, <br>
+        valor2: 7, <br>
+        sumar: function() { <br>
+        return this.valor1+this.valor2; <br>
+        }, <br>
+        restar: function() { <br>
+        return this.valor1-this.valor2; <br>
+        } <br>
+        } <br><br>
+
+        document.write(operacion.sumar()); <br>
+        document.write('br'); <br>
+        document.write(operacion.restar()); <br><br>
+
+        La sintaxis abreviada para la definición de los dos métodos es: <br><br>
+
+        const operacion = { <br>
+        valor1: 10, <br>
+        valor2: 7, <br>
+        sumar() { <br>
+        return this.valor1+this.valor2; <br>
+        }, <br>
+        restar() { <br>
+        return this.valor1-this.valor2; <br>
+        } <br>
+        } <br><br>
+
+        document.write(operacion.sumar()); <br>
+        document.write('br'); <br>
+        document.write(operacion.restar()); <br><br>
+
+        Como vemos disponemos el nombre del método, los parámetros y finalmente el algoritmo: <br><br>
+
+        sumar() { <br>
+        return this.valor1+this.valor2; <br>
+        }, <br><br>
+
+        Desaparecen los dos puntos y la palabra clave function.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Crear un objeto literal llamado cliente1 con dos propiedads 'nombre' y 'saldo'. Definir tres métodos con
+        notación abreviada que permitan depositar, extraer e imprimir su saldo/
+    </p>
+
+    <script>
+        const cliente1 = {
+            nombre: 'Juan',
+            saldo: 0,
+            imprimir() {
+                document.write(this.nombre + '<br>');
+                document.write(this.saldo + '<br>');
+            },
+            depositar(monto) {
+                this.saldo = this.saldo + monto;
+            },
+            extraer(monto) {
+                this.saldo = this.saldo - monto;
+            }
+        };
+
+        cliente1.imprimir();
+        cliente1.depositar(1000);
+        document.write('Estado luego de depositar 1000 pesos</br>');
+        cliente1.imprimir();
+        cliente1.extraer(200);
+        document.write('Estado luego de extraer 200 pesos</br>');
+        cliente1.imprimir();
+    </script>
+
+    <p>
+        Como podemos comprobar para cada método indicamos su nombre los parámetros y finalmente su algoritmo: <br><br>
+
+        depositar(monto) {
+        this.saldo=this.saldo+monto;
+        },
+    </p>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        1- Crear un objeto que represente los datos de un participante de un juego. Definir las propiedades <br><br>
+
+        nombre <br>
+        puntos <br>
+        y los métodos: <br><br>
+
+        imprimir (mostrar el nombre de jugador y los puntos actuales) <br><br>
+
+        aumentarpuntos (permite incrementar la cantidad de puntos actuales del jugador) <br><br>
+
+        verificarsigano (mostrar un mensaje si los puntos superan a 1000)
+    </p>
+
+    <script>
+        const participante = {
+            nombre: 'Harold Gonzalez',
+            puntos: 0,
+
+            imprimir() {
+                document.write('Nombre: ' + this.nombre + '<br>');
+                document.write('Puntos: ' + this.puntos + '<br>');
+            },
+            aumentarpuntos(cantidad) {
+                this.puntos = this.puntos + cantidad;
+            },
+            verificarsigano() {
+                if (this.puntos > 1000) {
+                    document.write('Gano<br>');
+                } else {
+                    document.write('No Gano<br>');
+                }
+            }
+        };
+
+        participante.aumentarpuntos(500);
+        participante.imprimir();
+        participante.verificarsigano()
+
+        participante.aumentarpuntos(1500);
+        participante.imprimir();
+        participante.verificarsigano()
+    </script>
+
+</body>
+
+</html>

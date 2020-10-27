@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento: submit</title>
+</head>
+
+<body>
+    <p>
+        Todo formulario se le puede capturar el evento submit que se dispara previo a enviar los datos del formulario al
+        servidor. <br><br>
+
+        Uno de los usos más extendidos es la de validar los datos ingresados al formulario y abortar el envío de los
+        mismos al servidor (con esto liberamos sobrecargas del servidor) <br><br>
+
+        El evento submit se dispara cuando presionamos un botón de tipo type="submit". <br><br>
+
+        Para probar el funcionamiento del evento submit implementaremos un formulario que solicita la carga de una clave
+        y la repetición de la misma. Luego cuando se presione un botón de tipo "submit" verificaremos que las dos claves
+        ingresadas sean iguales.
+    </p>
+
+    <form action="procesar.php" method="post" id="formulario1">
+        Ingrese clave:
+        <input type="password" name="clave1" id="clave1" size="20" required>
+        <br><br>
+
+        Repita clave:
+        <input type="password" name="clave2" id="clave2" required>
+        <br><br>
+
+        <input type="submit" value="confirmar" name="confirmar " id="confirmar">
+    </form>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('formulario1').addEventListener('submit', validar, false);
+        }
+
+        function validar(evt) {
+            var cla1 = document.getElementById("clave1").value;
+            var cla2 = document.getElementById("clave2").value;
+
+            if (cla1 != cla2) {
+                alert('Las claves ingresadas son distintas');
+                evt.preventDefault();
+            }
+        }
+    </script>
+</body>
+
+</html>

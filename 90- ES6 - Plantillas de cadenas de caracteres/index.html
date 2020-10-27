@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Plantillas de cadenas de caracteres</title>
+</head>
+
+<body>
+    <p>
+        El manejo de cadenas de caracteres en JavaScript tradicional se emplean las comillas simples o dobles: <br><br>
+
+        var titulo1='Administración'; <br>
+        var titulo2="Contabilidad"; <br><br>
+
+        Cuando se requieren generar otra cadena formada por varias variables de tipo cadena, numérica etc. normalmente
+        se utiliza el operador + para concatenar. <br><br>
+
+        Con ES6 se incorpora la posibilidad de definir cadenas de caracteres utilizando las comillas invertidas `.
+        <br><br>
+
+        Emplearemos este tipo de cadenas cuando necesitemos sustituir el contenido de variables dentro de la cadena de
+        caracteres sin tener que utilizar el operador de concatenación:
+    </p>
+
+    <script>
+        const valor1 = parseInt(prompt('Ingrese primer valor:'));
+        const valor2 = parseInt(prompt('Ingrese segundo valor:'));
+        document.write(`La suma de ${valor1} y ${valor2} es ${valor1+valor2}`);
+        document.write('La suma de ' + valor1 + ' y ' + valor2 + ' es ' + (valor1 + valor2)); // Metodo concatenación
+    </script>
+
+    <p>
+        Para interpolar el contenido de una variable dentro de una plantilla de cadena de caracteres encerramos entre
+        llaves la variable y le antecedemos el caracter $: <br><br>
+
+        document.write(`La suma de ${valor1} y ${valor2} es ${valor1+valor2}`); <br><br>
+
+        También es importante ver que dentro de las llaves podemos disponer una operación. <br><br>
+
+        Podemos comprobar que es una sintaxis más clara a la de emplear el operador de concatenación
+
+        document.write("La suma de "+valor1+" y "+valor2+" es "+(valor1+valor2));
+
+    </p>
+
+    <h1>Llamada a funciones</h1>
+
+    <p>
+        Cuando utilizamos una plantilla de cadenas de caracteres podemos llamar a una función dentro de la plantilla:
+    </p>
+
+    <script>
+        function mayor(v1, v2) {
+            if (v1 > v2) {
+                return v1;
+            } else
+                return v2;
+        }
+
+        const valor1_funciones = parseInt(prompt('Ingrese primer valor:'));
+        const valor2_funciones = parseInt(prompt('Ingrese segundo valor:'));
+        document.write(`El mayor de ${valor1_funciones} y ${valor2_funciones} es
+        ${mayor(valor1_funciones,valor2_funciones)}`);
+    </script>
+
+    <h1>Plantillas de cadenas de caracteres de múltiples líneas</h1>
+
+    <p>
+        No se requiere ninguna sintaxis especial si queremos disponer una plantilla de texto de múltiples líneas.
+    </p>
+
+    <script>
+        const dia1 = 'Lunes';
+        const dia2 = 'Miércoles';
+        const dia3 = 'Jueves';
+        const cadena = `
+        <ol>
+            <li>${dia1}</li>
+            <li>${dia2}</li>
+            <li>${dia3}</li>
+        </ol>`;
+        document.write(cadena);
+    </script>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Confeccionar una función que retorne una cadena con el día, mes y año actual. Utilizar una plantilla de cadena
+        de caracteres para generarla.
+    </p>
+
+    <script>
+        function retornarFecha() {
+            const fecha = new Date();
+            return `${fecha.getDate()}\\${fecha.getMonth()+1}\\${fecha.getFullYear()}`;
+        }
+
+        document.write(`la fecha de hoy es: ${retornarFecha()}`);
+    </script>
+
+
+</body>
+
+</html>

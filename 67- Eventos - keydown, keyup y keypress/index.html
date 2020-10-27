@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos: keydown, keyup y keypress</title>
+</head>
+
+<body>
+    <p>
+        Estos tres eventos son similares a los eventos del mouse: mousedown, mouseup y click pero orientados al teclado
+        del equipo. <br><br>
+
+        El evento keydown se dispara cuando presionamos cualquier tecla del teclado. <br>
+
+        El evento keyup cuando soltamos una tecla. <br>
+
+        En cuanto el evento keypress en un principio procesa tanto cuando se la presionó y soltó, el único y gran
+        inconveniente es que la mayoría de los navegadores no dispara el evento keypress para todas las teclas
+        delteclado. <br><br>
+
+        Para probar el evento keyup implementaremos un programa que permita solo ingresar 140 caracteres y nos informe
+        con un mensaje la cantidad de caracteres disponibles para seguir escribiendo.
+    </p>
+
+    <input type="text" id="texto" maxlength="140" size="140">
+    <br>
+    <p>Máxima cantidad de caracteres disponibles: <span id="cantidad">140</span></p>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('texto').addEventListener('keyup', presion, false);
+        }
+
+        function presion() {
+            var canti = document.getElementById('texto').value.length;
+            var disponibles = 140 - parseInt(canti);
+            document.getElementById('cantidad').innerHTML = disponibles;
+        }
+    </script>
+</body>
+
+</html>

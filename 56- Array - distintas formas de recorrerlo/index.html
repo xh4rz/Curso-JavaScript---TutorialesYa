@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array distintas formas de recorrerlo </title>
+</head>
+
+<body>
+    <p>
+        Para visitar todas las componentes de un vector hemos visto hasta ahora el ciclo repetitivo for:
+    </p>
+
+    <script>
+        var vec = [10, 20, 30, 40, 50];
+        var f;
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '-');
+        }
+    </script>
+
+    <p>
+        Javascript cuenta con otra variante de for(llamada for in):
+    </p>
+
+    <script>
+        var vec = [10, 20, 30, 40, 50];
+        for (var indice in vec) {
+            document.write(indice);
+            document.write(vec[indice] + '-');
+        }
+    </script>
+
+    <p>
+        Si tenemos un vector no denso (es decir que tiene algunas posiciones vacías el empleo del for in tiene un
+        resultado distinto al empleo del for clásico):
+    </p>
+
+    <script>
+        var vec = [10, , 30, , 50];
+        document.write('Recorredo del vector con un for clásico<br>');
+        var f;
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '-');
+        }
+        document.write('<br><br>');
+        document.write('Recorredo del vector con un for in<br>');
+
+        for (var indice in vec) {
+            document.write(vec[indice] + '-');
+        };
+    </script>
+
+    <p>
+        Como podemos comprobar con el for in no se acceden a componentes inexistentes. <br>
+
+        Es más común utilizar el método 'forEach' de la clase Array para recorrer un arreglo en JavaScript: <br>
+    </p>
+
+    <script>
+        var vec = [10, 20, 30, 40, 50];
+        vec.forEach(function (componente, indice) {
+                    document.write('Posición: ' + indice + ' = ');
+                    document.write(componente + ' <br>');
+                });
+    </script>
+
+</body>
+
+</html>

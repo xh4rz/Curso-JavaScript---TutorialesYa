@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Funciones: anidadas</title>
+</head>
+
+<body>
+    <p>
+        JavaScript permite definir funciones dentro de otras funciones:
+    </p>
+
+    <div id="div1"></div>
+    <script>
+        function generarListaOrdenada(vec) {
+            function comienzo() {
+                s = '<ol>';
+            }
+
+            function fin() {
+                s = s + '</ol>';
+            }
+
+            var s = '';
+            comienzo();
+            var f;
+            for (f = 0; f < vec.length; f++) {
+                s = s + '<li>' + vec[f] + '</li>';
+            }
+            fin();
+            return s;
+        }
+        onload = function () {
+            var opciones = ['Opción a', 'Opción b', 'Opción c', 'Opción d'];
+            document.getElementById('div1').innerHTML = generarListaOrdenada(opciones);
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Confeccionar una función que reciba un parámetro y defina una variable local. Definir dentro de la función
+        que acabamos de crear una función anidada que contenga un parámetro. <br><br>
+        En la función anidada imprimir el parámetro de la función que la contiene, el parámetro que tiene la función
+        anidada y
+        el valor de la variable local de la función principal.
+    </p>
+
+    <script>
+        function f1(x){
+            function f2(y){
+                document.write('Parámetro de la función exterior: '+x+'<br>');
+                document.write('Parámetro de la función anidada: '+y+'<br>');
+                document.write('Variable local de la función exterior: '+z+'<br>');
+            }
+            var z = 1;
+            f2(2);
+        }
+        f1(3);
+    </script>
+</body>
+
+</html>

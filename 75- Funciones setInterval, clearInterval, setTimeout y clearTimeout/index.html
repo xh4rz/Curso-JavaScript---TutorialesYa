@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones setInterval, clearInterval, setTimeout y clearTimeout</title>
+</head>
+
+<body>
+    <p>
+        La función setTimeout y setInterval permiten pasar como primer parámetro el nombre de una función que se
+        ejecutará después de una determinada cantidad de milisegundos que le pasamos en el segundo parámetro.
+        La única iferencia entre estas funciones es que si llamamos a setInterval la función se ejecutará en forma
+        repetida cada
+        vez que pase dicha cantidad de milisegundos, en cambio con setTimeout solo llamará la función una única vez.
+        <br><br>
+
+        Estas dos funciones retornan un valor que será de utilidad si necesitamos eliminar la llamada a la función.
+        <br><br>
+
+        <b>Problema</b> Mostrar un cronómetro que comience en cero y se incremente en uno cada vez que pase un segundo.
+        Disponer un botón para poder detener o reiniciar el cronómetro.
+    </p>
+
+    <span id="cronometro">0</span> <br>
+    <input type="button" value="detener" id="boton1">
+
+    <script>
+        window.addEventListener('DOMContentLoaded',inicio,false);
+
+        var reloj;
+
+        function inicio(){
+            reloj = setInterval(procesar,1000);
+            document.getElementById('boton1').addEventListener('click',presionBoton,false);
+        }
+
+        function procesar(){
+            var nro = parseInt(document.getElementById('cronometro').innerHTML);
+            nro++;
+            document.getElementById('cronometro').innerHTML = nro;
+        }
+
+        function presionBoton(){
+            if(document.getElementById('boton1').value =='detener'){
+                clearInterval(reloj);
+                document.getElementById('boton1').value = 'continuar';
+            }else{
+                reloj = setInterval(procesar,1000);
+                document.getElementById('boton1').value = 'detener';
+            }
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+          1- Confeccionar una página que luego de 10 segundos redireccione a otro sitio empleando para ello la función setTimeout.
+    </p>
+
+    <p>
+        Esta página redireccionará al periódico www.lanacion.com.ar en 10 segundos
+    </p>
+
+    <script>
+        window.addEventListener('DOMContentLoaded',inicio2,false);
+
+        function inicio2(){
+            setTimeout(redireccionar,10000);
+        }
+
+        function redireccionar(){
+            window.location='http://www.lanacion.com.ar';
+        }
+    </script>
+
+
+
+</body>
+
+</html>

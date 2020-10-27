@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        El objeto window lo hemos estado usando constantemente. Representa la ventana del navegador.
+        window es un objeto global y tiene los siguienes métodos: <br><br>
+
+        alert: Muestra un diálogo de alerta con un mensaje
+        (a esta responsabilidad la hemos utilizado desde los primeros temas)<br><br>
+        prompt: Muestra un diálogo para la entrada de un valor de tipo string
+        (utilizado desde el primer momento)
+        confirm: Muestra un diálogo de confirmación con los botones Confirmar y Cancelar.<br><br>
+        open y close: abre o cierra una ventana del navegador.
+        Podemos especificar el tamaño de la ventana, su contenido, etc.
+        [Variable=][window.]open(URL, nombre, propiedades)
+        Permite crear (y abrir) una nueva ventana. Si queremos tener acceso a ella
+        desde la ventana donde la creamos, deberemos asignarle una variable,
+        sino simplemente invocamos el método: el navegador automáticamente sabrá
+        que pertenece al objeto window.
+        El parámetro URL es una cadena que contendrá la dirección de la ventana
+        que estamos abriendo: si está en blanco, la ventana se abrirá con una página
+        en blanco.<br><br>
+        Las propiedades son una lista, separada por comas, de algunos de los
+        siguientes elementos:<br><br>
+        • toolbar[=yes|no]<br>
+        • location[=yes|no]<br>
+        • directories[=yes|no]<br>
+        • status[=yes|no]<br>
+        • menubar[=yes|no]<br>
+        • scrollbars[=yes|no]<br>
+        • resizable[=yes|no]<br>
+        • width=pixels<br>
+        • height=pixels<br>
+    </p>
+
+    <p>Este programa permite analizar la llamada de distintas responsabilidades del obketo window</p>
+
+    <script>
+        function abrir() {
+            var ventana = open();
+            ventana.document.write("Estoy escribiendo en la nueva ventana <br>");
+            ventana.document.write("Segunda linea");
+        }
+
+        function abrirParametros() {
+            var ventana = open('', '', 'status = yes, width = 400, height = 250, menubar = yes');
+            ventana.document.write("Esto es lo primero que aparece<br>");
+        }
+
+        function mostrarAlerta() {
+            alert('Esta ventana de alerta ya la utilizamos en otros problemas.');
+        }
+
+        function confirmar() {
+            var respuesta = confirm("Presione algunos de los dos botones");
+            if (respuesta == true)
+                alert("presionó aceptar");
+            else
+                alert("pesionó cancelar")
+        }
+
+        function cargarCadena() {
+            var cad = prompt("cargue una cadena:", "");
+            alert("Usted ingreso " + cad);
+        }
+    </script>
+
+    <form>
+        <input type="button" value="open()" onclick="abrir()">
+        <br><br>
+        <input type="button" value="open con parámetros" onclick="abrirParametros()">
+        <br><br>
+        <input type="button" value="alert" onclick="mostrarAlerta()">
+        <br><br>
+        <input type="button" value="confirm" onclick="confirmar()">
+        <br><br>
+        <input type="button" value="prompt" onclick="cargarCadena()">
+    </form>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Confeccionar una página que permita abrir otra ventana cuando se presiona un botón. Dicha ventana debe tener
+        como ancho 600 pixeles y alto 300 pixeles.
+    </p>
+
+    <script>
+        function abrirVentana() {
+            var ventana2 = open('','', ' width = 600, height = 300');
+        }
+    </script>
+
+    
+
+    <form>
+        <input type="button" value="abrir ventana" onClick="abrirVentana()">
+    </form>
+
+</body>
+
+</html>

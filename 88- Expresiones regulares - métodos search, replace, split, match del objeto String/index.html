@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Expresiones regulares: métodos search, replace, split, match del objeto String.</title>
+</head>
+
+<body>
+
+    <p>
+        El objeto String tiene métodos que reciben como parámetro una expresión regular. <br><br>
+
+        El primer método es el <b>search</b>. Este método busca la primer ocurrencia del string según la expresión que
+        le hemos
+        pasado como parámetro. Devuelve un entero indicando la posición donde comienza la cadena encontrada o un -1 si
+        no encuentra el patrón en el string.
+    </p>
+
+    <script>
+        var oracion = 'La noche está muy oscura y estrellada.';
+        if (oracion.search(/estrella/) != -1) {
+            alert('El estring estrella está contenido en la variable oracion');
+        }
+    </script>
+
+    <p>
+        Hemos dispuesto un if para controlar si el string 'estrella' está contenido en la variable oración: <br><br>
+
+        if (oracion.search(/estrella/)!=-1) <br>
+        alert('el string estrella está contenido en la variable oracion');<br><br>
+
+        Por supuesto que podemos emplear expresiones regulares tan complejas como necesitemos utilizando distintos
+        metacaracteres y modificadores.
+
+        El segundo método del objeto String que veremos es el <b>replace</b>. <br><br>
+
+        El método replace realiza una búsqueda y reemplazo. Se toma una expresión regular como primer parámetro y un
+        string de reemplazo como su segundo argumento. Si la expresión regular tiene la bandera g, el método replace
+        sustituye todas las coincidencias en la cadena de reemplazo, en caso contrario, se reemplaza sólo la primera
+        coincidencia que encuentre.
+    </p>
+
+    <script>
+        var oracion = 'uno dos tres uno dos tres uno dos tres';
+        var cadena = oracion.replace(/uno/g, '1');
+        alert(cadena); //1 dos tres 1 dos tres 1 dos trses
+    </script>
+
+    <p>
+        En este problema queremos obtener otro String sustituyendo todas las cadenas 'uno' por el caracter '1'. Para
+        hacer que se sustituyan todas las ocurrencias debemos emplear el modificador g: <br><br>
+
+        var cadena=oracion.replace(/uno/g,'1'); <br><br>
+
+        Es importante tener en cuenta que la variable que llama al método replace no se modifica, sino que retorna otro
+        String con el resultado.
+
+        El tercer método es el <b>split</b> que tiene por objetivo subdividir un string y retornar un vector con dichas
+        partes.
+        Para la división toma en cuenta la expresión regular pasada como parámetro.
+    </p>
+
+    <script>
+        var cadena = '(2,3)-(4-4)-(9,3)';
+        var vec = cadena.split(/-/);
+
+        for (var x = 0; x < vec.length; x++) {
+            document.write(vec[x] + '<br>');
+        }
+    </script>
+
+    <p>
+        El vector vec almacena los valores: (2,3) (4,4) y (9,3), ya que la expresión regular indicada define el caracter
+        - como patrón de corte. <br><br>
+
+        El último método a analizar del objeto String es el <b>match</b>. Tiene como parámetro una expresión regular y
+        retorna
+        un vector con todos los string que cumplen el patrón especificado (siempre y cuando hallamos activado la bandera
+        'g' (global))
+
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Se tiene un string donde tenemos almacenados los nombres de personas seguido de sus edades. Generar un
+        vector solo con las edades de todas las personas.
+    </p>
+
+    <script>
+        var cadena = 'juan 10 luis 43 pedro 21 carlos 33';
+        var vec = cadena.match(/\d+/g);
+        for (var x = 0; x < vec.length; x++) {
+            document.write(vec[x] + '<br>');
+        }
+    </script>
+
+</body>
+
+</html>

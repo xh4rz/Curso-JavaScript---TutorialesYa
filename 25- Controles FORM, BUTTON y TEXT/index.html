@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controles FORM, BUTTON y TEXT</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>
+        Confeccionar un formulario que permita ingresar el nombre y edad de una persona:
+    </p>
+
+    <script>
+        function mostrar() {
+            var nombre = document.getElementById('nombre').value;
+            var edad = document.getElementById('edad').value;
+            alert('Ingresó el nombre: ' + nombre);
+            alert('Y la edad: ' + edad);
+        }
+    </script>
+
+    <form>
+        Ingrese su nombre: <br>
+        <input type="text" id="nombre"><br><br>
+        Ingese su edad: <br>
+        <input type="text" id="edad"><br><br>
+
+        <input type="button" value="Confirmar" onclick="mostrar()">
+    </form>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Crear un programa que permita cargar un entero en un text y al presionar un botón nos muestre dicho valor
+        elevado al cubo (emplear la función alert).
+    </p>
+
+    <script>
+        function calcularCubo() {
+
+            var v = document.getElementById('numero').value;
+            v = parseInt(v);
+            var cubo = v * v * v;
+            alert('El némero elevado al cubo es: ' + cubo)
+        }
+    </script>
+
+
+
+    <form>
+        Ingrese número entero a elevar al cubo: <br>
+        <input type="text" id="numero"><br><br>
+        <input type="button" value="Calcular cubo" onclick="calcularCubo()">
+    </form>
+
+    <p>2- Cargar dos números en objetos de tipo text y al presionar un botón, mostrar el mayor.</p>
+
+    <script>
+        function mostrarMayor() {
+
+            var numero1 = document.getElementById('numero1').value;
+            numero1 = parseInt(numero1);
+            var numero2 = document.getElementById('numero2').value;
+            numero2 = parseInt(numero2);
+
+            if (numero1 > numero2) {
+                alert('El número mayor es el: ' + numero1)
+            } else {
+                alert('El número mayor es el: ' + numero2)
+            }
+
+        }
+    </script>
+
+    <form>
+        Ingrese primer número <br>
+        <input type="text" id="numero1"><br><br>
+        Ingrese segundo número <br>
+        <input type="text" id="numero2"><br><br>
+        <input type="button" value="Calcular Mayor" onclick="mostrarMayor()">
+    </form>
+
+    <p>
+        3- Cargar un nombre y un apellido en sendos text. Al presionar un botón, concatenarlos y mostrarlos en un tercer
+        text (Tener en cuenta que podemos modificar la propiedad value de un objeto TEXT cuando ocurre un evento)
+    </p>
+
+
+    <script>
+        function concatenar() {
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            document.getElementById('resultado').value = nombre + apellido;
+        }
+    </script>
+
+
+    <form>
+
+        Ingrese Nombre: <br>
+        <input type="text" id="nombre"> <br><br>
+        Ingrese Apellido: <br>
+        <input type="text" id="apellido"> <br><br>
+
+        <input type="button" value="Concatenar" onclick="concatenar()"><br><br>
+        <input type="text" id="resultado">
+
+    </form>
+
+
+
+</body>
+
+</html>

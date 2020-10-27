@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares: agrupación en subpatrones ()</title>
+</head>
+
+<body>
+
+    <p>
+        Los paréntesis abiertos y cerrados pueden tener varios significados en las expresiones regulares. El fundamental
+        es el agrupar una parte de la expresión regular y aplicarle operaciones como |, *, +, ? etc
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Elaborar una expresión regular que permita validar si se ingresó correctamente un valor entero o real y que
+        eventualmente lleve el caracter + o - al principio. Validar que si se ingresa la coma debe ingresarse la parte
+        real
+    </p>
+
+    <script>
+        var nro = prompt('Ingrese un número entero o real:', '');
+        var patron = /^[+-]?\d+(\,\d+)?$/;
+
+        if (patron.test(nro)) {
+            alert('Correcto');
+        } else {
+            alert('Incorrecto');
+        }
+    </script>
+
+    <p>
+        Podemos analizar esta expresión regular: <br><br>
+
+        var patron=/^[+-]?\d+(\,\d+)?$/; <br><br>
+
+        Como la coma y la parte decimal son opcionales los encerramos entre paréntesis y lo finalizamos con el
+        cuantificador
+        '?'<br><br>
+        Esto hace que cuando se ingresa la coma deba ingresarse uno o más dígitos obligatoriamente ya que los agrupamos
+        mediante los paréntesis.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ingresar una hora con el formato hh:mm:ss, plantear una expresión regular que valide si es correcta.
+    </p>
+
+    <script>
+        var hora = prompt('Ingrese una hora con el formato hh:mm:ss', '');
+        var patron = /^(0[1-9]|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+
+        if (patron.test(hora)) {
+            alert('Correcto');
+        } else {
+            alert('Incorrecto');
+        }
+    </script>
+
+    Analicemos un poco como hemos agrupado cada uno de las secciones de la hora: <br><br>
+
+    var patron=/^(0[1-9]|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/; <br><br>
+
+    La parte inicial puede tomar un valor entre 0 y 23: <br><br>
+
+    (0[1-9]|1\d|2[0-3]) <br><br>
+
+    Utilizamos el metacarácter | para permitir ingresar el cero seguido de un valor entre 1 y 9, o el valor 1 y
+    cualquier dígito, o el dos seguido del dígito 0,1,2, o 3. <br><br>
+
+    Luego debe ingresarse el caracter dos puntos. <br><br>
+
+    La parte de los segundos queda definida por el patrón ([0-5]\d) es decir un valor entre 0 y 5 seguido de cualquier
+    dígito. <br><br>
+
+    Finalmente los segundos es similar a los minutos: ([0-5]\d) <br><br>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Validar el ingreso de una hora con el formato hh:mm:ss o hh:mm
+    </p>
+
+    <script>
+        var hora = prompt('ingrese una hora con el formato hh:mm:ss o hh:mm', '');
+        var patron = /^(0[1-9]|1\d|2[0-3]):([0-5]\d)(:([0-5]\d))?$/;
+
+        if (patron.test(hora)) {
+            alert('Correcto');
+        } else {
+            alert('Incorrecto');
+        }
+    </script>
+
+</body>
+
+</html>

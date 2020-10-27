@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares: metacarácter punto</title>
+</head>
+
+<body>
+    <p>
+        El metacarácter punto hace coincidir con cualquier carácter menos el salto de línea. <br><br>
+
+        Por ejemplo si queremos validar el ingreso de cualquier cadena de 5 caracteres que comience con a y finalice con
+        a podemos plantear la siguiente expresión regular: <br><br>
+
+        var patron=/^a...a$/; <br><br>
+
+        Estamos indicando que la cadena debe comenzar con una letra a luego hemos dispuesto tres metacaracteres punto
+        donde se verifican verdadero cualquiera sea el carácter del string y finalmente indicamos que finaliza con la
+        letra a. <br><br>
+
+        El programa para probarlo es:
+    </p>
+
+    <script>
+        var cadena = prompt('Ingrese una cadena de cinco caracteres que comience y finalice con a', '');
+        var patron = /^a...a$/;
+
+        if (patron.test(cadena)) {
+            document.write('Cadena Correcta');
+        } else {
+            document.write('Cadena Incorrecta');
+        }
+    </script>
+
+    <p>
+        Podemos utilizar un cuantificador para no repetir tres veces el metacarácter punto: <br><br>
+
+        var patron=/^a.{3}a$/; <br><br>
+
+        Es importante recordar que siempre que necesitemos utilizar alguno de los metacaracteres como dato a buscar es
+        necesario escaparlo con la barra invertida, por ejemplo si queremos verificar si un número tiene el formato
+        999.99:
+    </p>
+
+    <script>
+        var nro = prompt('Ingese un número con el formato 999.99', '');
+        var patron = /^\d{3}\.\d{2}$/;
+
+        if (patron.test(nro)) {
+            document.write('nro correcto');
+        } else {
+            document.write('nro incorrecto');
+        }
+    </script>
+
+    <p>
+        Es fundamental escapar el carácter punto \. <br><br>
+
+        Esta expresión la podemos leer: debe comenzar con 3 dígitos obligatoriamente, luego un punto y finalmente dos
+        dígitos.
+    </p>
+
+</body>
+
+</html>

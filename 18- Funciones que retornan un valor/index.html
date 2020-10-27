@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones que retornan un valor</title>
+</head>
+
+<body>
+    <h1>Ejemplo 1:</h1>
+    <p>
+        Confeccionar una función que reciba un valor entero comprendido entre 1 y 5. Luego retornar en
+        castellano el valor recibido.
+    </p>
+
+    <script>
+        function convertirCastellano(x) {
+            if (x == 1)
+                return "uno";
+            else
+            if (x == 2)
+                return "dos";
+            else
+            if (x == 3)
+                return "tres";
+            else
+            if (x == 4)
+                return "cuatro";
+            else
+            if (x == 5)
+                return "cinco";
+            else
+                return "valor incorrecto";
+        }
+
+        var valor;
+        valor = prompt('Ingrese un valor entre 1 y 5', '');
+        valor = parseInt(valor);
+
+        var r;
+        r = convertirCastellano(valor);
+        document.write(r);
+    </script>
+
+    <h1>Ejemplo 2: </h1>
+    <p>Confeccionar una función que reciba una fecha con el formato de día, mes y año y retorne un string con
+        un formato similar a: "Hoy es 27 de enero de 2020".</p>
+
+    <script>
+        function formatearFecha(dia, mes, año) {
+            var s = 'Hoy es ' + dia + ' de ';
+            switch (mes) {
+                case 1:
+                    s = s + 'enero ';
+                    break;
+
+                case 2:
+                    s = s + 'febrero ';
+                    break;
+
+                case 3:
+                    s = s + 'marzo ';
+                    break;
+
+                case 4:
+                    s = s + 'abril ';
+                    break;
+
+                case 5:
+                    s = s + 'mayo ';
+                    break;
+
+                case 6:
+                    s = s + 'junio ';
+                    break;
+
+                case 7:
+                    s = s + 'julio ';
+                    break;
+
+                case 8:
+                    s = s + 'agosto ';
+                    break;
+
+                case 9:
+                    s = s + 'septiembre ';
+                    break;
+
+                case 10:
+                    s = s + 'octubre ';
+                    break;
+
+                case 11:
+                    s = s + 'noviembre ';
+                    break;
+
+                case 12:
+                    s = s + 'diciembre ';
+                    break;
+            } //fin del switch
+            s = s + 'de ' + año;
+            return s;
+        }
+        document.write(formatearFecha(12, 4, 2020));
+    </script>
+
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Confeccionar una función a la cual le envíe tres enteros y retorne el mayor de ellos.</p>
+
+    <script>
+        function retornarMayor(x1, x2, x3) {
+            if (x1 > x2 && x1 > x3) {
+                return x1;
+            } else {
+                if (x2 > x3) {
+                    return x2;
+                } else {
+                    return x3;
+                }
+            }
+        }
+
+        var valor1, valor2, valor3;
+
+        valor1 = prompt('Ingrese primer valor', '');
+        valor1 = parseInt(valor1);
+        valor2 = prompt('Ingrese segundo valor', '');
+        valor2 = parseInt(valor2);
+        valor3 = prompt('Ingrese tercer valor', '');
+        valor3 = parseInt(valor3);
+
+        document.write('Los tres valores ingresados son: ' + valor1 + ' ' + valor2 + ' ' + valor3 + '<br>');
+        var mayor;
+
+        mayor = retornarMayor(valor1, valor2, valor3);
+        document.write('El valor mayor ess: ' + mayor);
+    </script>
+
+    <p>2- Elaborar una función a la cual le envíe el valor del lado de un cuadrado y me retorne su perímetro.</p>
+
+    <script>
+        function retornarPerimetro(lado) {
+            var perimetro;
+            perimetro = lado * 4;
+            return perimetro;
+        }
+
+        var lado;
+
+        lado = prompt('Ingrese el lado del cuadrado:', '');
+        lado = parseInt(lado);
+
+        document.write('El perímetro del cuadrado es: ' + retornarPerimetro(lado));
+    </script>
+
+    <p>
+        3- Desarrollar una función que retorne la cantidad de dígitos que tiene una variable entera positiva de hasta 5
+        dígitos.
+    </p>
+
+    <script>
+        function cantidadDigitos(x) {
+            if (x < 10) {
+                return 1;
+            } else {
+                if (x < 100) {
+                    return 2;
+                } else {
+                    if (x < 1000) {
+                        return 3;
+                    } else {
+                        if (x < 10000) {
+                            return 4;
+                        } else {
+                            if (x < 100000) {
+                                return 5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var valor;
+        valor = prompt('Ingrese un valor positivo de hasta 5 dígitos:', '');
+        valor = parseInt(valor);
+        document.write('La cantidad de dígitos del valor ingresado es: ' + cantidadDigitos(valor));
+    </script>
+
+    <p>
+        4- Elaborar una función que reciba tres enteros y retorne el promedio.
+    </p>
+
+    <script>
+        function promediar(x1, x2, x3) {
+            var promedio = (x1 + x2 + x3) / 3;
+            return promedio;
+        }
+
+        var valor1, valor2, valor3;
+
+        valor1 = prompt('Ingrese el primer valor:', '');
+        valor1 = parseInt(valor1);
+
+        valor2 = prompt('Ingrese el segundo valor:', '');
+        valor2 = parseInt(valor2);
+
+        valor3 = prompt('Ingrese el tercer valor:', '');
+        valor3 = parseInt(valor3);
+
+        // -- Primera Forma
+        // var pro;
+        // pro = promediar(valor1, valor2, valor3);
+        // document.write('El promedio es: ' + pro);
+
+        // -- Segunda Forma
+        document.write('El promedio de los tres valores es: ' + promediar(valor1, valor2, valor3));
+    </script>
+
+    <p>
+        5- Confeccionar una función que solicite la carga de 5 valores por teclado y retorne su suma.
+    </p>
+
+    <script>
+        function cargar5Valores() {
+            var suma = 0;
+            var f;
+            for (f = 1; f <= 5; f++) {
+
+                valor = prompt('Ingrese valor:', '');
+                valor = parseInt(valor);
+                suma = suma + valor;
+            }
+            return suma;
+        }
+
+        // --Primera Forma
+        var s = cargar5Valores();
+        document.write('La suma de los 5 valores es: ' + s);
+
+
+        // --Segunda Forma
+        //     document.write('La suma de los cinco valores son: ' + cargar5Valores());
+        // 
+    </script>
+
+</body>
+
+</html>

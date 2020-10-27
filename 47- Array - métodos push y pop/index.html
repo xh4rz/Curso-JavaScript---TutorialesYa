@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Como los Array en Javascript son objetos, los mismos tienen una serie de métodos que nos facilitan trabajar con
+    ellos. <br>
+
+    Para insertar elementos en un vector hemos visto que con solo asignar un valor al vector en un determinado índice el
+    dato queda almacenado y eventualmente el atributo length modificado: <br>
+    var vec=[]; <br>
+    vec[0]=10; <br>
+    vec[1]=20; <br>
+    document.write(vec.length); //imprime 2 <br><br>
+
+    Esta sintaxis tenemos que tener cuidado como variamos el subíndice para no dejar componentes vacías si queremos
+    implementar un array denso. <br>
+
+    Una variante para resolver este mismo problema es utilizar el método push del objeto Array. Este método añade el
+    valor al final del vector: <br>
+    var vec=[]; <br>
+    vec.push(10); <br> 
+    vec.push(20); <br>
+    document.write(vec.length); //imprime 2 <br><br>
+
+    Automáticamente cuando llamamos al método push el valor que le pasamos en el parámetro se almacena en el vector y se
+    incrementa el atributo length. <br>
+
+    Podemos inclusive llamar al método push pasando más de 1 parámetro: <br>
+
+    var vec=[]; <br> 
+    vec.push(10,20);<br> 
+    document.write(vec.length); //imprime 2<br><br>
+
+    El método inverso llamado pop extrae el último elemento del Array y decrementa en uno el atributo length: <br><br>
+
+    var vec=[]; <br> 
+    vec.push(10,20,30,40); <br>
+    document.write(vec.length+'<br>'); //imprime 4
+    vec.pop();
+    document.write(vec.length+'<br>'); //imprime 3
+    document.write(vec.pop()+'<br>'); //imprime un 30
+    document.write(vec.length+'<br>'); //imprime 2 <br><br>
+
+    El método pop() además de eliminar el último elemento del vector retorna el valor almacenado en dicha
+    componente.<br>
+    Si llamamos al método pop y el vector está vacío retorna el valor undefined.
+
+    <h1>Problema</h1>
+    <p>Realizar la carga de sueldos por teclado hasta que se ingrese el cero. <br>
+    Almacenar todos los valores ingresados en un vector empleando el método push. <br>
+     Mostrar la suma de sueldos ingresados.</p> 
+
+     <script>
+         var sueldos = [];
+         var monto;
+
+         do{
+             monto = prompt('Ingrese el sueldo (0 para finalizar):','');
+             monto = parseInt(monto);
+             if (monto!=0){
+                 sueldos.push(monto);
+             }
+         }while(monto!=0);
+
+         var suma = 0;
+         for(var f=0; f<sueldos.length; f++){
+             suma = suma+sueldos[f];
+         }
+         document.write('El total en sueldos ingresado es: '+suma);
+     </script>
+</body>
+</html>

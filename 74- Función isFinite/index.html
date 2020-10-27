@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función isFinite</title>
+</head>
+
+<body>
+    <p>
+        La función isFinite verifica si el parámetro tiene un valor numérico finito, en caso afirmativo retorna true.
+        <br><br>
+
+        Una variable numérica puede almacenar alguno de los siguientes valores: <br><br>
+
+        El número propiamente dicho. <br><br>
+
+        El valor NaN <br><br>
+
+        El valor Infinite <br><br>
+
+        El valor -Infinite <br><br>
+
+        Veamos un ejemplo almacenando valores en variables que nos generen los distintos valores posibles:
+    </p>
+
+    <script>
+        var x1 = 120;
+        if (isFinite(x1)) { //true
+            document.write('x1 tiene un valor finito que es el ' + x1);
+        } else {
+            document.write('x1 no tiene un valor finito que es el ' + x1);
+        }
+        document.write('<br>');
+
+        var x2 = 10e399;
+        if (isFinite(x2)) { //false
+            document.write('x2 tiene un valor finito que es el ' + x2);
+        } else {
+            document.write('x2 no tiene un valor finito que es el ' + x2)
+        }
+        document.write('<br>');
+
+        var x3 = -10e399;
+        if (isFinite(x3)) { //false
+            document.write('x3 tiene un valor finito que es el ' + x3);
+        } else {
+            document.write('x3 no tiene un valor finito que es el ' + x3);
+        }
+        document.write('<br>');
+
+        var x4 = 'juan';
+        if (isFinite(x4)) { //false
+            document.write('x4 tiene un valor finito que es el ' + x4);
+        } else {
+            document.write('x4 no tiene un valor finito que es el ' + x4);
+        }
+    </script>
+    <p>
+        Para conocer el máximo y mínimo valor que puede almacenar una variable numérica podemos consultar las constantes
+        MIN_VALUE y MAX_VALUE de la clase Number:
+    </p>
+
+    <script>
+        document.write(Number.MIN_VALUE); // 5e-324
+        document.write('<br>');
+        document.write(Number.MAX_VALUE); //1.7976931348623157e+308
+    </script>
+
+    <h1>Problema</h1>
+    <p>
+        Mostrar por pantalla el valor 10 elevado a la 1,2,3 etc. hasta que se genere un valor infinito.
+    </p>
+
+    <script>
+        for (var x = 1;; x++) {
+            var resu = Math.pow(10, x);
+
+            if (isFinite(resu)) {
+                document.write('10 elevado a la ' + x + ' es ' + resu + '<br>');
+            } else {
+                break;
+            }
+        }
+    </script>
+
+    <h1>PORBLEMA</h1>
+    <p>
+        1- Se ingresan por teclado dos números (emplear parseFloat para convertirlos) mostrar un mensaje si alguno de
+        los dos no es un número (isNaN). Luego si son valores numéricos proceder a multiplicarlos y verificar si el
+        resultado es finito (isFinite) para mostrar el resultado.
+    </p>
+
+    <script>
+        var num1, num2, producto;
+
+        num1 = prompt('Ingrese el primer número: ', '')
+        num2 = prompt('Ingrese el segundo número: ', '')
+
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+        if (isNaN(num1) || isNaN(num2)) {
+            document.write('Al menos uno de los dos valores ingresados no es numérico.')
+        } else {
+            producto = num1 * num2;
+            if (isFinite(producto)) {
+                document.write('El producto de los dos valores es: ' + producto)
+            } else {
+                document.write('El resultado de multiplicar dichos valores es infinito.');
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

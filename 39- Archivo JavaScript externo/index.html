@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo JavaScript externo</title>
+</head>
+
+<body>
+    <p>
+        El lenguaje JavaScript permite agrupar funciones y disponerlas en un archivo separado a la página HTML. <br><br>
+
+        Esto trae muchos beneficios: <br><br>
+
+        Reutilización de funciones de uso común.<br>No tenemos que copiar y pegar sucesivamente las funciones en las
+        páginas en las que necesitamos. <br>
+        Facilita el mantenimiento de las funciones al encontrarse en archivos separados. <br><br>
+        Nos obliga a ser más ordenados.
+        La mecánica para implementar estos archivos externos en JavaScript es:
+    </p>
+
+    <h1>EJEMPLO</h1>
+    <p>1 - Crear un archivo con extensión *.js y tipear las funciones en la misma:
+
+        funciones.js</p>
+    <script src="funciones.js"></script>
+
+    <script>
+        document.write('La fecha de hoy es: '+retornarFecha());
+        document.write('<br>');
+        document.write('La hora es: '+retornarHora());
+    </script>
+
+
+</body>
+
+</html>

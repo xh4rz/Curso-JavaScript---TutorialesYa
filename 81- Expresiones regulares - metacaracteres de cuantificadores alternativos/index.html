@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares: metacaracteres de cuantificadores alternativos * ? +</title>
+</head>
+
+<body>
+    <p>
+        La sintaxis de las expresiones regulares define tres metacaracteres que pueden utilizarse en lugar de la
+        sintaxis vista en el concepto anterior. <br><br>
+
+        Caracteres: <br><br>
+
+        ? busca cero o una ocurrencia en el string <br>
+        remplaza a {0,1} <br>
+
+        * busca cero o más ocurrencias en el string <br>
+        remplaza a {0,} <br>
+
+        + busca una o más ocurrencias en el string <br>
+        remplaza a {1,} <br>
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ingresar una palabra por teclado y validar que tenga al menos una vocal.
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra con al menos una vocal:', '');
+        var patron = /[aeiou]+/;
+
+        if (patron.test(palabra)) {
+            document.write('La palaba ingresada tiene al menos una vocal');
+        } else {
+            document.write('La palabra ingresada no tiene vocales');
+        }
+    </script>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ingresar un valor numérico entero que podemos opcionalmente antecederle alguno de los caracteres: + / -
+    </p>
+
+    <script>
+        var valor = prompt('Ingrese un valor numérico entero, puede anteceder el +/-:', '');
+        var patron = /^[\+\-]?[0-9]+$/;
+
+        if (patron.test(valor)) {
+            document.write('Tiene un formato correcto');
+        } else {
+            document.write('Formato incorrecto');
+        }
+    </script>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ingresar un valor numérico entero o real, se debe validar que se ingrese al menos un número previo al operador
+        punto que es opcional y finalizar con un número obligatoriamente.
+    </p>
+
+    <script>
+        var valor = prompt('Ingese un valor numérico entero o real:', '');
+        var patron = /^[0-9]+\.?[0-9]+$/;
+
+        if (patron.test(valor)) {
+            document.write('Tiene el formato correcto');
+        } else {
+            document.write('Formato incorrecto');
+        }
+    </script>
+
+
+</body>
+
+</html>

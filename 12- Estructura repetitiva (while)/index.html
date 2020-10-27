@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(while)</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>Realizar un programa que imprima en pantalla los números del 1 al 100.</p>
+
+    <script>
+        var x;
+        x = 1;
+
+        while (x <= 100) {
+            document.write(x);
+            document.write(' - ');
+            x = x + 1;
+        }
+    </script>
+
+    <h1>EJERCICIOS</h1>
+    <p>1 - Imprimir los números del 1 al 500.</p>
+
+    <script>
+        var x;
+        x = 1;
+
+        while (x <= 500) {
+            document.write(x);
+            document.write(' - ');
+            x = x + 1;
+        }
+    </script>
+
+    <p>2 - Imprimir los números del 50 al 100.</p>
+
+    <script>
+        var x;
+        x = 50;
+
+        while (x <= 100) {
+            document.write(x);
+            document.write(' - ');
+            x = x + 1;
+        }
+    </script>
+
+    <p>3 - Imprimir los números del -50 al 0</p>
+
+    <script>
+        var x;
+        x = -50;
+
+        while (x <= 0) {
+            document.write(x);
+            document.write('  ');
+            x = x + 1;
+        }
+    </script>
+
+    <p>4 - Imprimir los números del 2 al 100 pero de 2 en 2 (2,4,6,8 ....100).</p>
+
+    <script>
+        var x;
+        x = 2;
+
+        while (x <= 100) {
+            document.write(x);
+            document.write(' - ');
+            x = x + 2;
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Realizar un programa que imprima 25 términos de la serie 11 - 22 - 33 - 44, etc. (No se ingresan valores por
+        teclado).</p>
+
+    <script>
+        var x, serie;
+        serie = 11;
+        x = 1;
+
+        while (x <= 25) {
+            document.write(serie);
+            document.write(' - ');
+            x = x + 1;
+            serie = serie + 11;
+        }
+    </script>
+
+    <p>
+        2- Mostrar los múltiplos de 8 hasta el valor 500. Debe aparecer en pantalla 8 -16 -24, etc.
+    </p>
+
+    <script>
+        var multiplo8;
+        multiplo8 = 8;
+
+        while(multiplo8 <= 500){
+            document.write(multiplo8);
+            document.write(' - ');
+            multiplo8 = multiplo8+8;
+        }
+    </script>
+</body>
+
+</html>

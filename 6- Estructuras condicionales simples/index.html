@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales Simples</title>
+</head>
+
+<body>
+<h1>EJEMPLO</h1>
+    <script>
+        var nombre;
+        var nota;
+
+        nombre = prompt('Ingrese nombre:', '');
+        nota = parseInt(prompt('Ingrese su nota:', ''));
+
+        if (nota >= 4) {
+            document.write(nombre + ' esta aprobado con un ' + nota);
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Se ingresan tres notas de un alumno, si el promedio es mayor o igual a siete mostrar el mensaje
+        'Promocionado'.
+        Tener en cuenta que para obtener el promedio debemos operar suma=nota1+nota2+nota3; y luego hacer
+        promedio=suma/3;
+        Cuando cargamos una nota y queremos convertir inmediatamente el valor ingresado a entero podemos hacer:
+        nota1=prompt('Ingrese primer nota:','');
+        nota1=parseInt(nota1);</p>
+
+    <script>
+        var nota1;
+        var nota2;
+        var nota3;
+
+        nota1 = prompt('Ingrese primera nota:', '');
+        nota1 = parseInt(nota1);
+
+        nota2 = prompt('Ingrese segunda nota:', '');
+        nota2 = parseInt(nota2);
+
+        nota3 = prompt('Ingrese tercera nota:', '');
+        nota3 = parseInt(nota3);
+
+
+
+        var suma = nota1 + nota2 + nota3;
+        var promedio = suma / 3;
+
+        if (promedio >= 7) {
+            document.write('Promocionado');
+        }
+    </script>
+
+    <p>2- Solicitar que se ingrese dos veces una clave. Mostrar un mensaje si son iguales (tener en cuenta que para ver
+        si dos
+        variables tienen el mismo valor almacenado debemos utilizar el operador ==)</p>
+
+    <script>
+        var clave1;
+        var clave2;
+
+        clave1 = prompt('Ingrese una clave:', '');
+        clave2 = prompt('Repita el ingreso de la clave:', '');
+
+        if (clave1 == clave2) {
+            document.write('Las claves ingresadas son iguales');
+        }
+    </script>
+</body>
+
+</html>

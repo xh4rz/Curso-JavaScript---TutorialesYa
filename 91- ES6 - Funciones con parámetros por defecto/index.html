@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Funciones con parámetros por defecto</title>
+</head>
+
+<body>
+    <p>
+        Esta característica de JavaScript nos permite asignar un valor por defecto a un parámetro para los casos en que
+        en la llamada a la misma no se le envíe. <br><br>
+
+        function sumar(x1,x2,x3=0) <br><br>
+
+        Luego podemos llamar a la función sumar enviando dos o tres datos:
+
+        sumar(10, 2); <br>
+        sumar(10, 2, 70); <br><br>
+
+        En la primer llamada x3 queda con el valor 0, en la segunda llamada x3 almacena el valor 70.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Confeccionar una función que reciba un vector y el tipo de lista HTML que se debe generar. Por defecto generar
+        una lista no ordenada. Retornar una cadena con la lista HTML generada.
+    </p>
+
+    <script>
+        function generarLista(vec, tipo = '<ul>') {
+            let lista = tipo;
+            for (let x = 0; x < vec.length; x++)
+                lista += `<li>${vec[x]}</li>`;
+            if (tipo == '<ul>')
+                lista += '</ul>';
+            else
+                lista += '</ol>';
+            return lista;
+        }
+
+        const opciones1 = ['opción 1', 'opción 2', 'opción 3', 'opción 4', 'opción 5'];
+        document.write(generarLista(opciones1));
+
+        const opciones2 = ['opción a', 'opción b', 'opción c', 'opción d'];
+        document.write(generarLista(opciones2, '<ol>'));
+    </script>
+
+    <p>
+        En la primer llamada le pasamos un solo parámetro: <br><br>
+
+        document.write(generarLista(opciones1)); <br><br>
+
+        Luego la función generarLista almacena en el parámetro tipo el valor por defecto: 'ul': <br><br>
+        function generarLista(vec, tipo='ul') { <br><br>
+
+        Pero en la segunda llamada le pasamos que queremos obtener una lista HTML ordenada: <br><br>
+
+        document.write(generarLista(opciones2,'ol')); <br><br>
+
+        En el navegador tenemos como resultado: <br><br>
+
+        Puede haber varios valores por defecto, pero deben ser los últimos. Es decir primero
+        indicamos los
+        parámetros que reciben datos en forma obligatoria cuando los llamamos y finalmente indicamos
+        aquellos que tienen valores por defecto.
+    </p>
+
+    <h1>
+        PROBLEMA
+    </h1>
+    <p>
+        1- Confeccionar una función que muestre la tabla de multiplicar. Si no llegan datos muestra por defecto la tabla
+        del 2. Por defecto se muestran 10 términos de la tabla salvo que se indique un valor en contrario.
+        La función debe tener 2 parámetros y ambos deben tener un valor por defecto.
+    </p>
+
+    <script>
+        function tablaMultiplicar(tabla = 2, cantidad = 11) {
+            document.write(`Tabla del ${tabla}<br>`);
+            for (let x = 1; x <= cantidad; x++) {
+                v = x * tabla;
+                document.write(`${tabla}*${x} = ${v}<br><br>`);
+            }
+        }
+
+        tablaMultiplicar(1, 12);
+        tablaMultiplicar(2, 12)
+        tablaMultiplicar(3, 12)
+        tablaMultiplicar(4, 12)
+        tablaMultiplicar(5, 12)
+        tablaMultiplicar(6, 12)
+        tablaMultiplicar(7, 12)
+        tablaMultiplicar(8, 12)
+        tablaMultiplicar(9, 12)
+        tablaMultiplicar(10, 12)
+        tablaMultiplicar(10, 12)
+        tablaMultiplicar(10, 12)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control SELECT</title>
+</head>
+
+<body>
+
+    <h1>EJEMPLO</h1>
+
+    <p>Un ejemplo completo que muestra el empleo de un control SELECT es:</p>
+
+    <script>
+        function cambiarColor() {
+            var seleccion = document.getElementById('select1');
+
+            document.getElementById('text1').value = seleccion.selectedIndex;
+
+            document.getElementById('text2').value = seleccion.options[seleccion.selectedIndex].text;
+
+            document.getElementById('text3').value = seleccion.options[seleccion.selectedIndex].value;
+        }
+    </script>
+
+    <form>
+        <select id="select1" onchange="cambiarColor()">
+            <option value="ff0000">Rojo</option>
+            <option value="00ff00">Verde</option>
+            <option value="0000ff">Azul</option>
+        </select>
+        <br><br>
+
+        Número de índice seleccionado del objeto SELECT: <br>
+        <input type="text" id="text1"> <br><br>
+
+        Texto seleccionado: <br>
+        <input type="text" id="text2"><br><br>
+
+        Valor asociado:<br>
+        <input type="text" id="text3"><br><br>
+    </form>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Confeccionar una página que muestre un objeto SELECT con distintos tipos de pizzas (Jamón y Queso,
+        Muzzarella,
+        Morrones). Al seleccionar una, mostrar en un objeto de tipo TEXT el precio de la misma.
+    </p>
+
+    <script>
+        function mostrarSeleccionPizza() {
+            document.getElementById('mensaje').value = document.getElementById('pizza').options[document.getElementById(
+                'pizza').selectedIndex].value;
+
+        }
+    </script>
+
+    <form>
+        Pizzas:
+        <select id="pizza" onchange="mostrarSeleccionPizza()">
+            <option value="">Seleccione alguna:</option>
+            <option value="180">Jamon y Queso</option>
+            <option value="150">Muzzarella</option>
+            <option value="170">Morrones</option>
+        </select>
+        <br><br>
+        <input type="text" id="mensaje">
+    </form>
+
+    <p>
+        2- Generar un presupuesto de un equipo de computación a partir de tres objetos de tipo SELECT que nos permiten
+        seleccionar:
+
+        Procesador (Intel I3 - $400, Intel I5 $600, Intel I7 $800).
+        Monitor (Samsung 20' - $250, Samsung 22' - $350, Samsung 26' - $550)
+        Disco Duro(500 Gb - $300, 1 Tb - $440, 3 Tb - $500)
+
+        Para cada característica indicamos string a mostrar (Ej. Intel I3) y el valor asociado a dicho string (Ej. 400).
+        Al presionar un botón "Calcular" mostrar el presupuesto en un objeto de tipo TEXT.
+    </p>
+
+    <script>
+        function calcularPresupuesto() {
+            var ele1 = document.getElementById('procesador')
+            var precio1 = ele1.options[ele1.selectedIndex].value;
+
+            var ele2 = document.getElementById('monitor')
+            var precio2 = ele2.options[ele2.selectedIndex].value;
+
+            var ele3 = document.getElementById('discoduro')
+            var precio3 = ele3.options[ele3.selectedIndex].value;
+
+            precio1 = parseInt(precio1);
+            precio2 = parseInt(precio2);
+            precio3 = parseInt(precio3);
+
+            var suma = precio1 + precio2 + precio3;
+            document.getElementById('resultado').value = suma;
+
+        }
+    </script>
+
+    <form>
+        Procesador:
+        <select id="procesador">
+            <option value="400">Intel I3</option>
+            <option value="600">Intel I5</option>
+            <option value="900">Intel I7</option>
+        </select> <br><br>
+
+        Monitor:
+        <select id="monitor">
+            <option value="250">Samsung 20'</option>
+            <option value="350">Samsung 22'</option>
+            <option value="550">Samsung 26'</option>
+        </select> <br><br>
+
+        Disco Duro:
+        <select id="discoduro">
+            <option value="300">500 Gb</option>
+            <option value="440">1 Tb</option>
+            <option value="500">3 Tb</option>
+        </select> <br><br>
+
+        <input type="button" value="Calcular Presupuesto" onclick="calcularPresupuesto()"><br><br>
+
+        <input type="text" id="resultado">
+    </form>
+
+    <p>
+        3- Confeccionar una página que permita seleccionar una pizza y la cantidad de unidades.
+
+        Luego al presionar un
+        botón calcular el importe a pagar.
+
+        Utilizar un objeto de la clase SELECT para la selección de la pizza, pudiendo ser:
+
+        Queso: $ 4.
+        Jamón y queso: $ 6.
+        Especial: $ 10.
+
+        A la cantidad de pizzas cargarla en un objeto de la clase TEXT y en otro objeto de la clase TEXT mostrar el
+        importe total a abonar.
+    </p>
+
+    <script>
+        function calcularPresupuesto2() {
+            var precio = document.getElementById('pizza2').value;
+            precio = parseInt(precio);
+            var cantidad = document.getElementById('cantidad2').value;
+            cantidad = parseInt(cantidad);
+
+            var total = precio * cantidad;
+            document.getElementById('resultado2').value = total;
+        }
+    </script>
+
+    <form>
+        Seleccione la pizza:
+
+        <select id="pizza2">
+            <option value="4">Queso</option>
+            <option value="6">Jamón y queso</option>
+            <option value="10">Especial</option>
+        </select><br><br>
+        Cantidad de pizzas:
+        <input type="text" id="cantidad2"><br><br>
+
+        <input type="button" value="Calcular Costo" onclick="calcularPresupuesto2()">
+        <input type="text" id="resultado2">
+    </form>
+
+    <p>
+        4- Confeccionar una página que permita tomar un examen múltiple choice. Se debe mostrar una pregunta y seguidamente
+        un objeto SELECT con las respuestas posibles. Al presionar un botón mostrar la cantidad de respuestas correctas
+        e incorrectas (Disponer 4 preguntas y sus respectivos controles SELECT)
+    </p>
+
+    <script>
+        function verificar() {
+            var correctas = 0;
+
+            var ele1 = document.getElementById('pregunta1');
+            var ele2 = document.getElementById('pregunta2');
+            var ele3 = document.getElementById('pregunta3');
+            var ele4 = document.getElementById('pregunta4');
+
+            if (ele1.options[ele1.selectedIndex].value == 3) {
+                correctas++;
+            }
+            if (ele2.options[ele2.selectedIndex].value == 1) {
+                correctas++;
+            }
+            if (ele3.options[ele3.selectedIndex].value == 2) {
+                correctas++;
+            }
+            if (ele4.options[ele4.selectedIndex].value == 2) {
+                correctas++;
+            }
+
+            alert('Cantidad de respuestas correctas: ' + correctas);
+
+
+        }
+    </script>
+
+    <form>
+        Como se dice rojo en ingles:<br>
+        <select id="pregunta1">
+            <option value="1">blue</option>
+            <option value="2">green</option>
+            <option value="3">red</option>
+        </select><br><br>
+
+        Como se dice ventana en ingles:<br>
+        <select id="pregunta2">
+            <option value="1">window</option>
+            <option value="2">door</option>
+            <option value="3">bedroom</option>
+        </select><br><br>
+
+        Como se dice gato en ingles:<br>
+        <select id="pregunta3">
+            <option value="1">dog</option>
+            <option value="2">cat</option>
+            <option value="3">lion</option>
+        </select><br><br>
+
+        Como se dice hombre en ingles:<br>
+        <select id="pregunta4">
+            <option value="1">women</option>
+            <option value="2">man</option>
+            <option value="3">child</option>
+        </select><br><br>
+        <input type="button" value="verificar" onclick="verificar()">
+
+
+    </form>
+
+
+
+</body>
+
+</html>

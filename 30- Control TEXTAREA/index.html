@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control TEXTAREA</title>
+</head>
+<body>
+
+    <h1>Ejemplo:</h1>
+    
+    <p>
+    Solicitar la carga del mail y el curriculum de una persona. Mostrar un mensaje si el curriculum supera los
+    2000 caracteres.</p>
+
+    <script>
+        function controlarCaracteres(){
+            if(document.getElementById('curriculum').value.length>2000){
+                alert('El curriculum supera los 2.000 caracteres.');
+            }else{
+                alert('El curriculum tiene los datos correctos.');
+            }
+        }
+    </script>
+
+    <form>
+        Email:
+         <input type="email" name="" id="email"><br><br>
+        <textarea id="curriculum" cols="50" rows="10"></textarea>
+        <br>
+        <input type="button" value="Mostrar" onclick="controlarCaracteres()">
+    </form>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Confeccionar una página de visitas a un sitio, solicitar ingresar el nombre de una persona, su mail y los
+        comentarios (TEXTAREA).
+        Mostrar luego llamando a la función alert los datos ingresados.
+    </p>
+
+    <script>
+        function verificar(){
+            var nombre = document.getElementById('nombre').value;
+            var correo = document.getElementById('correo').value;
+            var comentarios = document.getElementById('comentarios').value;
+
+            // alert('El nombre suyo es '+nombre+' identificado con correo '+correo+' y sus comentarios son '+comentarios);
+            alert(nombre+'\n'+correo+'\n'+comentarios);
+        }
+    </script>
+    
+    <form>
+        Nombre: <br>
+        <input type="text" id="nombre"><br><br>
+        Email: <br>
+        <input type="email" id="correo"><br><br>
+        Comentarios: <br>
+        <textarea id="comentarios" cols="100" rows="20"></textarea><br>
+        <input type="button" value="Enviar" onclick="verificar()">
+    </form>
+</body>
+</html>

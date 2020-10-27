@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones: objeto arguments</title>
+</head>
+
+<body>
+    <p>
+        Cuando llamamos a una función JavaScript crea automáticamente un objeto llamado "arguments" que almacena los
+        valores que le pasamos a dicha función. También este objeto arguments almacena en una propiedad llamada length
+        la
+        cantidad de parámetros que llegaron. Veamos un ejemplo muy sencillo. <br><br>
+        Confeccionar una función que retorne la suma de dos enteros:
+    </p>
+
+    <script>
+        function sumar(x, y) {
+            var s = x + y;
+            return s;
+        }
+        document.write(sumar(5, 3));
+    </script>
+
+    <p>
+        Luego podemos resolver esta misma función accediendo al objeto arguments que se crea cada vez que llamamos a una
+        función:
+    </p>
+
+    <script>
+        function sumar(x, y) {
+            var s = arguments[0] + arguments[1];
+            return s;
+        }
+        document.write(sumar(5, 3));
+    </script>
+
+    <h1>Problema</h1>
+    <p>
+        Confeccionar una función que reciba un conjunto variable de enteros y nos retorne su suma:
+    </p>
+
+    <script>
+        function sumar() {
+            var s = 0;
+            var f;
+            for (f = 0; f < arguments.length; f++) {
+                s = s + arguments[f];
+            }
+            return s;
+        }
+
+        document.write(sumar(2, 4));
+        document.write('<br>');
+        document.write(sumar(1, 2, 3, 4, 5));
+        document.write('<br>');
+        document.write(sumar(100, 200, 300));
+    </script>
+
+    <h1>
+
+    </h1>
+    <p>
+        Confeccionar una función que reciba un conjunto de string y genere dentro de la página una lista ordenada (ol).
+        <br>
+        La función debe recibir en el primer parámetro el id de un div.
+    </p>
+
+    <div id="lista1" style="background-color: orange;"></div>
+
+    <script>
+        window.onload = iniciar;
+
+        function iniciar() {
+            generarLIsta('lista1', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis');
+        }
+
+        function generarLIsta() {
+            var s = '<ol>';
+            var f;
+            for (f = 1; f < arguments.length; f++) {
+                s = s + '<li>' + arguments[f] + '</li>';
+            }
+            s = s + '</ol>';
+            var elemento1 = document.getElementById(arguments[0]);
+            elemento1.innerHTML = s;
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Confeccionar una función que obtenga y retorne el mayor valor de una lista de enteros que le pasamos como
+        parámetros.</p>
+
+    <script>
+        function mayor() {
+            var may = arguments[0];
+            var f;
+            for (f = 1; f < arguments.length; f++) {
+                if (arguments[f] > may) {
+                    may = arguments[f];
+                }
+            }
+            return may;
+        }
+        document.write(mayor(7, 22, 4, 66, 3, 22, 55));
+    </script>
+
+</body>
+
+</html>

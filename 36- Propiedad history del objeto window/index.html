@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedad history del objeto window</title>
+</head>
+<body>
+        <img src="history.jpg">
+    <h1>EJEMPLO</h1>
+
+    <p>
+        El objeto history almacena todas las páginas que visitamos. Luego, con una serie de funciones, podemos extraer
+        de la memoria de la computadora las páginas ya visitadas, sin tener que pedirlas nuevamente al servidor. <br>
+
+        Cuenta con las siguientes funciones: <br><br>
+
+        window.history.back(); //Retrocede a la página anterior <br>
+        window.history.forward(); //Avanza a la página siguiente almacenada en la
+        cache de la máquina. <br>
+        window.history.go(); //Avanza o retrocede en la lista de páginas visitadas. <br><br>
+
+        El siguiente ejemplo nos permite cargar una segunda página y luego retroceder a la primera página sin tener que
+        solicitarla nuevamente al servidor:
+    </p>
+
+    <script>
+        function avanzar(){
+            window.history.go(1);
+
+            
+        }
+    </script>
+
+
+    <a href="pagina2.html">Ir a la página 2</a>
+    <br>
+    <br>
+    <a href="javascript:avanzar()">Extraer del cache la segunda página</a>
+ 
+</body>
+</html>

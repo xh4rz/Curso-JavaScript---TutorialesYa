@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ES6 - Definición de constantes y variables</title>
+</head>
+
+<body>
+    <p>
+        ES6 o también conocido como ECMAScript 2015 es una actualización del lenguaje de programación JavaScript que
+        actualmente gran cantidad de navegadores ya implementan. <br><br>
+
+        Todos los agregados a JavaScript definidos en este nuevo estándar ya se los está aplicando desde hace un tiempo
+        con Node.js en el servidor, y en framework de cliente como React, Angular y Vue. <br><br>
+
+        Estos agregados al lenguaje JavaScript nos facilitan la programación. <br><br>
+
+        Si queremos averiguar el porcentaje de navegadores que soportan una característica de JavaScript ES6 podemos
+        visitar el sitio caniuse.com, por ejemplo si queremos que porcentaje de navegadores soportan la palabra clave
+        'const' para definir constantes: <br><br>
+
+        caniuse.com <br><br>
+
+
+
+        const <br><br>
+
+        Hasta que llega ES6 la única forma de definir variables en JavaScript es mediante la palabra clave 'var':
+        <br><br>
+
+        var edad=12; <br>
+        var sueldo=1000.50; <br>
+        var titulo='Administración'; <br><br>
+
+        Con ES6 si sabemos que la variable nunca cambiará luego en lugar de definir con var debemos definir una
+        constante
+        con la palabra clave 'const':
+
+    </p>
+
+    <script>
+        const titulo = 'Adminitracion';
+        const empleados = 10;
+        const pi = 3.1416;
+
+        alert(titulo);
+        alert(empleados);
+        alert(pi);
+    </script>
+
+    <p>
+        Mediante la palabra clave const antecedemos al nombre de la constante: <br><br>
+
+        const titulo='Administracion'; <br><br>
+
+        Luego no podemos asignarle otro valor a 'titulo', en el caso que por error asignemos otro valor o tratemos de
+        redefinirla se genera un error en tiempo de ejecución: <br><br>
+
+        const titulo='Administracion'; <br>
+        titulo='fin'; <br><br>
+
+        En el navegador aparece el siguiente error en la Consola: <br><br>
+
+        Todo aquel almacenamiento de datos que no cambiará durante la ejecución del programa es conveniente definirlo
+        como
+        constante.
+    </p>
+
+    <h1>Let</h1>
+
+    <p>
+        Para definir variables que pueden cambiar su contenido podemos seguir utilizando 'var' y 'let'. Veremos cuales
+        son las diferencias entre estos dos formas de definirlas. <br><br>
+
+        Con 'let' se define una variable que tendrá solo alcance al bloque donde se la ha definido, veamos un ejemplo
+        definiendo variables con let:
+    </p>
+
+    <script>
+        //Si el primer valor es mayor o igual al segundo luego sumarlos y restarlos, sin
+        //efectuar su producto
+
+        const v1 = parseInt(prompt('Ingrese primer valor'));
+        const v2 = parseInt(prompt('Ingrese segundo valor'));
+
+        if (v1 >= v2) {
+            let resu;
+
+            resu = v1 + v2;
+            document.write('La suma es: ' + resu + '<br>');
+
+            resu = v1 - v2;
+            document.write('La resta es: ' + resu);
+        } else {
+            const producto = v1 * v2;
+            document.write('El producto es: ' + producto);
+        }
+    </script>
+
+    <p>
+        La variable 'resu' solo se define y reserva espacio si la condición del if se verifica verdadera. Luego al
+        finalizar el bloque del verdadero deja de existir 'resu'. <br><br>
+
+        Si resolvemos este mismo problema utilizando JavaScript antiguo es decir definiendo variables con 'var' en la
+        página no hay cambios:
+    </p>
+
+    <script>
+        //Si el primer valor es mayor o igual al segundo luego sumarlos y restarlos, sin
+        //efectuar su producto
+        var v1_var = parseInt(prompt("Ingrese primer valor"));
+        var v2_var = parseInt(prompt("Ingrese segundo valor"));
+        if (v1_var >= v2_var) {
+            var resu;
+            resu_var = v1_var + v2_var;
+            document.write('La suma es:' + resu_var + '<br>');
+            resu_var = v1_var - v2_var;
+            document.write('La resta es:' + resu_var);
+        } else {
+            var producto_var = v1_var * v2_var;
+            document.write('El producto es:' + producto_var);
+        }
+    </script>
+
+    <p>
+        La ventaja de utilizar let y const es que si accedemos a la variable fuera del bloque de llaves donde se la
+        define se produce un error, ya que no existe:
+    </p>
+
+    <script>
+        //Si el primer valor es mayor o igual al segundo luego sumarlos y restarlos, sin
+        //efectuar su producto
+        const v1_let_const = parseInt(prompt("Ingrese primer valor"));
+        const v2_let_const = parseInt(prompt("Ingrese segundo valor"));
+
+        if (v1_let_const >= v2_let_const) {
+            let resu_let_const;
+            resu_let_const = v1_let_const + v2_let_const;
+            document.write('La suma es: ' + resu_let_const + '<br>');
+            resu_let_const = v1_let_const - v1_let_const;
+            document.write('La resta es: ' + resu_let_const);
+        } else {
+            const producto_let_const = v1_let_const * v2_let_const;
+            document.write('El producto es: ' + producto_let_const);
+        }
+        document.write(resu_let_const); //error: resu no está definida
+        document.write(producto_let_const); //error: producto no está definida
+    </script>
+
+    <p>
+        Este error no se produce si utilizamos definiciones de variables con 'var' ya que las mismas siempre se definen
+        como globales y si escribimos:
+    </p>
+
+    <script>
+        //Si el primer valor es mayor o igual al segundo luego sumarlos y restarlos, sin
+        //efectuar su producto
+        var v1_var_global = parseInt(prompt("Ingrese primer valor"));
+        var v2_var_global = parseInt(prompt("Ingrese segundo valor"));
+        if (v1_var_global >= v2_var_global) {
+            var resu_var_global;
+            resu_var_global = v1_var_global + v2_var_global;
+            document.write('La suma es: ' + resu_var_global + '<br>');
+            resu_var_global = v1_var_global - v2_var_global;
+            document.write('La resta es: ' + resu_var_global + '<br>');
+        } else {
+            var producto_var_global = v1_var_global * v2_var_global;
+            document.write('El producto es: ' + producto_var_global);
+        }
+        document.write(resu_var_global);
+        document.write(producto_var_global);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Expresiones regulares: [] conjunto de caracteres opcionales</title>
+</head>
+
+<body>
+    <p>
+        Ahora veremos el significado de los caracteres [] en una expresión regular. Se emplea estos caracteres para
+        encerrar los caracteres permitidos. <br><br>
+
+        <b>problema</b> Controlar si la palabra ingresada comienza con el primer carácter alfabético ya sea en
+        mayúsculas o en
+        minúsculas:
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra', '');
+        var patron = /^[a-zA-Z]/;
+        // var patron = RegExp('^[a-zA-Z]');  
+
+        if (patron.test(palabra)) {
+            alert('La palabra comienza con un carácter alfabético (mayúscula o minúscula)');
+        } else {
+            alert('La palabra no comienza con un carácter alfabético (mayúscsula o minúscula)');
+        }
+    </script>
+
+    <h1>Problema</h1>
+    <p>
+        Ingresar una palabra y luego mostrar un mensaje si finaliza con vocal.
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra', '');
+        var patron = /[aeiouAEIOUáéíóú]$/;
+
+        if (patron.test(palabra)) {
+            alert('La palabra finaliza con vocal');
+        } else {
+            alert('La palabra no finaliza con vocal');
+        }
+    </script>
+
+    <p>
+        Hemos utilizado el carácter '^' para encontrar coincidencias desde el principio del string, pero este carácter
+        dentro de los corchetes abiertos y cerrados tiene otro uso.
+        Permite obtener todos los otros caracteres distintos a los especificados.
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Ingresar una clave que no finalice en vocal.
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra', '');
+        var patron = /[^aeiouAEIOUáéíóú]$/;
+
+        if (patron.test(palabra)) {
+            alert('La palabra no finaliza con vocal');
+        } else {
+            alert('La palaba finaliza con vocal');
+        }
+    </script>
+
+    <h1>problema</h1>
+
+    <p>
+        Ingresar una palabra y luego mostrar un mensaje si contiene una vocal en alguna parte de la palabra.
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra', '');
+        var patron = /[aeiouAEIOUáéíóú]/;
+
+        if (patron.test(palabra)) {
+            alert('La palabra tiene al menos una vocal');
+        } else {
+            alert('La palabra no tiene vocales');
+        }
+    </script>
+
+    <p>
+        Cuando tenemos que buscar en el string alguno de los caracteres que tienen un significado especial en las
+        expresiones regulares '^ $. * +? =! : | \ / () [] {} ' debemos escaparlos a algunos dentro de los corchetes.
+    </p>
+
+    <h1>Problema</h1>
+    <p>Ingresar una oración por teclado y luego mostrar un mensaje si el string ingresado contiene al menos uno de los
+        caracteres que son un comando o metacaracter para las expresiones regulares:</p>
+
+    <script>
+        var oracion = prompt('Ingese una oracion', '');
+        var patron = /[\^$.*+?=!:|\\/()\[\]{}]/;
+
+        if (patron.test(oracion)) {
+            alert('La oración tiene al menos un carácter ^ $. * +? =! : | \ / () [] {}')
+        } else {
+            alert('La oración no tiene ningún carácter ^ $. * +? =! : | \ / () [] {}');
+        }
+    </script>
+
+    <p>
+        Se verifica verdadero el método test si ingresamos: <br><br>
+
+        La tarde estaba soleada! <br>
+        Se verifica falso el método test si ingresamos: <br><br>
+
+        La tarde estaba soleada
+    </p>
+
+    <h1>problema</h1>
+
+    <p>
+        Ingresar todos los caracteres con significada especial en las expresiones regulares en el siguiente orden:
+        <br><br>
+        ^$.*+?=!:|\/()[]{}
+        <br>
+        (es necesario escapar todos los metacaracteres):
+    </p>
+
+    <script>
+        var cadena = prompt(
+            'Ingrese esos caracteres especiales para expresiones regulares en este mismo orden: ^$.*+?=!:|\/()[]{}',
+            '');
+
+        var patron = /^\^\$\.\*\+\?\=\!\:\|\\\/\(\)\[\]\{\}$/;
+
+        if (patron.test(cadena)) {
+            alert('Orden correcto');
+        } else {
+            alert('Incorrecto');
+        }
+    </script>
+
+
+</body>
+
+</html>

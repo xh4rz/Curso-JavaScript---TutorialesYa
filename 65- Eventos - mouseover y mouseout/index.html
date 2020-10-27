@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos: mouseover y mouseout</title>
+</head>
+
+<body>
+    <p>
+        El evento mouseover se dispara cuando ingresamos con la flecha del mouse a un control HTML que tiene registrado
+        dicho evento, y mouseout se dispara cuando sacamos la flecha del mouse del control. <br><br>
+
+        Es muy común utilizar estos dos eventos para producir cambios en el elemento HTML cuando ingresamos la flecha
+        del mouse y retornar al estado anterior cuando se saca la flecha del mouse.
+        <br><br>
+
+        Es importante hacer notar que estos eventos se disparan sin tener que presionar la flecha del mouse, solo con
+        desplazarla al interior del elemento HTML se dispara el evento mouseover.
+        <br><br>
+
+        Implementaremos un pequeño ejemplo que muestre un cuadrado, el mismo mostrará los bordes redondeados cuando
+        ingresemos la flecha del mouse en su interior y volverá al estado anterior cuando retiremos la flecha.
+    </p>
+
+    <div id="recuadro1" style="width: 200px; height: 200px; background: #0000ff;"></div>
+    <script>
+        addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('recuadro1').addEventListener('mouseover', entrada, false);
+            document.getElementById('recuadro1').addEventListener('mouseout', salida, false);
+        }
+
+        function entrada() {
+            document.getElementById('recuadro1').style.borderRadius = '30px';
+        }
+
+        function salida() {
+            document.getElementById('recuadro1').style.borderRadius = '0px';
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Mostrar un elemento de tipo H1, luego cuando se ingrese con el mouse dentro del mismo cambiar el color a
+        letra roja y color de fondo amarillo, luego cuando se mueva la flecha del mouse fuera del elemento volver al
+        color original.
+    </p>
+
+    <h1 id="titulo">Titulo principal</h1>
+
+    <script>
+        addEventListener('DOMContentLoaded', iniciotitulo, false);
+
+        function iniciotitulo() {
+
+            document.getElementById('titulo').addEventListener('mouseover', colorcambiar, false);
+
+            document.getElementById('titulo').addEventListener('mouseout', colororiginal, false);
+        }
+
+        function colorcambiar() {
+            document.getElementById('titulo').style.color = '#ff0000';
+            document.getElementById('titulo').style.backgroundColor = '#ffff00';
+        }
+
+        function colororiginal() {
+            document.getElementById('titulo').style.color = '#000000';
+            document.getElementById('titulo').style.backgroundColor = '#ffffff';
+        }
+    </script>
+
+</body>
+
+</html>

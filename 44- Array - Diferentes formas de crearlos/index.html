@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: Diferentes formas de crearlos</title>
+</head>
+
+<body>
+    <p> Tenemos muchas formas de inicializar un array en Javascript según nuestra situación particular, veamos con
+        ejemplos
+        diferentes formas: <br><br>
+
+        Creación de un array sin elementos:<br>
+
+        var vector1=new Array(); <br><br>
+        Otra sintaxis para crear un array sin elementos: <br>
+
+        var vector2=[]; <br><br>
+        Creación de un array indicando la cantidad de componentes iniciales que podrá almacenar: <br>
+
+        var vector3=new Array(5); <br><br>
+        Creación e inicialización llamando al constructor Array y pasando como parámetros los valores a almacenar en las
+        componentes: <br>
+
+        var vector4=new Array(1,70,'juan'); <br><br>
+        Creación e inicialización de un array utilizando los corchetes: <br>
+
+        var vector5=[1,70,'juan']; <br><br>
+
+        Para probar las distintas formas de creación de array implementaremos un programa que cree 5 Array, cargue
+        algunos
+        elementos y muestre la primer componente de cada uno de ellos: <br><br></p>
+
+    <script>
+        var vector1 = new Array();
+        vector1[0] = 1;
+
+        var vector2 = [];
+        vector2[0] = 1;
+
+        var vector3 = new Array(5);
+        vector3[0] = 1;
+
+        var vector4 = new Array(1, 70, 'Juan');
+
+        var vector5 = [1, 70, 'Juan'];
+
+        document.write(vector1[0] + '<br>');
+        document.write(vector2[0] + '<br>');
+        document.write(vector3[0] + '<br>');
+        document.write(vector4[0] + '<br>');
+        document.write(vector5[0] + '<br>');
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Confeccionar un programa que defina dos array, en uno almacenar los días de la semana y en otro los nombres de
+        los meses. Emplear dos sintaxis diferentes para crear e inicializar sus componentes.</p>
+
+    <script>
+        var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+        var meses = new Array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Agosto', 'Septiembre', 'Octubre',
+            'Noviembre', 'Diciembre');
+
+        var f;
+        for (f = 0; f < meses.length; f++) {
+            document.write(meses[f] + '<br>');
+        }
+        document.write('<br>');
+        for (f = 0; f < dias.length; f++) {
+            document.write(dias[f] + '<br>')
+        }
+    </script>
+</body>
+
+</html>

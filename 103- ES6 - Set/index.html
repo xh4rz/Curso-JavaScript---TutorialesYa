@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Set</title>
+</head>
+
+<body>
+    <p>
+        Hemos visto en conceptos anteriores que JavaScript implementa los siguientes objetos: <br><br>
+
+        <li>Array</li>
+        <li>Map</li> <br><br>
+
+        Con ES6 se presenta el objeto llamado 'Set' que nos evita tener que implementar desde cero una estructura de
+        datos tipo conjunto. <br><br>
+
+        El objeto 'Set' permite almacenar una colección de elementos que pueden ser de tipo primitivo u objeto y que no
+        se pueden repetir.
+    </p>
+
+    <h1>Creación de un conjunto (Set).</h1>
+
+    <p>
+        1- Podemos crear un Set vacío y posteriormente añadir elementos al conjunto mediante el método 'add':
+    </p>
+
+    <script>
+        const conjunto1 = new Set();
+        conjunto1.add("C");
+        conjunto1.add("Pascal");
+        conjunto1.add("PHP");
+        conjunto1.add("Python");
+        console.log(conjunto1);
+    </script>
+
+    <P>
+        2- Podemos crear un Set e inmediatamente pasar los datos iniciales en el constructor del mismo mediante un
+        arreglo:
+    </P>
+
+    <!-- <script>
+          const conjunto1 = new Set(["C", "Pascal", "PHP", "Python"]);
+          console.log(conjunto1);
+      </script> -->
+
+    <h1>Verificar la existencia de un determinado valor y la cantidad de valores del Set.</h1>
+
+    <p>
+        Disponemos del método 'has' que nos retorna si el conjunto almacena un determinado valor. <br><br>
+
+        <b>Problema</b> <br><br>
+
+        Generar 10 números aleatorios comprendidos entre 1 y 50. Almacenar los mismos en un Set. Verificar luego si el
+        conjunto tiene el valor 12.
+    </p>
+
+    <script>
+        const conjunto2 = new Set();
+        for (let x = 0; x < 10; x++)
+            conjunto2.add(parseInt(Math.random() * 50) + 1);
+
+        document.write(`La cantudad de números aleatorios distintos son ${conjunto2.size}<br>`);
+
+        if (conjunto2.has(12))
+            document.write("Si se generó el número 12");
+        else
+            document.write("No se generó el número 12");
+    </script>
+
+    <!-- Como un conjunto no puede almacenar valores repetidos luego si queremos saber la cantidad de números aleatorios
+    distintos debemos acceder a la propiedad 'size' del 'Set':
+
+    document.write(`La cantidad de números aleatorios distintos son ${conjunto1.size}<br>`)
+    El método 'has' retorna true si el conjunto almacena el dato que le pasamos como parámetro:
+
+    if (conjunto1.has(12)) -->
+
+    <h1>Eliminación de elementos del Set.</h1>
+
+    <p>Podemos eliminar elementos mediante el método 'delete':</p>
+
+    <script>
+        const conjunto3 = new Set(["C", "Pascal", "PHP", "Python"]);
+        console.log(conjunto3.size); // 4
+        conjunto3.delete("Pascal");
+        console.log(conjunto3.size); // 3
+    </script>
+
+    <p>El método 'delete' retorna true si se eliminó la entrada en el Set y false en caso que le hayamos pasado un valor
+        que no exista. <br><br>
+
+        Para eliminar todos los elementos del conjunto disponemos del método 'clear':</p>
+
+    <script>
+        const conjunto4 = new Set(["C", "Pascal", "PHP", "Python"]);
+        console.log(conjunto4.size); // 4
+        conjunto4.clear();
+        console.log(conjunto4.size); // 0
+    </script>
+
+    <h1>Recorrido de un Set.</h1>
+
+    <p>
+        Los elementos almacenado en el 'Set' mantienen el orden en que se agregaron. <br><br>
+
+        Podemos recorrer un 'Set' mediante la estructura repetitiva 'for of':
+    </p>
+
+    <script>
+        const conjunto5 = new Set(["C", "Pascal", "PHP", "Python"]);
+        for (let elemento of conjunto5)
+            document.write(`${elemento}<br>`);
+    </script>
+
+    <!-- Al ejecutar el algoritmo podemos ver como recorrer el conjunto y recuperar en forma individual cada uno de los
+    elementos
+    que conforman el 'Set'.
+
+    El objeto Set igual que los objetos Array y Map dispone de un método 'forEach' para iterar sobre los elementos del
+    'Set':
+
+    <script>
+        const conjunto1 = new Set(["C", "Pascal", "PHP", "Python"]);
+        mapa1.forEach((elemento) => document.write(`${elemento}<br>`));
+    </script> -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Almacenar en un Set los días feriados del año actual. Guardar cada fecha con formato de tipo string:
+        "día/mes/año" <br><br>
+
+        Ingresar por teclado una fecha cualquiera y luego verificar si dicha fecha es un feriado.
+    </p>
+
+    <script>
+        const feriados = new Set([
+            "1/1/2020",
+            "25/5/2020",
+            "25/12/2020"
+        ]);
+
+        const dia = parseInt(prompt("Ingrese día:", ""));
+        const mes = parseInt(prompt("Ingrese mes:", ""));
+        const año = parseInt(prompt("Ingrese año:", ""));
+
+        if (feriados.has(`${dia}/${mes}/${año}`))
+            document.write("La fecha corresponde a un feriado");
+        else
+            document.write("La fecha no corresponde a un feriado")
+    </script>
+
+</body>
+
+</html>

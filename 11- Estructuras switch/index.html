@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch</title>
+</head>
+
+<body>
+
+    <h1>EJEMPLO</h1>
+    <P>
+        Confeccionar un programa que solicite que ingrese un valor entre 1 y 5. Luego mostrar en castellano el valor
+        ingresado. Mostrar un mensaje de error en caso de haber ingresado un valor que no se encuentre en dicho rango.
+    </P>
+
+    <script>
+        var valor;
+
+        valor = prompt('Ingrese un valor comprendido entre 1 y 5:', '');
+        valor = parseInt(valor);
+
+        switch (valor) {
+            case 1:
+                document.write('uno');
+                break;
+            case 2:
+                document.write('dos');
+                break;
+
+            case 3:
+                document.write('tres');
+                break;
+
+            case 4:
+                document.write('cuatro');
+                break;
+
+            case 5:
+                document.write('cinco');
+                break;
+
+            default:
+                document.write('debe ingresar un valor comprendido entre 1 y 5.');
+        }
+    </script>
+
+    <p>Plantearemos un segundo problema para ver que podemos utilizar variables de tipo cadena con la instrucción
+        switch.
+        Ingresar por teclado el nombre de un color (rojo, verde o azul), luego mostraremos un mensaje indicando el color
+        ingresado:
+    </p>
+
+    <script>
+        var col;
+        col = prompt('Ingrese alguno de estos tres colores(rojo, verde, azul)', '');
+
+        switch (col) {
+            case 'rojo':
+                document.write('Se ingresó rojo');
+                break;
+
+            case 'verde':
+                document.write('Se ingresó verde');
+                break;
+
+            case 'azul':
+                document.write('Se ingresó azul');
+                break;
+
+            default:
+                document.write('Debe ingresar alguno de estos tres colores(rojo, verde, azul)');
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        Solicitar el ingreso alguna de estas palabras (casa, mesa, perro, gato) luego mostrar la palabra traducida en
+        inglés. Es decir, si se ingresa 'casa' debemos mostrar el texto 'house' en la página.
+    </p>
+
+    <script>
+        var palabra;
+
+        palabra = prompt('Ingrese alguna de estas palabas(casa, mesa, perro, gato) para traducirlas al ingles', '');
+
+        switch (palabra) {
+
+            case 'casa':
+                document.write('house');
+                break;
+
+            case 'mesa':
+                document.write('table');
+                break;
+
+            case 'perro':
+                document.write('dog');
+                break;
+
+            case 'gato':
+                document.write('cat');
+                break;
+
+            default:
+                document.write(
+                    'Debe ingresar alguna de estas palabas(casa, mesa, perro, gato) para traducirlas al ingles');
+        }
+    </script>
+
+
+</body>
+
+</html>

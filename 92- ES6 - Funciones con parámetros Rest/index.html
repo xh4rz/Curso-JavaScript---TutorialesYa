@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Funciones con parámetros Rest</title>
+</head>
+
+<body>
+    <p>
+        Otra funcionalidad en JavaScript con la actualización ECMAScript 2015 (también llamada ES6) es la posibilidad de
+        pasar una lista indefinida de valores y que los reciba un vector. <br><br>
+
+        El concepto de parámetros Rest se logra antecediendo tres puntos al nombre del parámetro (el parámetro es un
+        objeto de la clase Array con todas sus funcionalidades): <br><br>
+
+        function sumar(...parametro) <br><br>
+
+        Luego en la llamada podemos pasar una lista indeterminada de datos: <br><br>
+
+        sumar(4, 55, 33);
+    </p>
+
+    <script>
+        function sumar(...valores) {
+            let suma = 0;
+            for (let x = 0; x < valores.length; x++)
+                suma += valores[x];
+            return suma;
+        }
+
+        document.write(sumar(10, 2, 44, 3));
+        document.write('<br>');
+        document.write(sumar(1, 2));
+        document.write('<br>');
+        document.write(sumar());
+        document.write('<br>');
+    </script>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        1- Implementar una función que mediante un parámetro Rest reciba una lista de enteros y retorne un Array con los
+        elementos ordenados de menor a mayor.
+    </p>
+
+    <script>
+        function ordenar(...lista) {
+            return lista.sort(
+                function (x, y) {
+                    if (x > y)
+                        return 1;
+                    else
+                        return -1
+                })
+        }
+
+        const elordenados = ordenar(10, 3, 22, 1);
+        document.write(elordenados.toString());
+    </script>
+</body>
+
+</html>

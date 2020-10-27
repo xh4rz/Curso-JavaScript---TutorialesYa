@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Definición de getters y setters</title>
+</head>
+
+<body>
+    <p>
+        En JavaScript disponemos ahora de la posibilidad de definir setters que son métodos que establecen un valor a
+        una propiedad y getters que son métodos que rescatan un valor. <br><br>
+
+        Para la definición de setters y getters disponemos de las palabras claves set y get. <br><br>
+
+        La definición de propiedades con set y get nos permiten un mejor encapsulamiento de nuestra clase. <br><br>
+
+        Veremos con un ejemplo sencillo la sintaxis para definir una propiedad definiendo su setter y getter.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Declarar una clase llamada Dado y definir un atributo llamado '_valor' que almacene el valor actual del dado.
+        <br>
+        Luego definir los métodos set y get para poder fijar un nuevo valor al dado y conocer el valor actual.
+    </p>
+
+    <script>
+        class Dado {
+            constructor() {
+                this._valor = 1;
+            }
+
+            get valor() {
+                return this._valor;
+            }
+
+            set valor(v) {
+                this._valor = v;
+            }
+
+            imprimir() {
+                document.write(this.valor + '<br>');
+            }
+        }
+
+        const dado1 = new Dado();
+        dado1.imprimir();
+        dado1.valor = 6;
+        dado1.imprimir();
+    </script>
+
+    <!-- En el constructor definimos un atributo llamado _valor que almacena el valor 1:
+
+        constructor() {
+        this._valor=1;
+        }
+
+        Definimos la propiedad 'valor' con sus respectivos 'set' y 'get':
+
+        get valor() {
+        return this._valor;
+        }
+
+        set valor(v) {
+        this._valor=v;
+        }
+
+        El método get retorna el valor almacenado en el atributo '_valor' y el método set actualiza el valor almacenado
+        en el atributo '_valor'.
+
+        Donde definimos un objeto de la clase Dado accedemos a la propiedad dado para cambiar su valor por medio de una
+        asignación:
+
+        dado1.valor=6;
+        Es decir que en dicha asignación se está ejecutando el método:
+
+        set valor(v) {
+        this._valor=v;
+        }
+        En principio podría pensarse que lo más fácil es acceder directamente al atributo _valor y olvidarnos del método
+        set:
+
+        dado1._valor=6;
+        Pero si queremos luego mejorar la clase 'Dado' y hacerla más robusta, por ejemplo no dejar cargar valores
+        inválidos para un dado podemos mejorar el método 'set' con la siguiente sintaxis:
+
+        set valor(v) {
+            if (v>=1 && v<=6 && v%1===0)
+                this._valor=v;
+        else
+             throw "Error en asignación de valor del dado" ;
+         }
+         
+        Con ésta nueva implementación del método set solo almacenaremos valores válidos en el atributo _valor si llega un
+        número entero comprendido entre 1 y 6. En el caso que llegue un valor con coma 1.4 que está comprendido
+        entre 1 y 6 luego no cumple la tercer condición que el resto de dividirlo sea cero.
+
+        Cualquiera de estas asignaciones detiene el programa con un error:
+
+        dado1.valor=7;
+        dado1.valor=0;
+        dado1.valor=3.4;
+        dado1.valor='Hola' ;
+            
+        Ahora podemos comprobar la ventaja de definir propiedades de acceso a una clase en lugar de acceder directamente
+        a sus atributos.
+        
+        Si accedemos directamente al atributos '_valor' luego no se genera un error si le asignamos:
+
+        dado1._valor=3.4;
+        
+        Esto hace que nuestro programa sea más difícil demantener y propenso a errores.
+        
+        Vimos que llamamos al método set mediante una asignación, al método get lo
+        llamamos directamente por su nombre:
+        
+        const dado1=new Dado();
+        dado1.valor=5;
+        document.write(dado1.valor);
+
+        Cuando llamamos al método write del objeto document estamos accediendo al método get del objeto dado1. -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Declarar una clase llamada Persona. <br>
+        Definir los atributos donde almacenar su nombre y edad. <br>
+        Crear dos propiedades para que se puedan acceder a los atributos definidos. <br><br>
+        Validar que no se puedan ingresar valores negativos para la edad.
+    </p>
+
+    <script>
+        class Persona {
+            constructor(nom, ed) {
+                this._nombre = null;
+                this._edad = 0;
+            }
+
+            get nombre() {
+                return this._nombre;
+            }
+
+            set nombre(n) {
+                this._nombre = n;
+            }
+
+            get edad() {
+                return this._edad;
+            }
+
+            set edad(e) {
+                if (e >= 0)
+                    this._edad = e;
+                else
+                    throw "La edad no puede ser negativa";
+            }
+
+            imprimir() {
+                document.write(`Nombre: ${this.nombre} <br> Edad: ${this.edad}`);
+            }
+
+        }
+
+        const persona1 = new Persona();
+        persona1.nombre = 'Harold Gonzalez';
+        persona1.edad = 22;
+        persona1.imprimir();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores lógicos && (y)</title>
+</head>
+
+<body>
+    <h1>EJEMPLO:</h1>
+    <p>
+        Confeccionar un programa que lea por teclado tres números distintos y nos muestre el mayor de ellos.
+    </p>
+
+    <script>
+        var num1, num2, num3;
+
+        num1 = prompt('Ingrese primer número:', '');
+        num2 = prompt('Ingrese segundo número:', '');
+        num3 = prompt('Ingrese tercer número:', '');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        num3 = parseInt(num3);
+
+        if (num1 > num2 && num1 > num3) {
+            document.write('el mayor es el ' + num1);
+        } else {
+            if (num2 > num3) {
+                document.write('el mayor es el ' + num2);
+            } else {
+                document.write('el mayor es el ' + num3);
+            }
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Realizar un programa que pida cargar una fecha cualquiera, luego verificar si dicha fecha corresponde a
+        Navidad (se
+        debe cargar por separado el dia, el mes y el año)
+    </p>
+
+    <script>
+        var dia, mes, año;
+
+        dia = prompt('Ingrese día', '');
+        mes = prompt('Ingrese mes', '');
+        año = prompt('Ingrese año', '');
+
+        dia = parseInt(dia);
+        mes = parseInt(mes);
+        año = parseInt(año);
+
+        if (dia == 25 && mes == 12) {
+            document.write('La fecha ingresada corresponde a navidad');
+        } else {
+            document.write('La fecha ingresada no corresponde a navidad');
+        }
+    </script>
+
+    <p>
+        2- Se ingresan tres valores por teclado, si todos son iguales se imprime la suma del primero con el segundo y a
+        este
+        resultado se lo multiplica por el tercero (tener en cuenta que puede haber tres condiciones simples)
+    </p>
+
+    <script>
+        var num1, num2, num3;
+
+        num1 = prompt('Ingrese primer valor', '');
+        num2 = prompt('Ingrese segundo valor', '');
+        num3 = prompt('Ingrese tercer valor', '');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        num3 = parseInt(num3);
+
+        if (num1 == num2 && num1 == num3) {
+            var resultado = (num1 + num2) * num3;
+            document.write('La suma de los dos primeros valores y multiplicado dicha suma por el tercero es:' +
+                resultado);
+        }
+    </script>
+
+    <p>
+        3- Se ingresan por teclado tres números, si todos los valores ingresados son menores a 10, imprimir en la página
+        la
+        leyenda ' Todos los números son menores a diez'.
+    </p>
+    <script>
+        var num1, num2, num3;
+
+        num1 = prompt('Ingrese primer valor', '');
+        num2 = prompt('Ingrese segundo valor', '');
+        num3 = prompt('Ingrese tercer valor', '');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        num3 = parseInt(num3);
+
+        if(num1 <10 && num2 <10 && num3 <10){
+            document.write('Todos los números son menores a diez');
+        }
+    </script>
+
+    <p>
+        4- Escribir un programa que pida ingresar la coordenada de un punto en el plano, es decir dos valores enteros x e
+        y.
+        Posteriormente imprimir en pantalla en qué cuadrante se ubica dicho punto.
+    
+        <!-- (1º Cuadrante si x > 0 Y y > 0 ,
+              2º Cuadrante: x < 0 Y y> 0, etc.) -->
+    </p>
+
+    <script>
+        var x,y;
+
+        x = prompt('Ingrese coordenada x','');
+        y = prompt('Ingrese coordenada y','');
+
+        x = parseInt(x);
+        y = parseInt(y);
+
+
+        if(x > 0 && y > 0){
+            document.write('Se encuentra en el primer cuadrante');
+        }else{
+            if(x < 0 && y > 0){
+              document.write('Se encuentra en el segundo cuadrante');
+            }else{
+                if(x < 0 && y < 0){
+               document.write('Se encuentra en el tercer cuadrante');
+                }else{
+                    if(x > 0 && y < 0){
+                       document.write('Se encuentra en el cuarto cuadrante');
+                    }else{
+                       document.write('Se encuentra sobre un eje');
+                    }
+                }
+            }
+        }
+    </script>
+
+    <p>
+        5- De un operario se conoce su sueldo y los años de antigüedad. Se pide confeccionar un programa que lea los
+        datos de entrada e informe
+        a) Si el sueldo es inferior a 500 y su antigüedad es igual o superior a 10 años, otorgarle un aumento del 20 %,
+        mostrar el sueldo a pagar.
+        b) Si el sueldo es inferior a 500 pero su antigüedad es menor a 10 años, otorgarle un aumento de 5 %.
+        c) Si el sueldo es mayor o igual a 500 mostrar el sueldo en la página sin cambios.
+    </p>
+
+    <script>
+        var sueldo, años_antiguedad;
+
+        sueldo = prompt('Ingrese el sueldo del empleado','');
+        años_antiguedad = prompt('Ingrese la antigüedad del empleado','');
+
+        sueldo = parseInt(sueldo);
+        años_antiguedad = parseInt(años_antiguedad);
+
+        if(sueldo < 500 && años_antiguedad >= 10){
+            document.write('Se le otorga un aumento del 20%');
+            document.write('<br>');
+            var sueldototal = sueldo*0.20;
+            document.write('El sueldo total es:'+sueldototal);
+        }else{
+            if(sueldo < 500 && años_antiguedad < 10){
+            document.write('Se le otorga un aumento del 5%');
+            document.write('<br>');
+            var sueldototal = sueldo*0.05;
+            document.write('El sueldo total es:'+sueldototal);
+            }else{
+                document.write('El sueldo queda sin cambios:'+sueldo);
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

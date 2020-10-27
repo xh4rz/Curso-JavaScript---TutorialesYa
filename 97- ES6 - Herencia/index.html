@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Herencia</title>
+</head>
+
+<body>
+    <p>
+        Con ES6 también se ha agregado al lenguaje JavaScript sintaxis para facilitar el concepto de herencia entre
+        clases.
+
+        Si queremos que una clase herede de otra debemos indicar en el momento que la declaramos mediante la palabra
+        clave 'extends' el nombre de la clase padre: <br><br>
+
+        <pre>
+            class Cuadrado extends Figura {
+            }
+        </pre>
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Confeccionar una clase Persona que tenga como atributos el nombre y la edad. Al constructor llegan los datos
+        personales y en otro método se imprimen. <br><br>
+
+        Plantear una segunda clase Empleado que herede de la clase Persona. Añadir un atributo sueldo y los métodos
+        constructor, imprimir y un método si debe pagar impuestos (sueldo mayor a 5000) <br><br>
+
+        Posteriormente definir un objeto de la clase Persona y llamar a sus métodos. También crear un objeto de la clase
+        Empleado y llamar a sus métodos.
+    </p>
+
+    <script>
+        class Persona {
+            constructor(nombre, edad) {
+                this.nombre = nombre;
+                this.edad = edad;
+            }
+            imprimir() {
+                document.write(`Nombre: ${this.nombre}<br>`);
+                document.write(`Edad: ${this.edad}<br>`);
+            }
+        }
+
+        class Empleado extends Persona {
+            constructor(nombre, edad, sueldo) {
+                super(nombre, edad);
+                this.sueldo = sueldo;
+            }
+            imprimir() {
+                super.imprimir();
+                document.write(`Sueldo: ${this.sueldo}<br>`);
+            }
+            pagaImpuestos() {
+                if (this.sueldo > 5000)
+                    document.write(`${this.nombre} debe pagar impuestos<br>`);
+                else
+                    document.write(`${this.nombre} no debe pagar impuestos`);
+            }
+        }
+
+        document.write('<hr>');
+        const persona1 = new Persona('Juan', 44);
+        persona1.imprimir();
+        document.write('<hr>');
+
+        const empleado1 = new Empleado('Juan', 44, 7000);
+        empleado1.imprimir();
+        empleado1.pagaImpuestos();
+        document.write('<hr>');
+    </script>
+
+    <!-- La declaración de la clase Persona no tiene nada nuevo a lo visto en el concepto anterior, definimos 2 atributos y 2
+    métodos:
+
+    class Persona {
+    constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+    }
+
+    imprimir() {
+    document.write(`Nombre: ${this.nombre}<br>`);
+    document.write(`Edad: ${this.edad}<br>`);
+    }
+    }
+    La clase Empleado hereda de la clase Persona (es decir que la clase empleado tiene como atributos su nombre, edad un
+    método donde se inicializan dichos atributos y uno que los muestra):
+
+    class Empleado extends Persona {
+    Mediante la sintaxis de extends indicamos que Empleado hereda de Persona.
+
+    En el constructor recibe como parámetros el nombre del empleado, su edad y el sueldo:
+
+    constructor(nombre, edad, sueldo) {
+    super(nombre, edad);
+    this.sueldo = sueldo;
+    }
+    Los atributos del nombre y edad se los pasamos al constructor de la clase padre mediante la palabra clave 'super'
+    (es obligatorio hacer esto primero sino se genera un error sintáctico)
+
+    Lo mismo en el método imprimir del Empleado llamamos al imprimir de la clase padre mediante la palabra clave super
+    para que se muestren el nombre y edad del empleado:
+
+    imprimir() {
+    super.imprimir();
+    document.write(`Sueldo: ${this.sueldo}<br>`);
+    }
+    No es obligatorio llamar primero al imprimir de la clase Empleado, podemos primero mostrar el sueldo y luego
+    imprimir el nombre y la edad.
+
+    Finalmente en el método pagaImpuestos controlamos el contenido del atributo 'this.sueldo' para mostrar un mensaje:
+
+    pagaImpuestos() {
+    if (this.sueldo>5000)
+    document.write(`${this.nombre} debe pagar impuestos<br>`);
+    else
+    document.write(`${this.nombre} no debe pagar impuestos<br>`);
+    } -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Declarar una clase llamada Calculadora que reciba en el constructor dos valores.
+        Definir las responsabilidades de sumar, restar, multiplicar, dividir e imprimir. <br><br>
+
+        Declarar luego una clase llamada CalculadoraCientifica que herede de Calculadora y añada las responsabilidades
+        de calcular el cuadrado del primer número y la raíz cuadrada.
+    </p>
+
+    <script>
+        class Calculadora {
+            constructor(valor1, valor2) {
+                this.valor1 = valor1;
+                this.valor2 = valor2;
+                this.resultado = null;
+            }
+
+            sumar() {
+                this.resultado = this.valor1 + this.valor2;
+                document.write(`La suma de ${this.valor1} y ${this.valor2} es: `);
+                this.imprimir();
+            }
+
+            restar() {
+                this.resultado = this.valor1 - this.valor2;
+                document.write(`La resta de ${this.valor1} y ${this.valor2} es: `);
+                this.imprimir();
+            }
+
+            multiplicar() {
+                this.resultado = this.valor1 * this.valor2;
+                document.write(`La multiplicación de ${this.valor1} y ${this.valor2} es: `);
+                this.imprimir();
+            }
+
+            dividir() {
+                this.resultado = this.valor1 / this.valor2;
+                document.write(`La división de ${this.valor1} y ${this.valor2} es: `);
+                this.imprimir();
+            }
+
+            imprimir() {
+                document.write(this.resultado + '<br>');
+            }
+        }
+
+        class CalculadoraCientifica extends Calculadora {
+            cuadrado() {
+                this.resultado = this.valor1 * this.valor1;
+                document.write(`${this.valor1} elevado al cuadrado es: `);
+                this.imprimir();
+            }
+
+            raizCuadrada() {
+                this.resultado = Math.sqrt(this.valor1);
+                document.write(`La raiz cuadrada de ${this.valor1} es: `);
+                this.imprimir();
+            }
+        }
+
+        const Calculadora1 = new Calculadora(100, 20);
+        Calculadora1.sumar();
+        Calculadora1.restar();
+        Calculadora1.multiplicar();
+        Calculadora1.dividir();
+
+        document.write('<br>');
+
+        const CalculadoraCientifica1 = new CalculadoraCientifica(6, 2);
+        CalculadoraCientifica1.sumar();
+        CalculadoraCientifica1.restar();
+        CalculadoraCientifica1.cuadrado();
+        CalculadoraCientifica1.raizCuadrada();
+    </script>
+</body>
+
+</html>

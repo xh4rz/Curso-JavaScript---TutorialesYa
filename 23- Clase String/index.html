@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase String
+    </title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+
+    <p>
+        Cargar un string por teclado y luego llamar a los distintos métodos de la clase String y la propiedad length.
+    </p>
+
+    <script>
+        var cadena = prompt('Ingrese una cadena:', '');
+
+        document.write('La cadena ingresada es: ' + cadena);
+        document.write('<br>');
+        document.write('La cantidad de caracteres son: ' + cadena.length);
+        document.write('<br>');
+        document.write('El primer carácter es: ' + cadena.charAt(0));
+        document.write('<br>');
+        document.write('Los primeros 3 caracteres son: ' + cadena.substring(0, 3));
+        document.write('<br>');
+
+        if (cadena.indexOf('hola') != -1)
+            document.write('Se ingresó la subcadena hola');
+        else
+            document.write('No se ingresó la subcadena hola');
+        document.write('<br>');
+
+        document.write('La cadena convertida a mayúsculas es: ' + cadena.toLocaleUpperCase());
+        document.write('<br>');
+        document.write('La cadena convertida a minúsculas es: ' + cadena.toLocaleLowerCase());
+        document.write('<br>');
+    </script>
+
+    <h1>PROBLEMAS</h1>
+
+    <p>
+        1- Ingresar una serie de nombres por teclado hasta que se cargue la palabra Fin, y mostrar cuántos nombres se
+        ingresaron.
+    </p>
+
+    <script>
+        var nombre;
+        var cant = 0;
+
+        do {
+            nombre = prompt('Ingrese un nombre (Terminar ingresando Fin):', '');
+            cant++;
+        } while (nombre != 'Fin');
+
+        //para descontar la palabra Fin
+        cant--;
+        document.write('Se ingresaron ' + cant + ' palabras');
+    </script>
+
+    <p>
+        2- Igual al anterior, pero que termine la aplicación sin contemplar mayúsculas ni minúsculas. Es decir que para
+        salir se pueda teclear fin, Fin o FIN.
+    </p>
+
+    <script>
+        var nombre;
+        var cant = 0;
+
+        do {
+            nombre = prompt('Ingrese un nombre (Terminar ingresando Fin):', '');
+            cant++;
+            nombre = nombre.toUpperCase();
+        } while (nombre != 'FIN');
+
+        //para descontar la palabra Fin
+        cant--;
+        document.write('Se ingresaron ' + cant + ' palabras');
+    </script>
+
+    <p>
+        3- Realizar la búsqueda de un string clave en un string fuente. Se deberá ingresar una frase o texto (fuente) y
+        luego la clave a buscar. En caso de encontrarla, imprimir la posición, de lo contrario una leyenda que indique
+        que no está.
+    </p>
+
+    <script>
+        var frase;
+        frase = prompt('Ingrese una oración:', '');
+        document.write(frase + '<br><br>');
+
+        var palabra;
+        palabra = prompt('Ingrese una palabra:', '');
+
+        if (frase.indexOf(palabra) != 1) {
+            document.write('La frase ingresada contiene la palabra: ' + palabra);
+        } else {
+            document.write('La frase ingresada no contiene la palabra: ' + palabra);
+        }
+    </script>
+
+    <p>
+        4- Ingresar una palabra o texto por teclado y determinar si es o no una palabra palíndromo. (Palabra que se lee
+        de igual manera de adelante hacia atrás, que de atrás hacia delante)
+    </p>
+
+    <script>
+        var palabra;
+        palabra = prompt('Ingrese una palabra o frase', '');
+
+        var cantidad = 0;
+        var f;
+
+        for (f = 0; f < palabra.length; f++) {
+            if (palabra.charAt(f) == palabra.charAt(palabra.length - 1 - f)) {
+                cantidad++;
+            }
+        }
+        if (cantidad == palabra.length) {
+            document.write(palabra + ' se lee igual en amabas direcciones');
+        } else {
+            document.write(palabra + ' no se lee igual en amabas direcciones');
+        }
+    </script>
+
+
+    <p>
+        5- Realizar un programa que permita cargar una dirección de mail e implementar una función que verifique si el
+        String tiene cargado el carácter @.
+    </p>
+
+    <script>
+        function verificarArroba(email) {
+            var cantidad = 0;
+            var f;
+
+            for (f = 0; f < email.length; f++) {
+                if (email.charAt(f) == '@') {
+                    cantidad++;
+                }
+            }
+            if (cantidad != 0) {
+                document.write('El email ' + email + ' tiene el caracter @');
+            } else {
+                document.write('El email ' + email + ' no tiene el caracter @');
+            }
+        }
+
+        var email;
+        email = prompt('Ingrese un email:', '');
+        verificarArroba(email);
+    </script>
+
+    <p>
+        6- Cargar un String por teclado e implementar las siguientes funciones:
+        a) Imprimir la primera mitad de los caracteres de la cadena.
+        b) Imprimir el último carácter.
+        c) Imprimirlo en forma inversa.
+        d) Imprimir cada carácter del String separado con un guión.
+        e) Imprimir la cantidad de vocales almacenadas.
+    </p>
+
+    <script>
+        function mitad(frase) {
+            document.write('Mitad inicial de la frase: ');
+            var f;
+
+            for (f = 0; f < frase.length / 2; f++) {
+                document.write(frase.charAt(f));
+            }
+            document.write('<br><br>');
+        }
+
+        function ultimoCaracter(frase) {
+            document.write('Último carácter: ')
+            document.write(frase.charAt(frase.length - 1));
+            document.write('<br><br>');
+        }
+
+        function imprimirInverso(frase) {
+            document.write('En forma inversa: ');
+            var f;
+
+            for (f = 0; f < frase.length; f++) {
+                document.write(frase.charAt(frase.length - f - 1))
+            }
+            document.write('<br><br>');
+        }
+
+        function imprimirConGuion(frase) {
+            document.write('Separados con guíon: ');
+            var f;
+
+            for (f = 0; f < frase.length; f++) {
+                document.write(frase.charAt(f) + '-');
+            }
+            document.write('<br><br>');
+        }
+
+        function cantidadVocales(frase) {
+            var f;
+            var cantidad = 0;
+
+            for (f = 0; f < frase.length; f++) {
+
+                if (frase.charAt(f) == 'a' ||
+                    frase.charAt(f) == 'e' ||
+                    frase.charAt(f) == 'i' ||
+                    frase.charAt(f) == 'o' ||
+                    frase.charAt(f) == 'u' ||
+                    frase.charAt(f) == 'A' ||
+                    frase.charAt(f) == 'E' ||
+                    frase.charAt(f) == 'I' ||
+                    frase.charAt(f) == 'O' ||
+                    frase.charAt(f) == 'U')
+
+                {
+                    cantidad++;
+                }
+            }
+            document.write('Cantidad de vocales: ' + cantidad);
+        }
+
+        var frase;
+        frase = prompt('Ingrese una palabra o frase:', '');
+
+        document.write(frase);
+        document.write('<br><br>');
+
+        mitad(frase);
+        ultimoCaracter(frase);
+        imprimirInverso(frase);
+        imprimirConGuion(frase);
+        cantidadVocales(frase);
+    </script>
+
+    <p>
+        7- Codifique un programa que permita cargar una oración por teclado, luego mostrar cada palabra ingresada en una
+        línea distinta.
+        Por ejemplo si cargo:
+        La mañana está fría.
+        Debe aparecer:
+        La
+        mañana
+        está
+        fría.
+    </p>
+
+    <script>
+        var frase;
+        frase = prompt('Ingrese la oración:', '');
+
+        var f;
+        for (f = 0; f < frase.length; f++) {
+            if (frase.charAt(f) == ' ') {
+                document.write('<br>');
+            } else {
+                document.write(frase.charAt(f));
+            }
+        }
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

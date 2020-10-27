@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos: click y dblclick</title>
+</head>
+
+<body>
+    <p>
+        Dos eventos que podemos capturar de cualquier elemento HTML son cuando un usuario hace un clic o un doble clic
+        sobre el mismo.
+        El evento click se produce cuando el usuario hace un solo clic sobre el elemento HTML y suelta inmediatamente el
+        botón del mouse en el mismo lugar y el dblclick cuando presiona en forma sucesiva en la misma ubicación.
+        <br><br>
+
+        Para probar como registramos estos eventos implementaremos una página que muestre dos div y definiremos el
+        evento click para el primero y el evento dblclick para el segundo.
+    </p>
+
+    <div style="width: 200px; height: 200px; background: #ffff00;" id="recuadro1">Prueba del evento click</div>
+
+    <div style="width: 200px; height: 200px; background: #ff5500;" id="recuadro2">Prueba del evento dblclick</div>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('recuadro1').addEventListener('click', presion1, false);
+            document.getElementById('recuadro2').addEventListener('dblclick', presion2, false);
+        }
+
+        function presion1() {
+            alert('se hizo click');
+        }
+
+        function presion2() {
+            alert('se hizo doble click');
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Realizar un programa que muestre en un div el número 2. Cada vez que se hace doble clic sobre el mismo
+        duplicar el valor contenido en el div.
+    </p>
+
+    <div id="numero2">2</div>
+
+    <script>
+        addEventListener('DOMContentLoaded',inicio,false);
+
+        function inicio(){
+            document.getElementById('numero2').addEventListener('dblclick',duplicar, false);
+        }
+
+        function duplicar(){
+            var valor = document.getElementById('numero2').innerHTML;
+            valor = parseInt(valor);
+            var resultado = valor*2;
+            document.getElementById('numero2').innerHTML = resultado;
+        }
+    </script>
+
+
+</body>
+
+</html>

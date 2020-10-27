@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parámetro del método asociado al addEventListener</title>
+</head>
+
+<body>
+    <p>
+        Hasta ahora siempre hemos asociado una función distinta para procesar los eventos de distintos elementos HTML.
+        Pero veremos que está permitido asociar una único función a varios eventos de distintos objetos. <br><br>
+
+        Debemos definir un parámetro en la función a implementar que llega la referencia del objeto que emitió el
+        evento.<br><br>
+
+        Implementaremos un panel con un conjunto de botones que nos permitan ingresar un valor numérico presionando
+        botones.<br>
+        Asociaremos el click de cada botón con una única función.
+    </p>
+
+    <style>
+        .boton {
+            width: 50px;
+            height: 50px;
+        }
+
+        #resultado {
+            font-size: 40px;
+        }
+
+        .botontablero {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+    </style>
+
+    <input type="button" value="0" id="boton0" name="boton0" class="boton">
+    <input type="button" value="1" id="boton1" name="boton1" class="boton">
+    <input type="button" value="2" id="boton2" name="boton2" class="boton">
+    <input type="button" value="3" id="boton3" name="boton3" class="boton">
+    <input type="button" value="4" id="boton4" name="boton4" class="boton">
+    <input type="button" value="5" id="boton5" name="boton5" class="boton">
+    <input type="button" value="6" id="boton6" name="boton6" class="boton">
+    <input type="button" value="7" id="boton7" name="boton7" class="boton">
+    <input type="button" value="8" id="boton8" name="boton8" class="boton">
+    <input type="button" value="9" id="boton9" name="boton9" class="boton">
+    <br>
+    <div id="resultado"></div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            for (var x = 0; x <= 9; x++) {
+                document.getElementById('boton' + x).addEventListener('click', presion, false);
+            }
+        }
+
+        function presion(evt) {
+            document.getElementById('resultado').innerHTML = document.getElementById('resultado').innerHTML + evt.target
+                .value;
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Implementar un tablero de TaTeTi. Asociar el evento click de los 9 botones a una única función. Alternar
+        entre las "X" y "O". Mostrar un mensaje cuando gana un jugador.
+    </p>
+
+    <div>
+        <input type="button" value=" " id="botontablero1" name="boton1" class="botontablero">
+        <input type="button" value=" " id="botontablero2" name="boton2" class="botontablero">
+        <input type="button" value=" " id="botontablero3" name="boton3" class="botontablero">
+    </div>
+
+    <div>
+        <input type="button" value=" " id="botontablero4" name="boton4" class="botontablero">
+        <input type="button" value=" " id="botontablero5" name="boton5" class="botontablero">
+        <input type="button" value=" " id="botontablero6" name="boton6" class="botontablero">
+    </div>
+
+    <div>
+        <input type="button" value=" " id="botontablero7" name="boton7" class="botontablero">
+        <input type="button" value=" " id="botontablero8" name="boton8" class="botontablero">
+        <input type="button" value=" " id="botontablero9" name="boton9" class="botontablero">
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', iniciotablero, false);
+
+
+        var jugador = 'X';
+
+        function iniciotablero() {
+            for (var x = 1; x <= 9; x++) {
+                document.getElementById('botontablero' + x).addEventListener('click', presiontablero, false);
+
+            }
+        }
+
+        function presiontablero(evt2) {
+            evt2.target.value = jugador;
+
+            if (jugador == 'X') {
+                jugador = 'O';
+            } else {
+                jugador = 'X';
+            }
+            verificarGanador();
+        }
+
+        function verificarGanador() {
+            var b1 = document.getElementById('botontablero1').value;
+            var b2 = document.getElementById('botontablero2').value;
+            var b3 = document.getElementById('botontablero3').value;
+            var b4 = document.getElementById('botontablero4').value;
+            var b5 = document.getElementById('botontablero5').value;
+            var b6 = document.getElementById('botontablero6').value;
+            var b7 = document.getElementById('botontablero7').value;
+            var b8 = document.getElementById('botontablero8').value;
+            var b9 = document.getElementById('botontablero9').value;
+
+
+            if (b1 == 'X' && b2 == 'X' && b3 == 'X') {
+                alert('Gano la X');
+            }
+            if (b4 == 'X' && b5 == 'X' && b6 == 'X') {
+                alert('Gano la X');
+            }
+            if (b7 == 'X' && b8 == 'X' && b9 == 'X') {
+                alert('Gano la X');
+            }
+            if (b1 == 'X' && b4 == 'X' && b7 == 'X') {
+                alert('Gano la X');
+            }
+            if (b2 == 'X' && b5 == 'X' && b8 == 'X') {
+                alert('Gano la X');
+            }
+            if (b3 == 'X' && b6 == 'X' && b9 == 'X') {
+                alert('Gano la X');
+            }
+            if (b1 == 'X' && b5 == 'X' && b9 == 'X') {
+                alert('Gano la X');
+            }
+            if (b3 == 'X' && b5 == 'X' && b7 == 'X') {
+                alert('Gano la X');
+            }
+
+
+            if (b1 == 'O' && b2 == 'O' && b3 == 'O') {
+                alert('Gano la O');
+            }
+            if (b4 == 'O' && b5 == 'O' && b6 == 'O') {
+                alert('Gano la O');
+            }
+            if (b7 == 'O' && b8 == 'O' && b9 == 'O') {
+                alert('Gano la O');
+            }
+            if (b1 == 'O' && b4 == 'O' && b7 == 'O') {
+                alert('Gano la O');
+            }
+            if (b2 == 'O' && b5 == 'O' && b8 == 'O') {
+                alert('Gano la O');
+            }
+            if (b3 == 'O' && b6 == 'O' && b9 == 'O') {
+                alert('Gano la O');
+            }
+            if (b1 == 'O' && b5 == 'O' && b9 == 'O') {
+                alert('Gano la O');
+            }
+            if (b3 == 'O' && b5 == 'O' && b7 == 'O') {
+                alert('Gano la O');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectores con componentes de tipo objeto</title>
+</head>
+
+<body>
+    <p>
+        Podemos crear vectores con componente de tipo objeto. <br>
+
+        Con un ejemplo veremos la sintaxis para trabajar con los mismos. <br>
+        Desarrollaremos una clase que represente un
+        hipervínculo y luego definiremos un vector con componentes de tipo hipervinculo. <br><br>
+
+        La clase hipervínculo y donde definimos objetos de dicha clase: <br><br>
+
+        <script>
+            function Hipervinculo(direccion, titulo) {
+                this.direccion = direccion;
+                this.titulo = titulo;
+                this.retornarhipervinculo = retornarhipervinculo;
+            }
+
+            function retornarhipervinculo() {
+                var cadena;
+                cadena = '<a href = ' + this.direccion + '>' + this.titulo + '</a>';
+                return cadena;
+            }
+
+            var vector = new Array(3);
+
+            vector[0] = new Hipervinculo('http://www.google.com', 'google');
+            vector[1] = new Hipervinculo('http://www.msn.com', 'msn');
+            vector[2] = new Hipervinculo('http://www.yahoo.com', 'yahoo');
+
+            for (var f = 0; f < vector.length; f++) {
+                document.write(vector[f].retornarhipervinculo());
+                document.write('<br>');
+            }
+        </script>
+
+        <h1>PROBLEMA</h1>
+        <p>1- Confeccionar una clase persona que permita almacenar el nombre y la edad. <br>
+        Luego definir un vector de 4 componentes de tipo persona. Imprimir el nombre de la persona de mayor edad; decir también si hay más de una persona con la edad mayor.</p>
+
+        <script>
+            function Persona(nombre,edad){
+                this.nombre = nombre;
+                this.edad = edad;
+                this.imprimirNombre = imprimirNombre;
+            }
+
+            function imprimirNombre(){
+                document.write(this.nombre+' que tiene una edad '+this.edad+'<br>');
+            }
+
+            var vector = new Array(4);
+            vector[0] = new Persona('Juan',45);
+            vector[1] = new Persona('Ana',13);
+            vector[2] = new Persona('Pedro',45);
+            vector[3] = new Persona('Marcos',30);
+
+            var personaMayor = 0;
+            for(var f=1; f<vector.length; f++){
+                if(vector[f].edad>vector[personaMayor].edad){
+                    personaMayor = f;
+                }
+            }
+            document.write('Personas con mayor edad:<br>');
+            for(var f=0; f<vector.length; f++){
+                if(vector[f].edad == vector[personaMayor].edad){
+                    vector[f].imprimirNombre();
+                }
+            }
+        </script>
+
+
+    </p>
+</body>
+
+</html>

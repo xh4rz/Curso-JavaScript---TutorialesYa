@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ES6 - operador Spread (operador de propagación)</title>
+</head>
+
+<body>
+
+    <p>
+        El operador Spread permite descomponer una estructura de datos en elementos individuales. Es la operación
+        inversa de los parámetros Rest. <br><br>
+
+        La sintaxis se aplica anteponiendo al nombre de la variable tres puntos:
+    </p>
+
+    <script>
+        function sumar(x, y, z) {
+            return x + y + z;
+        }
+
+        const vec = [10, 20, 30];
+        const s = sumar(...vec);
+        document.write(s);
+    </script>
+
+    <p>
+        Es decir en la llamada a la función sumar le antecedemos tres puntos al nombre de la variable que vamos a pasar:
+        <br><br>
+
+        const vec=[10,20,30]; <br>
+        const s=sumar(...vec); <br><br>
+
+        Luego el parámetro x recibe la primer componente, el parámetro y la segunda componente y finalmente el parámetro
+        z
+        recibe la tercer componente. <br><br>
+
+        Esto anteriormente debíamos hacerlo indicando cada uno de los elementos del vector: <br><br>
+
+        var s=sumar(vec[0], vec[1], vec[2]);
+    </p>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        1- El método max de la clase Math recibe una lista de valores numéricos y nos retorna el mayor. Definir un
+        vector
+        con una lista de valores y llamar al método max utilizando el operador Spread
+    </p>
+
+    <script>
+        const vec2 = [10, 60, 2, 500, 50, 18];
+        const mayor = Math.max(...vec2);
+        document.write(`El mayor de ${vec2.toString()} es ${mayor}`);
+    </script>
+
+
+
+</body>
+
+</html>

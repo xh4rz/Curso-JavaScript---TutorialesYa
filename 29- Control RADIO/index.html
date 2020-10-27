@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control RADIO</title>
+</head>
+
+<body>
+    <h1>Ejemplo: </h1>
+
+    <p>
+        Mostrar cuatro objetos de tipo RADIO que permitan seleccionar los estudios que tiene un usuario:
+    </p>
+
+    <script>
+        function mostrarSeleccionado() {
+            if (document.getElementById('radio1').checked) {
+                alert('no tienes estudios');
+            }
+            if (document.getElementById('radio2').checked) {
+                alert('tiene estudios primarios');
+            }
+            if (document.getElementById('radio3').checked) {
+                alert('tiene estudios secundarios');
+            }
+            if (document.getElementById('radio4').checked) {
+                alert('tiene estudios universitarios');
+            }
+        }
+    </script>
+
+    <form>
+        <input type="radio" id="radio1" name="estudios">Sin estudios
+        <br>
+        <input type="radio" id="radio2" name="estudios">Primarios
+        <br>
+        <input type="radio" id="radio3" name="estudios">Secundarios
+        <br>
+        <input type="radio" id="radio4" name="estudios">Universitarios
+        <br><br>
+        <input type="button" value="Mostrar" onclick="mostrarSeleccionado()">
+    </form>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Confeccionar una página que muestre dos objetos de la clase RADIO solicitando que seleccione si es mayor de
+        18
+        años o no. Al presionar un botón mostrar un alert indicando si puede ingresar al sitio o no.
+    </p>
+
+    <script>
+        function verificar(){
+            if(document.getElementById('mayor').checked){
+                alert('Eres mayor de edad y por lo tanto puede ingresar')
+            }if(document.getElementById('menor').checked){
+                alert('No eres mayor de edad y por lo tanto no puede ingresar')
+            }
+        }
+
+
+    </script>
+
+    <form>
+        ¿Eres mayor de 18 años? <br><br>
+        <input type="radio" name="estudios" id="mayor"> Si
+        <br>
+        <input type="radio" name="estudios" id="menor"> No
+                <br> <br>
+        <input type="button" value="Enviar" onclick="verificar()">
+    </form>
+</body>
+
+</html>

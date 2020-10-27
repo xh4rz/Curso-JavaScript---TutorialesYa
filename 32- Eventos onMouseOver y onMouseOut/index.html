@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>
+        Para probar estos eventos implementaremos una página que cambie el color de un cuadrado de 200px de ancho y
+        200px de alto.
+        Implementaremos una función que cambie el color con un valor que llegue como parámetro. Cuando retiramos la
+        flecha del mouse volvemos a pintar de negro el fondo de cuadrado:
+    </p>
+
+    <script>
+        function pintar(col) {
+            document.getElementById('cuadrado1').style.backgroundColor = col;
+        }
+    </script>
+
+
+    <a href="#" onmouseover="pintar('#f00')" onmouseout="pintar('#000')">Rojo</a> -
+    <a href="#" onmouseover="pintar('#0f0')" onmouseout="pintar('#000')">Verde</a> -
+    <a href="#" onmouseover="pintar('#00f')" onmouseout="pintar('#000')">Azul</a>
+
+    <div id="cuadrado1" style="background: #000; width: 200px; height: 200px;"></div>
+
+    <p>
+        Otro problema que podemos probar es pinta de color el interior de una casilla de una tabla y regresar a su color
+        original cuando salimos de la misma:
+    </p>
+
+    <script>
+        function pintar2(objeto, col) {
+            objeto.style.backgroundColor = col;
+        }
+    </script>
+
+    <table border="1">
+        <tr>
+            <td onmouseover="pintar2(this,'#FFFC00')" onmouseout="pintar2(this,'#fff')">Amarillo</td>
+            <td onmouseover="pintar2(this,'#0039FF')" onmouseout="pintar2(this,'#fff')">Azul</td>
+            <td onmouseover="pintar2(this,'#FF0000 ')" onmouseout="pintar2(this,'#fff')">Rojo</td>
+        </tr>
+
+    </table>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Modificar el segundo problema resuelto (las casillas de la tabla que cambian el color cuando ingresamos con el
+        mouse) para permitir llamar mediante hipervínculos a distintos programas que administran web-mail (gmail,
+        hotmail y yahoo)
+    </p>
+
+    <script>
+        function pintar3(objeto1, col1){
+            objeto1.style.backgroundColor = col1;
+
+        }
+    </script>
+
+    <table border="4">
+        <tr>
+            <td onmouseover="pintar3(this,'#ff0000')" onmouseout="pintar3(this,'#ffffff')">
+                <a href="http://www.outlook.com">Outlook</a>
+            </td>
+
+            <td onmouseover="pintar3(this,'#00ff00')" onmouseout="pintar3(this,'#ffffff')">
+                <a href="http://www.yahoo.com">Yahoo</a>
+            </td>
+
+            <td onmouseover="pintar3(this,'#0000ff')" onmouseout="pintar3(this,'#ffffff')">
+                <a href="http://www.gmail.com">Gmail</a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>
+        Vamos a hacer un problema muy sencillo empleando el lenguaje Javascript; dispondremos un botón y cada vez que se
+        presione, mostraremos un contador:
+    </p>
+
+    <script>
+        var contador = 0;
+
+        function incrementar() {
+            contador++;
+            alert('El contador ahora vale: ' + contador);
+        }
+    </script>
+
+    <form>
+        <input type="button" onclick="incrementar()" value="incrementar">
+    </form>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Crear un formulario con tres botones con las leyendas "1", "2" y "3". Mostrar un mensaje indicando qué botón
+        se
+        presionó.</p>
+
+    <script>
+        function presion1() {
+            alert('Se presionó el botón 1');
+        }
+
+        function presion2() {
+            alert('Se presionó el botón 2');
+        }
+
+        function presion3() {
+            alert('Se presionó el botón 3');
+        }
+    </script>
+
+    <form>
+        <input type="button" value="Botón 1" onclick="presion1()">
+        <input type="button" value="Botón 2" onclick="presion2()">
+        <input type="button" value="Botón 3" onclick="presion3()">
+    </form>
+</body>
+
+</html>

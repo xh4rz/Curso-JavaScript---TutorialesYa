@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: método join</title>
+</head>
+<body>
+    <p>
+        El método join concatena todos los elementos del vector en un único string. <br><br>
+
+        Al método join le pasamos como parámetro el o los caracteres de separación que debe agregar entre los elementos
+        dentro del string que se genera. <br><br>
+
+        Veamos un ejemplo del funcionamiento del método join: <br>
+    </p>
+
+    <script>
+        var vec=[10,20,30,40,50];
+        var cadena = vec.join('-');
+        document.write(cadena);
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Crear un vector con los datos de 5 personas. <br>
+        Luego imprimir por pantalla uno abajo de otro utilizando el
+        método join para generar un string y agregarle entre elementos la etiqueta html. <br>
+    </p>
+
+    <script>
+        var nombres = new Array(5);
+        var f;
+        for(f=0; f<nombres.length; f++){
+            nombres[f]=prompt('Ingrese un nombre:','');
+        }
+        document.write(nombres.join('<br>'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador condicional ?:
+    </title>
+</head>
+
+<body>
+    <p>
+        El operador condicional ?: remplaza en algunos casos a estructuras if/else sencillas con el objetivo de escribir
+        un código más compacto o corto. <br><br>
+        Veamos primero un ejemplo resuelto con el if y luego modificado para emplear el operador condicional ?:
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Cargar dos valores por teclado, luego almacenar en una variable el mayor de los dos valores ingresados.
+    </p>
+
+    <script>
+        var v1 = prompt('Ingrese primer valor:', '');
+        var v2 = prompt('Ingrese segundo valor', '');
+
+        v1 = parseInt(v1);
+        v2 = parseInt(v2);
+
+        var mayor;
+
+        if (v1 > v2) {
+            mayor = v1;
+        } else {
+            mayor = v2;
+        }
+        document.write('El mayor de los dos valores es: ' + mayor);
+    </script>
+
+    <p>
+        Ahora el mismo problema pero empleando el operador codicional ?:
+    </p>
+
+    <script>
+        var v1 = prompt('Ingrese primer valor:', '');
+        var v2 = prompt('Ingrese segundo valor', '');
+
+        v1 = parseInt(v1);
+        v2 = parseInt(v2);
+
+        var mayor;
+
+        v1 > v2 ? mayor = v1 : mayor = v2;
+
+        document.write('El mayor de los dos valores es: ' + mayor);
+    </script>
+    <!-- 
+    El operador ternario tiene la siguiente sintaxis:
+    condición ? instrucción 1 : instrucción 2; -->
+
+    <h1>
+        PROBLEMA
+    </h1>
+
+    <p>
+        1- Ingresar el sueldo bruto de un trabajador. Si supera a 10000 aplicar un descuento del 10%, en caso contrario
+        el descuento es del 5%.
+    </p>
+
+    <script>
+        var sueldo = prompt('Ingrese el sueldo del trabajador:', '');
+        sueldo = parseFloat(sueldo);
+
+        sueldo > 10000 ? sueldo = sueldo * 0.90 : sueldo = sueldo * 0.95;
+        document.write('El sueldo con el descuento es: ' + sueldo);
+    </script>
+
+
+</body>
+
+</html>

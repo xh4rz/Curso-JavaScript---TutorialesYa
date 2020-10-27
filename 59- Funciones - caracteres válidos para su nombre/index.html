@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones: caracteres válidos para su nombre</title>
+</head>
+
+<body>
+    <p>
+        Cuando definimos una función podemos emplear letras minúsculas, mayúsculas, números siempre y cuando no ocupe la
+        primer posición en el nombre, el caracter '_' y el caracer '$' <br>
+
+        Una convención muy extendida cuando se define una función es comenzar la primera palabra en minúscula y a partir
+        de la segunda palabra disponer el primer caracter en mayúsculas:
+    </p>
+
+    <script>
+        function calcularPetrimetro(lado) {
+            var per = lado * 4;
+            return per;
+        }
+
+        var l = prompt('Ingrese valor del lado:', '');
+        l = parseInt(l);
+        document.write(calcularPetrimetro(l));
+    </script>
+
+    <p>
+        Siempre es conveniente utilizar nombres de funciones que sean significativas con el algoritmo que implementan:
+        calcularPerimetro, sumar, calcularRaizCuadrada etc. <br><br>
+
+        La regla de definir un nombre de función lo más claro posible puede saltearse con funciones que se utilizan constantemente (por ejemplo la librería JQuery de JavaScript define una función que tiene como nombre solo elcaracter $) <br>
+
+        Emplear un solo caracter para definir un nombre de función solo se aconseja para funciones de uso masivo.
+    </p>
+    <h1>PROBLEMA</h1>
+    <p>
+        Definir una función llamada $ que reciba como parámetro el id de un elemento HTML y retorne la referencia del mismo.
+    </p>
+
+    <body id='cuerpo'>
+        
+
+    <script>
+        function $(ele){
+            return document.getElementById(ele);
+        }
+        function inicio(){
+            $('cuerpo').style.backgroundColor='#ffff00';
+        }
+        window.onload = inicio;
+    </script>
+</body>
+
+</html>

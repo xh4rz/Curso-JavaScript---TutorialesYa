@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>Ejemplo: Realizar un programa que solicite dos números distintos y muestre el mayor de ellos:</p>
+
+    <script>
+        var num1, num2;
+
+        num1 = prompt('Ingrese el primer número:');
+        num2 = prompt('Ingrese el segundo número:')
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+
+        if (num1 > num2) {
+            document.write('El mayor es ' + num1);
+        } else {
+            document.write('EL mayor es ' + num2);
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Realizar un programa que lea por teclado dos números, si el primero es mayor al segundo informar su suma y
+        diferencia, en caso contrario informar el producto y la división del primero respecto al segundo.
+    </p>
+
+    <script>
+        var num1, num2;
+
+        num1 = prompt('Ingrese el primer número:', '');
+        num2 = prompt('Ingrese el segundo número:', '');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+
+        if (num1 > num2) {
+            var suma = num1 + num2;
+            var diferencia = num1 - num2;
+            document.write('La suma es: ' + suma);
+            document.write('<br>');
+            document.write('La diferencia es: ' + diferencia);
+        } else {
+            var producto = num1 * num2;
+            var division = num1 / num2;
+            document.write('El producto es: ' + producto);
+            document.write('<br>');
+            document.write('La división es: ' + division)
+        }
+    </script>
+
+    <p>
+        2- Se ingresan tres notas de un alumno, si el promedio es mayor o igual a 4 mostrar un mensaje 'regular', sino
+        'reprobado'.
+    </p>
+
+    <script>
+        var nota1, nota2, nota3;
+
+        nota1 = prompt('Ingrese primera nota:', '');
+        nota2 = prompt('Ingrese segunda nota:', '');
+        nota3 = prompt('Ingrese tercera nota:', '');
+
+        nota1 = parseInt(nota1);
+        nota2 = parseInt(nota2);
+        nota3 = parseInt(nota3);
+
+
+        var suma = nota1 + nota2 + nota3;
+        var promedio = suma / 3;
+
+        if (promedio >= 4) {
+            document.write('Regular');
+        } else {
+            document.write('Reprobado');
+        }
+    </script>
+
+    <p>
+        3- Se ingresa por teclado un número positivo de uno o dos dígitos (1..99) mostrar un mensaje indicando si el número
+        tiene uno o dos dígitos (recordar de convertir a entero con parseInt para preguntar posteriormente por una
+        variable entera). Tener en cuenta qué condición debe cumplirse para tener dos dígitos un número entero.
+    </p>
+
+    <script>
+        var num;
+
+        num = prompt('Ingrese un valor comprendido entre 1 y 99:', '');
+        num = parseInt(num);
+
+        if (num < 10) {
+            document.write('El número ' +num);
+            document.write(' tiene un dígito')
+        } else {
+            document.write('El número ' + num);
+            document.write(' tiene dos dígitos')
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

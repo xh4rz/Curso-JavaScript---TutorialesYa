@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones: variables locales y variables globales</title>
+</head>
+
+<body>
+    <p>
+        Las variables locales se definen dentro de una función y solo se tiene acceso dentro de la misma función. Una
+        variable local se la define antecediendo la palabra clave var al nombre de la variable.
+    </p>
+
+    <script>
+        function imprimir() {
+            var x = 10;
+            document.write(x);
+        }
+        imprimir();
+    </script>
+
+    <p>
+        Luego decimos que x es una variable local que solo se la puede acceder dentro de la función imprimir. <br>
+        Si intentamos acceder a la variable x fuera de la función se produce un error en tiempo de ejecución:
+    </p>
+
+    <script>
+        function imprimir() {
+            var x = 10;
+            document.write(x);
+        }
+        imprimir();
+        document.write(x); //error en tiempo de ejecución
+    </script>
+
+    <p>
+        Las variables globales son las que definimos fuera de cualquier función. Una variable global tenemos acceso
+        fuera y dentro de las funciones:
+    </p>
+
+    <script>
+        function imprimir() {
+            document.write(global1 + '<br>'); // muestra un 100
+            global1++;
+        }
+
+        var global1 = 100;
+        imprimir();
+        document.write(global1); // muestra un 101
+    </script>
+
+    <p>
+        Todas las variable globales se convierten en atributos del objeto window, luego podemos acceder a la variable
+        por su nombre o antecediendo el nombre del objeto:
+    </p>
+
+    <script>
+        var global1 = 100;
+        document.write(global1 + '<br>'); //100
+        document.write(window.global1 + '<br>'); //100
+    </script>
+
+    <h1>Cuidado</h1>
+    <p>
+        Cuando definimos variables locales dentro de una función tenemos que no olvidarnos de anteceder al nombre de la
+        variable la palabra var, en caso de olvidarnos se creará automáticamente una variable global con dicho nombre:
+    </p>
+
+    <script>
+        function imprimir() {
+            x = 100;
+            document.write(x + '<br>');
+        }
+        imprimir();
+        document.write(x + '<br>');
+    </script>
+
+    <p>
+        El JavaScript moderno introduce una directiva para salvar este y otros problemas muy comunes. Si activamos modo
+        estricto todas las variables en JavaScript deben declarase sino se produce un error. Veamos como introducimos
+        esta directiva de modo estricto:
+    </p>
+
+    <script>
+        'use strict';
+
+        function imprimir() {
+            x = 100; //error
+            document.write(x + '<br>');
+        }
+        imprimir();
+        document.write(x + '<br>');
+    </script>
+</body>
+
+</html>

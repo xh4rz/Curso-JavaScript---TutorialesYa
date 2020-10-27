@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Expresiones regulares: cuantificadores o repeticiones {x} {x,y} {x,}</title>
+</head>
+
+<body>
+    <p>
+        Ahora veremos que podemos inicializar luego que indicamos entre corchetes el patrón a buscar la cantidad de
+        veces que puede repetirse este patrón. <br><br>
+
+        Son útiles para controlar la cantidad de repeticiones del patrón definido. <br><br>
+
+        Se especifican luego del corchete donde definimos los caracteres permitidos: <br><br>
+
+        Verificar si contiene entre 3 y 6 dígitos: <br><br>
+        var patron=/[0-9]{3,6}/; <br><br>
+
+        Verificar si contiene 3: <br><br>
+        var patron=/[0-9]{3}/; <br><br>
+
+        Verificar si contiene 3 o más dígitos: <br><br>
+        var patron=/[0-9]{3,}/; <br><br>
+
+        <b>Problema</b> Ingresar una oración y mostrar si se ingresó un número que tiene al menos 2 dígitos.
+    </p>
+
+    <script>
+        var oracion = prompt('Ingrese una palabra', '');
+        var patron = /[0-9]{2,}/;
+
+        if (patron.test(oracion)) {
+            alert('La oración tiene un número de al menos 2 dígitos');
+        } else {
+            alert('La oación no tiene un número de al menos 2 dígitos')
+        }
+    </script>
+
+    <p>
+        La expresión regular se verifica verdadera si se ingresa: <br><br>
+
+        Yo tengo 20 años. <br>
+        Yo tengo 101 años. <br><br>
+
+        La expresión regular se verifica falsa si se ingresa: <br><br>
+
+        Yo tengo 5 años.
+    </p>
+
+    <p>
+        <b>Problema</b> Ingresar una patente de un auto de argentina y luego mostrar un mensaje si es correcto o no su
+        valor.
+        Toda patente está constituida por 2 letras, tres números y finalmente 2 letras (ej. aa123bb )
+    </p>
+
+    <script>
+        var patente = prompt('Ingrese una patente', '');
+        var patron = /[a-z][0-9]{3}[a-z]{2}/;
+
+        if (patron.test(patente)) {
+            alert('La patente ingresada es correcta');
+        } else {
+            alert('La patente ingresada no es correcta');
+        }
+    </script>
+
+    <p>
+        A primera medida este patrón resolvería nuestro problema: <br><br>
+
+        var patron=/[a-z]{2}[0-9]{3}[a-z]{2}/; <br><br>
+        Se verifica verdadero si se ingresa: <br><br>
+
+        aa111bb <br>
+        zx343bb <br><br>
+
+        Se verifica falso si se ingresa: <br><br>
+
+        a333bb <br>
+        bb22dd <br><br>
+
+        Pero tenemos un problema ya que si ingresamos: <br><br>
+
+        aa111cccd <br><br>
+
+        SE VERIFICA VERDADERO. <br><br>
+
+        Para resolver esto debemos modificar el patrón indicando que los últimos dos caracteres deben ser letras:
+        <br><br>
+
+        var patron=/[a-z]{2}[0-9]{3}[a-z]{2}$/; <br><br>
+
+        Ahora si ingresamos aa111bbb se verifica falso. <br><br>
+
+        Pero todavía tenemos otro problema al ingresar: <br><br>
+
+        5aa111bb <br><br>
+
+        Y finalmente para que funcione correctamente debemos definir el patrón: <br><br>
+
+        var patron=/^[a-z]{2}[0-9]{3}[a-z]{2}$/; <br><br>
+
+        El algoritmo correcto es el siguiente: <br><br>
+
+    </p>
+
+    <script>
+        var patente = prompt('Ingese una patente', '');
+        var patron = /^[a-z]{2}[0-9]{3}[a-z]{2}$/;
+
+        if (patron.test(patente)) {
+            alert('La patente ingresada es correcta');
+        } else {
+            alert('La patente ingresada no es correcta');
+        }
+    </script>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ingresar una oración y mostrar si se ingresó uno o más números con exactamente 5 dígitos. <br><br>
+
+        Para resolver este problema debemos definir un patrón que identifique un número con exactamente cinco dígitos y
+        que antes y después de este tenga un espacio en blanco. Para identificar el espacio en blanco debemos introducir
+        en la expresión regular el carácter de escape y la letra s, es decir \s <br><br>
+
+        El algoritmo luego es:
+    </p>
+
+    <script>
+        var oracion = prompt('Ingrese una oracion', '');
+        var patron = /\s[0-9]{5}\s/;
+
+        if (patron.test(oracion)) {
+            alert('La oración tiene un número de 5 digitos');
+        } else {
+            alert('La oración no tiene un número de 5 dígitos')
+        }
+    </script>
+
+    <p>
+        Es decir que para que se valide verdadero el string debe contener un espacio en blanco, seguido de 5 dígitos y
+        otro espacio en blanco.
+    </p>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Validar que se ingrese un número de 3 dígitos enteros, el carácter punto y 2 dígitos decimales.
+    </p>
+
+    <script>
+        var valor = prompt('Ingrese un nro con el formato (999.99):', '')
+        var patron = /^[0-9]{3}\.[0-9]{2}$/;
+
+        if (patron.test(valor)) {
+            document.write('El valor es correcto');
+        } else {
+            document.write('El valor no tiene el formato correcto');
+        }
+    </script>
+
+    <p>
+        2- Solicitar el ingreso de la coordenada de un punto. El formato a ingresar por teclado es:
+        (999,999)
+        Los números pueden tener entre 1 y 3 dígitos.
+    </p>
+
+    <script>
+        var punto = prompt('Ingrese la coordenada de un punto con el formato(999,999):', '');
+        var patron = /\([0-9]{3}\,[0-9]{3}\)/;
+
+        if (patron.test(punto)) {
+            document.write('El formato de ingreso es correcto');
+        } else {
+            document.write('El formato de ingreso no es correcto');
+        }
+    </script>
+
+
+
+</body>
+
+</html>

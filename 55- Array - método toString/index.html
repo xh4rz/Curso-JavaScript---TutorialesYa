@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: método toString</title>
+</head>
+
+<body>
+    <p>
+        El método toString del objeto Array retorna un string con todos los elementos del vector separados por coma.
+    </p>
+
+    <h1>EJEMPLO</h1>
+
+    <p>
+        Crear un vector con 10 elementos con valores aleatorios comprendidos entre 0 y 1000. Luego copiar el contenido
+        del vector a un string con los valores de las componentes separados por coma:
+    </p>
+
+    <script>
+        var vec = new Array(10);
+        var f;
+
+        for (f = 0; f < vec.length; f++) {
+            vec[f] = parseInt(Math.random() * 1001);
+        }
+        var cadena = vec.toString();
+        document.write(cadena);
+    </script>
+
+    <h1>PROBLEMA</h1>
+
+    Crear un vector de 10 elementos. <br>
+
+    Inicializar los valores del vector cuando se crea. <br>
+
+    Inicializar dos variables que resulten de llamar primero al método toString() y la segunda variable inicializarla
+    llamando al método join() sinparámetros. <br>
+
+    Mostrar un mensaje si el resultado de la ejecución de los dos métodos retorna el mismo valor (empleando un if para
+    comparar los string). <br><br>
+
+    <script>
+        var vec = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        var cadena1 = vec.toString();
+        var cadena2 = vec.join();
+
+        if (cadena1 == cadena2) {
+            document.write('Son iguales los dos string');
+        } else {
+            document.write('No Son iguales los dos string');
+        }
+    </script>
+
+
+</body>
+
+</html>

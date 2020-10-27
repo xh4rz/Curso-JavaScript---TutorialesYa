@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Math</title>
+</head>
+
+<body>
+
+    <h1>Ejemplo</h1>
+
+    <p>
+        Confeccionar un programa que permita cargar un valor comprendido entre 1 y 10. Luego generar un valor
+        aleatorio entre 1 y 10, mostrar un mensaje con el número sorteado e indicar si ganó o perdió:
+    </p>
+
+    <script>
+        var selec = prompt('Ingrese un valor entre 1 y 10', '');
+        selec = parseInt(selec);
+
+        var num = parseInt(Math.random() * 10) + 1;
+        if (num == selec)
+            document.write('Ganó el número que se sorteó es el ' + num);
+        else
+            document.write('Lo siento se sorteó el valor ' + num + ' y usted eligió el ' + selec);
+    </script>
+
+    <h1>PROBLEMAS</h1>
+
+    <p>
+        1- Confeccionar un programa que solicite el ingreso de un número y nos muestre dicho valor elevado a la tercera
+        potencia.
+    </p>
+
+    <script>
+        var valor;
+
+        valor = prompt('Ingrese un valor:', '');
+        valor = parseInt(valor);
+
+        var resu;
+        resu = Math.pow(valor, 3);
+
+        document.write('El valor ' + valor + ' elevado a la 3 es ' + resu);
+    </script>
+
+    <p>
+        2- Ingresar por teclado un valor y luego mostrar la raiz cuadrada de dicho valor;
+    </p>
+
+    <script>
+        var valor;
+
+        valor = prompt('Ingrese un valor:', '');
+        valor = parseInt(valor);
+
+        var raiz_cuadrada;
+
+        raiz_cuadrada = Math.sqrt(valor);
+
+        document.write('La raiz cuadrada de ' + valor + ' es ' + raiz_cuadrada);
+    </script>
+
+
+
+</body>
+
+</html>

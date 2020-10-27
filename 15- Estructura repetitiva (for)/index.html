@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura repetitiva (for)</title>
+</head>
+
+<body>
+    <h1>Ejemplo</h1>
+    <p>Mostrar por pantalla los números del 1 al 10.</p>
+
+    <script>
+        var f;
+        for (f = 1; f <= 10; f++) {
+            document.write(f + ' ');
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Confeccionar un programa que lea 3 pares de datos, cada par de datos corresponde a la medida de la base y la
+        altura de un triángulo. El programa deberá informar:
+
+        a) De cada triángulo la medida de su base, su altura y su superficie.
+        b) La cantidad de triángulos cuya superficie es mayor a 12.
+    </p>
+
+    <script>
+        var f;
+        var base;
+        var altura;
+        var superficie;
+        var conta1 = 0;
+
+        for (f = 1; f <= 3; f++) {
+            base = prompt('Ingrese la base:', '');
+            base = parseInt(base);
+
+            altura = prompt('Ingrese la altura:', '');
+            altura = parseInt(altura);
+
+            superficie = base * altura / 2;
+            if (superficie > 12) {
+                conta1++;
+            }
+            document.write('Triángulo nro: ' + f + '<br>');
+            document.write('Base: ' + base + '<br>');
+            document.write('Altura: ' + altura + '<br>');
+            document.write('Superficie: ' + superficie + '<br>');
+        }
+        document.write('Cantidad de triángulos con superficie mayor a 12: ' + conta1);
+    </script>
+
+    <p>2- Desarrollar un programa que solicite la carga de 10 números e imprima la suma de lo últimos 5 valores
+        ingresados.</p>
+
+    <script>
+        var f;
+        var suma = 0;
+        var valor;
+
+        for (f = 1; f <= 10; f++) {
+            valor = prompt('Ingrese el número:', '');
+            valor = parseInt(valor);
+
+            if (f > 5) {
+                suma = suma + valor;
+            }
+        }
+        document.write('La suma de los últimos cinco valores ingresados es:' + suma);
+    </script>
+
+    <p>3- Desarrollar un programa que muestre la tabla de multiplicar del 5 (del 5 al 50).</p>
+
+    <script>
+        var f = 1,
+            tabla = 5;
+
+        for (f = 1; f <= 10; f++) {
+            document.write(tabla + ' - ')
+            tabla = tabla + 5;
+        }
+    </script>
+
+    <p>4- Confeccionar un programa que permita ingresar un valor del 1 al 10 y nos muestre la tabla de multiplicar del
+        mismo (los primeros 12 términos)
+        Ejemplo: Si ingreso 3 deberá aparecer en pantalla los valores 3, 6, 9, hasta el 36.</p>
+
+    <script>
+        var f;
+        var tabla;
+        var conta;
+
+        tabla = prompt('Ingrese la tabla del 1 al 10, deseada:', '');
+        tabla = parseInt(tabla);
+        conta = tabla;
+        document.write('Tabla del: ' + conta + '<br>' + '<br>');
+        for (f = 1; f <= 10; f++) {
+            document.write(conta + '<br>');
+            conta = conta + tabla;
+        }
+    </script>
+
+    <p>
+        5- Realizar un programa que lea los lados de 4 triángulos, e informar:
+        a) De cada uno de ellos, qué tipo de triángulo es: equilátero (tres lados iguales), isósceles (dos lados
+        iguales), o escaleno (ningún lado igual)
+        b) Cantidad de triángulos de cada tipo.
+        c) Tipo de triángulo del que hay menor cantidad.
+    </p>
+
+    <script>
+        var lado1, lado2, lado3;
+        var tipo1 = 0,
+            tipo2 = 0,
+            tipo3 = 0;
+        var f;
+
+        for (f = 1; f <= 4; f++) {
+            lado1 = prompt('Ingrese primer lado:', '');
+            lado1 = parseInt(lado1);
+            lado2 = prompt('Ingrese segundo lado:', '');
+            lado2 = parseInt(lado2);
+            lado3 = prompt('Ingrese tercer lado:', '');
+            lado3 = parseInt(lado3);
+
+            if (lado1 == lado2 && lado1 == lado3) {
+                document.write('Triángulo Equilátero.<br>');
+                tipo1++;
+            } else {
+                if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
+                    document.write('Triángulo Isósceles.<br>');
+                    tipo2++;
+                } else {
+                    document.write('Triángulo Escaleno.<br>');
+                    tipo3++;
+                }
+            }
+        }
+        document.write('Del tipo 1 hay: ' + tipo1 + ' triángulos Equiláteros' + '<br>');
+        document.write('Del tipo 2 hay: ' + tipo2 + ' triángulos Isósceles' + '<br>');
+        document.write('Del tipo 3 hay: ' + tipo3 + ' triángulos Escalenos' + '<br>');
+
+        if (tipo1 < tipo2 && tipo1 < tipo3) {
+            document.write('Se ingresaron menos triángulos equiláteros');
+        } else {
+            if (tipo2 < tipo3) {
+                document.write('Se ingresaron menos triángulos Isósceles');
+            } else {
+                document.write('Se ingresaron menos triángulos escalenos');
+            }
+        }
+    </script>
+
+    <p>6- Escribir un programa que pida ingresar coordenadas (x,y) que representan puntos en el plano. Informar cuántos
+        puntos se han ingresado en el primer, segundo, tercer y cuarto cuadrante. Al comenzar el programa se pide que se
+        ingrese la cantidad de puntos a procesar.</p>
+
+    <script>
+        var cuadrante1 = 0,
+            cuadrante2 = 0,
+            cuadrante3 = 0,
+            cuadrante4 = 0;
+        var x, y;
+        var f;
+        var cantidad;
+
+        cantidad = prompt('Cuantas cantidades de puntors procesará:', '');
+        cantidad = parseInt(cantidad);
+
+        for (f = 1; f <= cantidad; f++) {
+            x = prompt('Ingrese la coordenada x:', '');
+            x = parseInt(x);
+            y = prompt('Ingrese la coordenada y:', '');
+            y = parseInt(y);
+
+            if (x > 0 && y > 0) {
+                cuadrante1++;
+            } else {
+                if (x < 0 && y > 0) {
+                    cuadrante2++;
+                } else {
+                    if (x < 0 && y < 0) {
+                        cuadrante3++;
+                    } else {
+                        if (x > 0 && y < 0) {
+                            cuadrante4++;
+                        }
+                    }
+                }
+            }
+        }
+        document.write('Cantidad de puntos ingresados en el primer cuadrante: ' + cuadrante1 + '<br>');
+        document.write('Cantidad de puntos ingresados en el segundo cuadrante: ' + cuadrante2 + '<br>');
+        document.write('Cantidad de puntos ingresados en el tercer cuadrante: ' + cuadrante3 + '<br>');
+        document.write('Cantidad de puntos ingresados en el cuarto cuadrante: ' + cuadrante4 + '<br>');
+    </script>
+
+    <p>7- Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+        a) La cantidad de valores negativos ingresados.
+        b) La cantidad de valores positivos ingresados.
+        c) La cantidad de múltiplos de 15.
+        d) El valor acumulado de los números ingresados que son pares.</p>
+
+    <script>
+        var f;
+        var valores;
+
+        var valores_negativos = 0;
+        var valores_positivos = 0;
+        var mult15 = 0;
+        var sumapares = 0;
+
+
+        for (f = 1; f <= 10; f++) {
+            valores = prompt('Ingrese un valor entero:', '');
+            valores = parseInt(valores);
+
+            if (valores < 0) {
+                valores_negativos++;
+            } else {
+                if (valores > 0) {
+                    valores_positivos++;
+                }
+            }
+
+            if (valores % 15 == 0 && valores != 0) {
+                mult15++;
+            }
+            if (valores % 2 == 0) {
+                sumapares = sumapares + valores;
+            }
+        }
+        document.write('Cantidad de valores negativos ingresados: ' + valores_negativos + '<br>');
+        document.write('Cantidad de valores positibos ingresados: ' + valores_positivos + '<br>');
+        document.write('Cantidad de valores múltiplos de 15: ' + mult15 + '<br>');
+        document.write('Suma de los valores pares ingresados: ' + sumapares + '<br>');
+    </script>
+
+    <p>
+        8- Se cuenta con la siguiente información:
+        Las edades de 5 estudiantes del turno mañana.
+        Las edades de 6 estudiantes del turno tarde.
+        Las edades de 11 estudiantes del turno noche.
+        Las edades de cada estudiante deben ingresarse por teclado.
+        a) Obtener el promedio de las edades de cada turno (tres promedios).
+        b) Imprimir dichos promedios (promedio de cada turno).
+        c) Mostrar por pantalla un mensaje que indique cual de los tres turnos tiene un promedio de edades mayor.
+    </p>
+
+    <script>
+        var f;
+        var edad;
+
+        var suma1 = 0;
+        for (f = 1; f <= 5; f++) {
+            edad = prompt('Edad del estudiante del turno de la mañana:', '');
+            edad = parseInt(edad);
+            suma1 = suma1 + edad;
+        }
+
+        var suma2 = 0;
+        for (f = 1; f <= 6; f++) {
+            edad = prompt('Edad del estudiante del turno de la tarde:', '');
+            edad = parseInt(edad);
+            suma2 = suma2 + edad;
+        }
+
+        var suma3 = 0;
+        for (f = 1; f <= 11; f++) {
+            edad = prompt('Edad del estudiante del turno de la noche:', '');
+            edad = parseInt(edad);
+            suma3 = suma3 + edad;
+        }
+
+        var promedio1 = suma1 / 5;
+        var promedio2 = suma2 / 6;
+        var promedio3 = suma3 / 11;
+
+        document.write('El promedio de los estudiantes el turno de la mañana es: ' + promedio1+'<br>');
+        document.write('El promedio de los estudiantes el turno de la tarde es: ' + promedio2+'<br>');
+        document.write('El promedio de los estudiantes el turno de la noche es: ' + promedio3+'<br>');
+
+        if (promedio1 > promedio2 && promedio1 > promedio3) {
+            document.write('El turno mañana tiene un promedio mayor de edades');
+        } else {
+            if (promedio2 > promedio3) {
+                document.write('El turno tarde tiene un promedio mayor de edades');
+            } else {
+                document.write('El turno noche tiene un promedio mayor de edades');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

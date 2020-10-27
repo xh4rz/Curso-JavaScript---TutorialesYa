@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos: mousedown y mouseup</title>
+</head>
+
+<body>
+    <p>
+        Otros dos eventos relacionados con el mouse son mousedown y mouseup. <br>
+        El evento mousedown se dispara inmediatamente luego que presionamos con la flecha del mouse un elemento HTML que
+        tiene registrado dicho evento. <br>
+        El evento mouseup se ejecuta luego de soltar el botón del mouse estando dentro del control HTML. <br><br>
+
+        Para probar estos eventos implementaremos una página que contenga dos div, a un div le asignaremos el evento
+        mousedown y al otro el evento mouseup. Cuando ocurra el evento procederemos a cambiar el texto contenido dentro
+        del div.
+    </p>
+
+    <p>1- Presione el recuadro amarillo sin soltar el botón del mouse</p>
+
+    <div style="width: 200px; height: 200px; background: #ffff00;" id="recuadro1"></div>
+
+    <p>2- Presione el recuadro naranja y suelte el botón del mouse.</p>
+    <div style="width: 200px; height: 200px; background: #ff5500;" id="recuadro2"></div>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('recuadro1').addEventListener('mousedown', presion1, false);
+            document.getElementById('recuadro2').addEventListener('mouseup', presion2, false);
+        }
+
+        function presion1() {
+            document.getElementById('recuadro1').innerHTML = 'Se presiona el mouse y todavía no se soltó';
+        }
+
+        function presion2() {
+            document.getElementById('recuadro2').innerHTML = 'Se presiona el mouse y se soltó';
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Elaborar un programa que muestre un div de color rojo. Cuando se presione cambiar el color a amarillo y luego
+        de soltar el botón del mouse volver a pintar de rojo.
+    </p>
+
+    <div style="width: 200px; height: 200px; background: #ff0000;" id="recuadro3"></div>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio2, false);
+
+
+        function inicio2() {
+            document.getElementById('recuadro3').addEventListener('mousedown', presion3, false);
+            document.getElementById('recuadro3').addEventListener('mouseup', presion4, false);
+        }
+
+        function presion3() {
+            document.getElementById('recuadro3').style.backgroundColor = '#ffff00';
+        }
+
+        function presion4() {
+            document.getElementById('recuadro3').style.backgroundColor = '#ff0000';
+        }
+    </script>
+
+</body>
+
+</html>

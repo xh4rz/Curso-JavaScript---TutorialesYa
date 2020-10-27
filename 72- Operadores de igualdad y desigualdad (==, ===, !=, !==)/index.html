@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Operadores de igualdad y desigualdad (==, ===, !=, !==)</title>
+</head>
+
+<body>
+    <p>
+        El operador == primero hace la conversión a un mismo tipo de dato para verificar si son iguales, en cambio el
+        operador === llamado operador de igualdad estricta compara los valores sin hacer conversiones. Esto hace que
+        cuando utilizamos el operador === retorne siempre false en caso que las variables que comparamos sean de
+        distinto tipo. <br><br>
+
+        El siguiente if se verifica verdadero ya que con el operador == primero se transforman los dos valores al mismo
+        tipo de datos previos a verificar su igualdad: <br><br>
+
+        var v1='55'; <br>
+        if (v1==55) <br>
+        document.write('son iguales');
+        <br><br>
+
+        En cambio el siguiente if utilizando el operador de igualdad estricta se verifica false ya que son variables o
+        valores de distinto tipo: <br><br>
+
+        var v1='55'; <br>
+        if (v1===55) <br>
+        document.write('son iguales'); <br><br>
+
+        Los operadores != y !== son los opuestos de == y ===. <br><br>
+
+        El operador != retorna true si son distintos previo conversión a un mismo tipo de dato y el operador !== retorna
+        true si los valores son distintos sin hacer una conversión previa, teniendo en cuenta que para tipos de datos
+        distintos es true el valor retornado. <br><br>
+
+        El siguiente if se verifica false: <br><br>
+
+        var v1='55'; <br>
+        if (v1!=55) <br>
+        document.write('son distintos'); <br><br>
+
+
+        En cambio utilizando el operador !== se verifica verdadero ya que son tipos de datos desiguales: <br><br>
+
+        var v1='55'; <br>
+        if (v1!==55) <br>
+        document.write('son distintos'); <br><br>
+
+        El operador de igualdad estricto === analiza los operandos de la siguiente forma: <br><br>
+
+        - Si los dos valores son de diferente tipo luego el resultado es false. <br>
+        - Si los dos valores almacen null luego el resultado es true. Lo mismo si los dos valores almacenan undefined.
+        <br>
+        - Si uno de los valores almacena el valor NaN luego la condición se verifica como false. <br><br>
+
+        El operador de igualdad == analiza los operandos de la siguiente forma: <br><br>
+
+        - Si los dos operandos no son del mismo tipo el operador == primero verifica si uno de los valores es null y el
+        otro undefined luego retorna true, si uno es un número y el otro un string convierte a string el número y luego
+        compara, si uno de los valores es true convierte este a 1 y luego compara, si uno de los valores es false
+        convierte este a 0 (cero) y luego compara. <br><br>
+
+        Algunas comparaciones: <br><br>
+
+        if (true==1) //verdadero <br>
+        if (true===1) //falso <br>
+        if (false==0) //verdadero <br>
+        if (false===0) //falsos <br>
+    </p>
+</body>
+
+</html>

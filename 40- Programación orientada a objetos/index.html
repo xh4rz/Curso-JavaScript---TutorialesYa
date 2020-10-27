@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación orientada a objetos</title>
+</head>
+
+<body>
+    <p>
+        Desarrollaremos una clase que represente un cliente de un banco. <br>
+        La clase Cliente tiene como atributos: <br><br>
+
+        nombre <br>
+        saldo <br> <br>
+        y las responsabilidades o métodos de la clase son:<br><br>
+
+        Constructor (inicializamos los atributos del objeto)<br>
+        depositar<br>
+        extraer<br><br>
+        Luego debemos implementar los siguientes métodos (normalmente el constructor se utiliza el caracter mayúscula):
+    </p>
+
+    <script>
+        function Cliente(nombre, saldo) {
+            this.nombre = nombre;
+            this.saldo = saldo;
+            this.depositar = depositar;
+            this.extraer = extraer;
+        }
+
+        function depositar(dinero) {
+            this.saldo = this.saldo + dinero;
+        }
+
+        function extraer(dinero) {
+            this.saldo = this.saldo - dinero;
+        }
+
+        var cliente1;
+        cliente1 = new Cliente('Harold', 1200);
+
+        document.write('Nombre del cliente: ' + cliente1.nombre + '<br>')
+        document.write('Saldo actual: ' + cliente1.saldo + '<br>');
+
+        cliente1.depositar(100);
+        document.write('Saldo luego de depositar: $100 ----> ' + cliente1.saldo + '<br>');
+        cliente1.extraer(1000);
+
+        document.write('saldo luego de extraer: $1000 ----> ' + cliente1.saldo + '<br>');
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Confeccionar una clase llamada suma, que contenga dos atributos (valor1, valor2) y tres métodos: cargarvalor1,
+        cargarvalor2 y retornarresultado. Implementar la clase suma.
+        La definición de un objeto de la clase que deben plantear es: <br><br>
+        
+        var s=new suma();<br>
+        s.primerValor(10);<br>
+        s.segundoValor(20);<br>
+        document.write('La suma de los dos valores es:'+s.retornarResultado());<br></p>
+
+    <script>
+        function suma(valor1, valor2) {
+            this.valor1 = valor1;
+            this.valor2 = valor2;
+
+            this.primerValor = primerValor;
+            this.segundoValor = segundoValor;
+            this.retornarResultado = retornarResultado;
+        }
+
+        function primerValor(valor1) {
+            this.valor1 = valor1;
+        }
+
+        function segundoValor(valor2) {
+            this.valor2 = valor2;
+        }
+
+        function retornarResultado() {
+            return this.valor1 + this.valor2;
+        }
+
+        var suma1;
+        suma1 = new suma(5, 10);
+        document.write('La suma de 5 y 10 es: ' + suma1.retornarResultado() + '<br>');
+
+        suma1.primerValor(70);
+        suma1.segundoValor(30);
+        document.write('La suma de 70 y 30 es: ' + suma1.retornarResultado() + '<br>')
+    </script>
+
+
+</body>
+
+</html>

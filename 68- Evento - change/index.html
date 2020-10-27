@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento: change</title>
+</head>
+
+<body>
+    <p>
+        El evento change se lo puede asociar a distintos elementos de formularios HTML y su comportamiento depende de
+        cada
+        uno. <br><br>
+
+        Cuando asociamos el evento change a un control de tipo checkbox el mismo se dispara inmediatamente después que
+        lo chequeamos o sacamos la selección. Para los controles de tipo radio también se dispara luego que cambia el
+        estado de selección del mismo. <br><br>
+
+        Para los controles select se dispara el evento change cuando cambiamos el item seleccionado. <br><br>
+
+        Para los controles text y textarea se dispara cuando pierde el foco del control (porque seleccionamos otro
+        control) y hemos cambiando el contenido del mismo.
+    </p>
+
+    <h1>PROBLEMA</h1>
+    <p>Implementaremos una aplicación que muestre un alert cada vez que sucede el evento change para los controles
+        checkbox, radio, select, text y textarea.</p>
+
+    Evento change del checkbox:
+    <input type="checkbox" name="checkbox1" id="checkbox1" checked>
+    <br><br>
+
+    Evento change del radio:<br>
+    <input type="radio" name="radio1" id="radioa"><br>
+    <input type="radio" name="radio1" id="radiob"><br>
+    <input type="radio" name="radio1" id="radioc"><br><br>
+
+    Evento change del select:
+    <select name="select1" id="select1">
+        <option value="argentina">Argentina</option>
+        <option value="chile">Chile</option>
+        <option value="uruguay">Uruguay</option>
+        <option value="paraguay">Paraguay</option>
+        <option value="bolivia">Bolivia</option>
+    </select>
+    <br><br>
+    <input type="text" name="text1" id="text1">
+    <br><br>
+    <textarea name="text1" id="textarea1" cols="80" rows="6"></textarea>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio() {
+            document.getElementById('checkbox1').addEventListener('change', cambiocheckbox, false);
+
+            document.getElementById('radioa').addEventListener('change', cambioradio, false);
+            document.getElementById('radiob').addEventListener('change', cambioradio, false);
+            document.getElementById('radioc').addEventListener('change', cambioradio, false);
+
+            document.getElementById('select1').addEventListener('change', cambioselect, false);
+
+            document.getElementById('text1').addEventListener('change', cambiotext, false);
+
+            document.getElementById('textarea1').addEventListener('change', cambiotextarea, false);
+        }
+
+        function cambiocheckbox() {
+            alert(document.getElementById('checkbox1').checked);
+        }
+
+        function cambioradio() {
+            alert(document.getElementById('radioa').checked + ' ' +
+                document.getElementById('radiob').checked + ' ' +
+                document.getElementById('radioc').checked);
+        }
+
+        function cambioselect() {
+            alert(document.getElementById('select1').value);
+        }
+
+        function cambiotext() {
+            alert(document.getElementById('text1').value);
+        }
+
+        function cambiotextarea() {
+            alert(document.getElementById('textarea1').value)
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Confeccionar un formulario que muestre un checkbox que cuando se tilde active un botón (el checkbox debe
+        mostrar
+        un mensaje que diga : "Confirma los términos y condiciones?")
+    </p>
+
+    <input type="checkbox" name="checkbox2" id="checkbox2">
+    Confirma los términos y condiciones?
+    <br>
+    <input type="button" value="confirmar" id="boton1" name="boton1" disabled>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio2, false);
+
+        function inicio2() {
+            document.getElementById('checkbox2').addEventListener('change', seleccion, false);
+        }
+
+        function seleccion() {
+            if (document.getElementById('checkbox2').checked == true) {
+                document.getElementById('boton1').disabled = false;
+            } else {
+                document.getElementById('boton1').disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

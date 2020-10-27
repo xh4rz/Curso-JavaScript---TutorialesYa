@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: densos</title>
+</head>
+
+<body>
+    <h1>Problema</h1>
+    <p>
+        Crear un vector vacío. Mediante una estructura repetitiva solicitar la carga de elementos por teclado hasta que
+        se
+        ingrese el cero. No almacenar dicho valor en el vector. Luego sumar todas las componentes del vector, mostrar
+        dicha
+        suma y el tamaño del vector.</p>
+</body>
+
+<script>
+    var vec = [];
+    var valor;
+    var indice = 0;
+
+    do {
+        valor = prompt('Ingresa un valor entero (0 para finalizar)', '');
+        valor = parseInt(valor);
+
+        if (valor != 0) {
+            vec[indice] = valor;
+            indice++;
+        }
+    } while (valor != 0);
+
+    var f;
+    var suma = 0;
+    for (f = 0; f < vec.length; f++) {
+        suma = suma + vec[f];
+    }
+    document.write('Se ingresaron ' + vec.length + ' valores<br>');
+    document.write('La suma de los valores ingresados es: ' + suma);
+</script>
+
+<h1>PROBLEMA</h1>
+<p>1- Crear un vector con 10 valores aleatorios comprendidos entre 1 y 500. <br> Luego crear otros dos vectores y copiar
+    los elementos menores a 250 en el segundo vector y los mayores o iguales a 250 en el tercer vector. <br>
+    Imprimir los tamañosdel segundo y tercer vector. Imprimir los tres vectores.</p>
+
+<script>
+    var vec1 = [];
+    var f;
+    for (f = 0; f < 10; f++) {
+        vec1[f] = parseInt(1 + (Math.random() * 500));
+    }
+    var vec2 = [];
+    var vec3 = [];
+    var indice1 = 0;
+    var indice2 = 0;
+
+    for (f = 0; f < vec1.length; f++) {
+        if (vec1[f] < 250) {
+            vec2[indice1] = vec1[f];
+            indice1++;
+        } else {
+            vec3[indice2] = vec1[f];
+            indice2++;
+        }
+    }
+    document.write('Tamaño del primer vector: ' + vec1.length + '<br>');
+    document.write('Tamaño del segundo vector:' + vec2.length + '<br>');
+    document.write('Tamaño del tercer vector: ' + vec3.length + '<br>');
+    document.write('Elemento del primer vector: <br>');
+
+    for (f = 0; f < vec1.length; f++) {
+        document.write(vec1[f] + '-');
+    }
+    document.write('<br>');
+    document.write('Elementos del segundo vector.<br>');
+    for (f = 0; f < vec2.length; f++) {
+        document.write(vec2[f] + '-');
+    }
+    document.write('<br>');
+    document.write('Elementos del tercer vector.<br>');
+    for (f = 0; f < vec3.length; f++) {
+        document.write(vec3[f] + '-');
+    }
+</script>
+
+</html>

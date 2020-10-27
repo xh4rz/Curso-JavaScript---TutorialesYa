@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: método concat</title>
+</head>
+
+<body>
+    <p>
+        El método concat crea un nuevo vector con los datos del objeto original y los datos que le enviamos como
+        parámetro. <br>
+        Veamos con un ejemplo los resultados que obtenemos con el método concat:
+    </p>
+
+    <script>
+        var vec = [10, 20, 30, 40];
+        var vecnuevo = vec.concat(1, 2, 3);
+
+        document.write('Vector Origen<br>');
+        document.write(vec.join() + '<br>');
+        document.write('Vector Generado<br>');
+        document.write(vecnuevo.join() + '<br>');
+    </script>
+    <br>
+
+    Otra variante es que podemos pasar como parámetros al metodo concat otros vectores: <br>
+
+    <script>
+        var vec1 = [10, 20, 30, 40];
+        var vec2 = [100, 200, 300, 400];
+        var vecsuma = vec1.concat(vec2);
+
+        document.write('Primer Vector: ');
+        document.write(vec1.join() + '<br>');
+        document.write('Segundo Vector: ');
+        document.write(vec2.join() + '<br>');
+
+        document.write('Vector Concatenados: ');
+        document.write(vecsuma.join() + '<br>');
+    </script>
+</body>
+
+</html>

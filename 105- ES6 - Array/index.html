@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Array</title>
+</head>
+
+<body>
+
+    <p>
+        El objeto Array existe desde la primer versión de JavaScript, pero a lo largo del tiempo ha ido incorporando
+        nuevas funcionalidades. <br><br>
+
+        Veremos los métodos que ha incorporado el objeto Array con la versión de ES6, recordando que todos los
+        navegadores actuales los implementan en su totalidad.
+    </p>
+
+    <h1>Método estático 'from'.</h1>
+
+    <p>
+        El método estático 'from' retorna la referencia de un objeto de tipo Array que se crea a partir del dato que le
+        pasamos:
+    </p>
+
+    <script>
+        const arreglo1 = [10, 20, 30];
+        const arreglo2 = Array.from(arreglo1);
+
+        arreglo1.fill(5);
+
+        console.log(arreglo1); // [5,5,5]
+        console.log(arreglo2); // [10,20,30]
+    </script>
+
+    <p>
+        <!-- Creamos un arreglo con 3 elementos:
+
+        const arreglo1 = [10, 20, 30];
+
+        Luego llamamos al método 'from' del objeto 'Array', el cual nos retorna un nuevo arreglo con el mismo contenido
+        de 'arreglo1'.
+
+        Es importante recordar que los objetos en JavaScript (y los arreglos son objetos) almacenan la referencia del 
+        objeto y no los datos propiamente dichos como los hacen las variables de tipo primitiva. No es lo mismo hacer laasignación:
+
+        const arreglo2=arreglo1;
+        
+        Con la asignación previa sigue existiendo un solo objeto y luego dos referencias (arreglo1 y arreglo2) a dicho
+        objeto.
+
+        Si utilizamos la asignación tenemos como resultado:
+
+        <script>
+            const arreglo1 = [10, 20, 30];
+            const arreglo2 = arreglo1;
+            arreglo1.fill(5);
+            console.log(arreglo1); // [5,5,5]
+            console.log(arreglo2); // [5,5,5]
+        </script>
+
+        Como podemos comprobar si imprimimos el único arreglo ya sea con la referencia arreglo1 o arreglo2 luego se
+        acceden al mismo contenido.
+
+        Luego veremos que el método 'fill' cambia el contenido de un arreglo con el dato que le pasamos como parámetro.
+
+        Al método 'from' podemos pasar cualquier objeto que tenga la capacidad de iterar (más adelande veremos como
+        crear objetos iterables). Por ejemplo un string es iterable:
+
+        <script>
+            const titulo = "administración";
+            const arreglo1 = Array.from(titulo);
+            console.log(arreglo1); // ["a", "d", "m", "i", "n", "i", "s", "t", "r", "a", "c", "i", "ó", "n"]
+            console.log(arreglo1.length); // 14
+        </script>
+
+        Un objeto de tipo Map es iterable:
+
+        <script>
+            const mapa1 = new Map();
+            mapa1.set("casa", "house");
+            mapa1.set("rojo", "red");
+            mapa1.set("auto", "car");
+            const arreglo1 = Array.from(mapa1);
+            console.log(arreglo1); // [["casa", "house"], ["rojo", "red"], ["auto", "car"]]
+            console.log(arreglo1.length); // 3
+        </script>
+
+        Un objeto de tipo Set es iterable:
+
+        <script>
+            const conjunto1 = new Set();
+            conjunto1.add("C");
+            conjunto1.add("Pascal");
+            conjunto1.add("PHP");
+            conjunto1.add("Python");
+            const arreglo1 = Array.from(conjunto1);
+            console.log(arreglo1); // ["C", "Pascal", "PHP", "Python"]
+            console.log(arreglo1.length); // 4
+        </script>
+
+        Por ejemplo no son iterables los objetos WeakMap, WeapSet, Object etc. -->
+
+        <p>
+            El método 'from' tiene opcionalmente un segundo parámetro al cual podemos pasar una función que reciba cada
+            elemento del arreglo y retorne el dato a almacenar:
+        </p>
+
+        <script>
+            const arreglo3 = [10, 20, 30];
+            const arreglo4 = Array.from(arreglo3, (elemento) => elemento * 2);
+            console.log(arreglo4); // [20, 40, 60]
+        </script>
+
+        <!-- La función anonima retorna que valor debe almacenar en el arreglo que se crea, en éste caso almacenamos los
+        valores originarios del arreglo1 pero multiplicados por 2.
+
+        Recordemos que las funciones flecha son ámpliamente utilizadas a partir de ES6 ya que nos permiten generar un
+        código muy conciso, utilizando la sintaxis anterior tenemos:
+
+        <script>
+            const arreglo3 = [10, 20, 30];
+            const arreglo4 = Array.from(arreglo3, function (elemento) {
+                return elemento * 2
+            });
+            console.log(arreglo4); // [20, 40, 60]
+        </script> -->
+
+        <h1>Método estático 'of'.</h1>
+
+        <p>
+            El método estático 'of' retorna la referencia de un objeto de tipo Array a partir de una lista de valores
+            que le pasamos a dicho método:
+        </p>
+
+        <script>
+            const arreglo5 = Array.of(10, 20, 30, 40);
+            console.log(arreglo5); // [10, 20, 30, 40]
+        </script>
+
+        <h1>Métodos 'keys', 'values' y 'entries'.</h1>
+
+        <p>
+            El objeto Array implementan los métodos que permiten iterar sobre sus claves y valores:
+        </p>
+
+        <script>
+            const lenguajes = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+
+            for (let indice of lenguajes.keys())
+                console.log(indice); // 0 1 2 3 4 5 6
+            for (let valor of lenguajes.values())
+                console.log(valor); // "domingo" "lunes" "martes" "miércoles" "jueves" "viernes" "sábado"
+            for (let componente of lenguajes.entries())
+                console.log(
+                    componente
+                ); // [0, "domingo"] [1, "lunes"] [2, "martes"] [3, "miércoles"] [4, "jueves"] [5, "viernes"] [6, "sábado"] [7, "domingo"]
+        </script>
+
+        <p>
+            En un solo 'for of' podemos recuperar cada componente y guardarlo en un Array el índice por un lado y el
+            valor por otro: <br><br>
+
+            for (let [indice,valor] of lenguajes.entries()) <br>
+            console.log(indice,valor);
+        </p>
+
+        <h1>Método 'fill'.</h1>
+
+        <p>
+            El método 'fill' permite cambiar el contenido de todas o algunas componentes de un arreglo existente. En
+            ningún caso permite redimensionarlo. <br><br>
+
+            Veamos un ejemplo y los efectos del método 'fill':
+        </p>
+
+        <script>
+            const arreglo6 = [9, 9, 9, 9, 9, 9, 9];
+            // fijamos el valor 3 a todas las componentes del arreglo
+            arreglo6.fill(3);
+            console.log(arreglo6); // [3, 3, 3, 3, 3, 3, 3]
+            // fijamos el valor 0 desde la componente 3 del arreglo
+            // hasta el final
+
+            arreglo6.fill(0, 3);
+            console.log(arreglo6); // [3, 3, 3, 0, 0, 0, 0]
+
+            // fijamos el valor 5 a todas las componentes
+            arreglo6.fill(5);
+            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+
+            // fijamos el valor 5 desde la componente 3 hasta
+            // la componente 5 sin incluirla
+            arreglo6.fill(100, 3, 5);
+            console.log(arreglo6); // [5, 5, 5, 100, 100, 5, 5]
+
+            // fijamos el valor 5 a todas las componentes
+            arreglo6.fill(5);
+            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+
+            // fijamos el valor 100 en las dos últimas componentes
+            arreglo6.fill(100, -2);
+            console.log(arreglo6); // [5, 5, 5, 5, 5, 100, 100]
+
+            // fijamos el valor 5 a todas las componentes
+            arreglo6.fill(5);
+            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+
+            // fijamos el valor 100 en la antepenúltima y penúltima
+            // posición
+            arreglo6.fill(100, -3, -1);
+            console.log(arreglo6); // [5, 5, 5, 5, 100, 100, 5]
+        </script>
+        
+        <p>
+            Si indicamos un solo valor se modifican todas las componentes del arreglo: <br><br>
+
+            arreglo1.fill(3); <br><br>
+
+            Podemos indicar desde que posición se comienza a modificar: <br><br>
+
+            // fijamos el valor 0 desde la componente 3 del arreglo <br>
+            // hasta el final <br>
+            arreglo1.fill(0, 3); <br><br>
+
+            También podemos indicar desde y hasta que componente se deben modificar: <br><br>
+
+            // fijamos el valor 5 desde la componente 3 hasta <br>
+            // la componente 5 sin incluirla <br>
+            arreglo1.fill(100, 3, 5); <br><br>
+
+            Finalmente podemos indicar con valores negativos comenzar desde el final del arreglo: <br><br>
+
+            // fijamos el valor 100 en las dos últimas componentes <br>
+            arreglo1.fill(100, -2); <br>
+            console.log(arreglo1); // [5, 5, 5, 5, 5, 100, 100] <br>
+            // fijamos el valor 100 en la antepenúltima y penúltima <br>
+            // posición <br>
+            arreglo1.fill(100, -3, -1); <br>
+            console.log(arreglo1); // [5, 5, 5, 5, 100, 100, 5]
+        </p>
+
+        <h1>Método 'copyWithin'.</h1>
+
+        <p>
+            El método 'copyWithin' permite copiar algunas componentes de un arreglo en otra parte del mismo arreglo. En
+            ningún caso permite redimensionarlo. <br><br>
+
+            Veamos un ejemplo y los efectos del método 'copyWithin':
+        </p>
+</body>
+
+</html>

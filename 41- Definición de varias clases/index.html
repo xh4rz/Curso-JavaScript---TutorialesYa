@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definición de varias clases</title>
+</head>
+
+<body>
+    <p>
+        En JavaScript podemos definir varias clases en un mismo programa. <br><br>
+        Vamos a desarrollar un programa que contenga dos clases. Plantearemos una clase Numeroquiniela que representa
+        una persona que elige un número de quiniela y además registra su nombre, la clase tiene por objetivo la carga
+        por el teclado del número deseado.<br><br>
+
+        Por otra parte crearemos una clase Bolillero que sortee un valor aleatorio entre 1 y 10 (que representa el valor
+        extraído del bolillero)<br><br>
+
+        La codificación de las dos clases es:
+    </p>
+
+    <script>
+        //clase Numeroquiniela *********************************
+        function Numeroquiniela(nombre) {
+            this.nombre = nombre;
+            this.cargarnumero = cargarnumero;
+            this.verificarsigano = verificarsigano;
+        }
+
+        function cargarnumero() {
+            this.numero = prompt("Que número de quiniela quiere?", "");
+        }
+
+        function verificarsigano(num) {
+            if (this.numero == num)
+                return true;
+            else return false;
+        }
+
+        //clase Bolillero **************************************
+        function Bolillero() {
+            this.numero = -1;
+            this.sortear = sortear;
+        }
+
+        function sortear() {
+            this.numero = parseInt(Math.random() * 10) + 1;
+        }
+
+        //bloque principal
+        var numeroquiniela1;
+        numeroquiniela1 = new Numeroquiniela("Juan");
+        numeroquiniela1.cargarnumero();
+
+        var numeroquiniela2;
+        numeroquiniela2 = new Numeroquiniela("Ana");
+        numeroquiniela2.cargarnumero();
+
+        var bolillero;
+        bolillero = new Bolillero();
+        bolillero.sortear();
+
+        document.write('Número sorteado: ' + bolillero.numero + '<br>');
+        document.write(numeroquiniela1.nombre + ' eligió ' + numeroquiniela1.numero + '<br>');
+        document.write(numeroquiniela2.nombre + ' eligió ' + numeroquiniela2.numero + '<br>');
+
+        if (numeroquiniela1.verificarsigano(bolillero.numero)) {
+            document.write(numeroquiniela1.nombre + ' ha ganado <br>');
+        }
+        if (numeroquiniela2.verificarsigano(bolillero.numero)) {
+            document.write(numeroquiniela2.nombre + ' ha ganado <br>');
+        }
+    </script>
+    <h1>PROBLEMA</h1>
+
+    <p>1- Plantear una clase persona (que permita cargar por teclado su nombre y edad). <br>
+        Por otro lado crear una clase empresa que tenga como atributo la edad tope para que una persona pueda ingresar
+        como trabajador en la misma (60 años)<br><br>
+        Confeccionar un pequeño programa en JavaScript que defina 3 objetos de la clase persona y 1 de la clase
+        empresa.<br>
+        Mostrar cuántas de esas personas están inhabilidadas para ingresar como trabajadores de acuerdo a la edad tope.
+    </p>
+
+    <script>
+        //clase Persona *********************************
+        function persona() {
+            this.nombre = prompt('Ingrese el nombre del usuario:', '');
+            this.edad = parseInt(prompt('Ingrese la edad del usuario:', ''));
+        }
+
+        //clase Empresa *********************************
+        function Empresa() {
+            this.edadTope = 60;
+            this.nopuedeEntrar = nopuedeEntrar;
+        }
+
+        function nopuedeEntrar(per) {
+            if (per.edad >= this.edadTope) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //bloque principal
+        var per1 = new persona();
+        var per2 = new persona();
+        var per3 = new persona();
+
+        var empresa = new Empresa();
+        var cant = 0;
+
+        if (empresa.nopuedeEntrar(per1)) {
+            cant++;
+        }
+        if (empresa.nopuedeEntrar(per2)) {
+            cant++;
+        }
+        if (empresa.nopuedeEntrar(per3)) {
+            cant++;
+        }
+        document.write('La cantidad de personas que no pueden entrar por su edad a la empresa son: ' + cant);
+    </script>
+
+</body>
+
+</html>

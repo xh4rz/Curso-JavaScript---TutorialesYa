@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares: alternancia |</title>
+</head>
+
+<body>
+    <p>
+        Permite analizar entre varias opciones posibles. El carácter de alternancia es el |. <br><br>
+
+        Ejemplos de sintaxis para alternancia entre opciones: <br><br>
+
+        [uno|dos|tres] <br>
+        [a|e] <br>
+        [hombre|mujer] <br>
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Validar el ingreso de un típo y nro de factura. Para que sea correcto el primer carácter debe ser a,b o c y el
+        nro debe tener uno o más dígitos.
+    </p>
+
+    <script>
+        var factura = prompt('Ingrese tipo y nro de factura:', '');
+        var patron = /^[a|b|c]\d+$/;
+
+        if (patron.test(factura)) {
+            document.write('Se ingresó un tipo y nro de factura correcta.');
+        } else {
+            document.write('Se ingresó un tipo y nro de factura incorrecta.');
+        }
+    </script>
+
+    <h1>Problema</h1>
+
+    <p>
+        Validar si una palabra comienza con los caracteres va o ba
+    </p>
+
+    <script>
+        var palabra = prompt('Ingrese una palabra que comience con va o ba:', '');
+        var patron = /^[va|ba]/;
+
+        if (patron.test(palabra)) {
+            document.write('La palabra comienza con va o ba')
+        } else {
+            document.write('La palabra no comienza con va o ba');
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Confeccionar una expresión regular que valide el ingreso del nombre de un día de la semana, un espacio y un
+        número de 1 o 2 dígitos.
+    </p>
+
+    <script>
+        var dato = prompt('Ingrese nombre del día de la semana y su número:', '');
+        var patron = /[lunes|martes|miércoles|jueves|sábado|domingo]\s\d{1,2}$/;
+
+        if (patron.test(dato)) {
+            document.write('Formato Correcto');
+        } else {
+            document.write('Formato incorrecto');
+        }
+    </script>
+
+
+
+</body>
+
+</html>

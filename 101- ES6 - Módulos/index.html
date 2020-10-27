@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ES6 - Módulos</title>
+</head>
+
+<body>
+    <p>
+        Un módulo es un archivo de JavaScript que agrupa funciones, clases, variables que luego pueden ser exportadas y
+        utilizadas en otras partes de nuestra aplicación. Un módulo permite ocultar funcionalidad del mismo y solo
+        exportar aquello para lo que ha sido implementado. <br><br>
+
+        Esta característica agregada a JavaScript nos permite implementar programas mucho más ordenados y facilita la
+        reutilización del código.
+    </p>
+
+    <h1>export e import</h1>
+
+    <p>
+        Veamos un ejemplo donde implementamos un módulo y luego lo consumimos: <br><br>
+
+        modulo1.js
+    </p>
+
+    <p>
+        El módulo consta de 2 funciones exportadas, podría haber dentro del módulo otras funciones, clases, variables
+        etc. sin la palabra export que solo se pueden acceder dentro del módulo. <br><br>
+
+        Para consumir un módulo desde otro módulo o una página HTML debemos utilizar la palabra clave import:
+    </p>
+
+    <script type="module">
+        import{sumar,restar} from './modulo1.js';
+        alert(sumar(3,8));
+        alert(restar(10,3));
+    </script>
+
+    <!-- 
+    Luego de la palabra clave import indicamos entre llaves los nombres de las funciones, clases, variables, constantes
+    etc. que importamos, también debemos indicar entre comillas el nombre del módulo y el path o dirección donde se
+    almacena (con ./ indicamos que se encuentra en la misma carpeta):
+
+    import {sumar, restar} from './modulo1.js';
+    Una vez importado los recursos del paquete los podemos acceder por su nombre:
+
+    alert(sumar(3,8));
+    Es muy importante indicarle al navegador que estamos utilizando la nueva tecnología de módulos asignando a la
+    propiedad type el valor de 'module':
+
+    <script type="module">
+        Para exportar recursos de un módulo podemos utilizar otra sintaxis:
+
+    function sumar(x,y) {
+    return x+y;
+    }
+
+    function restar(x,y) {
+    return x-y;
+    }
+
+    export {sumar, restar};
+
+    En un principio se definen dos funciones privadas al módulo y luego mediante la palabra clave export y entre llaves
+    indicamos los nombres de las funciones a exportar.
+    -->
+
+    <h1>default export</h1>
+
+    <p>
+        Es una práctica común en JavaScript crear módulos que exporten un único valor. En estos casos tenemos una
+        sintaxis distinta para indicar el recurso a exportar mediante las palabras claves 'default export'. <br><br>
+
+        Veamos un ejemplo donde almacenamos en un módulo la clase Dado y la exportamos por defecto: <br><br>
+
+        dado.js
+    </p>
+
+    <p>
+        Luego cambia la sintaxis cuando tenemos que importar la clase:
+    </p>
+
+    <script type="module">
+
+        import Dado from './dado.js';
+        const dado1 = new Dado();
+        alert(dado1.valor);
+        dado1.tirar();
+        alert(dado1.valor);
+    </script>
+
+    <!-- 
+    No debemos indicar entre llaves el recurso a importar (si las disponemos se genera un error sintáctico):
+
+    import Dado from './dado.js';
+    Otra práctica común es no indicar el nombre de la clase en el módulo, luego el nombre del módulo representa la
+    clase:
+
+    export default class {
+    constructor() {
+    this.tirar();
+    }
+
+    get valor() {
+    return this._valor;
+    }
+
+    tirar() {
+    this._valor=Math.trunc(Math.random()*6)+1;
+    }
+    }
+    Hemos indicado export default para la clase, luego el archivo se llama 'dado.js' y representa dicha clase. No hay
+    cambios para hacer uso de la clase:
+
+    import Dado from './dado.js';
+    -->
+
+    <h1>export y default export en el mismo módulo</h1>
+
+    <p>Un módulo solo puede exportar por defecto un solo recurso pero puede tener otros recursos que se exportan. Veamos
+        un ejemplo: </p>
+
+    <p>
+        En éste módulo se exporta por defecto la clase y además se exporta una constante llamada lados. <br><br>
+
+        Para consumir los dos valores exportados por este módulo tenemos la siguiente sintaxis:
+    </p>
+
+    <script type="module">
+        import Dado, {lados} from './dado2.js';
+     const dado1 = new Dado();
+     alert('valor del dado: '+dado1.valor);
+     alert('lados del dado: '+lados);
+    </script>
+
+    <p>
+        Importamos la clase por defecto y la constante lados:
+
+        import Dado, {lados} from './dado2.js';
+    </p>
+
+    <h1>Importar todos los recursos definidos con export</h1>
+
+    <p>
+        Si un módulo tiene varios recursos definidos con la palabra clave export luego los podemos importar a todos
+        juntos
+        utilizando la siguiente sintaxis:
+    </p>
+
+    <!-- 
+    <script type="module">
+
+        import * as operacion from './modulo1.js';
+        alert(operacion.sumar(3,8));
+        alert(operacion.restar(10,3));
+
+    </script>
+    -->
+
+    <p>
+        Importamos el módulo1.js que tiene dos funciones export y definimos luego de la palabra clave as el nombre de un
+        objeto que tendrá como propiedades los recursos expotados por dicho módulo. <br><br>
+
+        Llamamos ahora a cada función antecediendo el nombre del objeto creado: <br><br>
+
+        alert(operacion.sumar(3,8));
+    </p>
+
+    <h1>Importar un valor por defecto definiendo un alias</h1>
+
+    <p>
+        Otra sintaxis para importar un recurso definido con 'export default' es mediante la sintaxis:
+    </p>
+
+    <script type="module">
+        import {default as Dado, lados} from './dado2.js';
+        const dado1 = new Dado();
+        alert('valor del dado: '+dado1.valor);
+        alert('lados del dado: '+lados);
+    </script>
+
+    <p>
+        Utilizamos la palabra clave default y seguidamente el nombre o alias que se asigna al recurso importado (debe ir
+        entre llaves como cuando importamos valores definidos con 'export'): <br><br>
+
+        import {default as Dado, lados} from './dado.js';
+    </p>
+
+    <h1>Reexportar un recurso importado en un módulo</h1>
+
+    <p>
+        Un módulo que importa un recurso puede reexportar el mismo. Veamos un ejemplo con dos módulos y el archivo html:
+        <br><br>
+
+        dado2.js <br><br>
+
+        juegodedados.js
+    </p>
+
+    <p>
+        El módulo 'juegodedados.js' importa la clase por defecto 'Dado' y la constante 'lados'. Luego este módulo
+        exporta la clase JuegoDeDados y reexporta 'lados': <br><br>
+
+        export {lados};
+    </p>
+
+    <script type="module">
+        import {JuegoDeDados,lados} from './juegodedados.js';
+        const juego = new JuegoDeDados();
+        alert('suma de los tres dados: '+juego.sumaDados());
+        alert('lados del dado: '+lados);
+    </script>
+
+    <!-- 
+    Como vemos solo importamos el módulo 'juegodedados.js' y recuperamos la clase JuegoDeDados y lados:
+
+    import {JuegoDeDados, lados} from './juegodedados.js';
+    No hace falta importar el módulo 'dado2.js' para acceder a la constante 'lados'.
+
+    Si en el módulo 'juegodedados.js' no haremos uso de la constante 'lados' pero queremos reexportar la misma podemos
+    utilizar ésta otra sintaxis:
+
+    import Dado from './dado.js'
+
+    export class JuegoDeDados {
+    constructor() {
+    this.dado1=new Dado();
+    this.dado2=new Dado();
+    this.dado3=new Dado();
+    }
+
+    sumaDados() {
+    return this.dado1.valor+this.dado2.valor+this.dado3.valor;
+    }
+    }
+
+    export {lados} from './dado.js';
+    -->
+    
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: métodos sort y reverse</title>
+</head>
+
+<body>
+    <p>
+        Otro método muy útil de la clase Array es sort. La sintaxis más sencilla y por defecto es para ordenar una lista
+        de string:
+    </p>
+
+    <script>
+        var nombres = ['marcos', 'ana', 'luis', 'jorge', 'carlos'];
+        var f;
+
+        document.write('Vector antes de ordenarlo:<br>');
+        for (f = 0; f < nombres.length; f++) {
+            document.write(nombres[f] + '<br>');
+        }
+        nombres.sort();
+        document.write('Vector después de ordenarlo<br>');
+        for (f = 0; f < nombres.length; f++) {
+            document.write(nombres[f] + '<br>');
+        }
+    </script>
+
+    <p>
+        Para ordenar una lista de enteros se complica el algoritmo ya que debemos pasar al método sort una función
+        anónima indicando como implementar la comparación entre elementos:
+    </p>
+
+    <script>
+        var vec = [100, 5, 60, 3, 90];
+        var f;
+        document.write('Vector antes de ordenarlo<br>');
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '<br>');
+        }
+        vec.sort(function (v1, v2) {
+            if (v1 > v2) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+        document.write('Vector después de ordenarlo<br>');
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '<br>');
+        }
+    </script>
+    <p>
+        El siguiente método a analizar en éste concepto es reverse(), como podemos intuir este método invierte el orden
+        de los elementos del vector. <br>
+        Nos puede ser de utilidad si tenemos ordenado un vector en orden ascendente y lo queremos en forma descendente.
+        <br>
+    </p>
+
+    <h1>PROBLEMA</h1>
+    <p>Crear un vector con 10 elementos enteros con valores aleatorios<br>
+        Ordenarlos de menor a mayor. <br>
+        Luego invertir el vector para verlo de mayor a menor.</p>
+
+    <script>
+        var vec = new Array(10);
+        var f;
+        for (f = 0; f < vec.length; f++) {
+            vec[f] = parseInt(Math.random() * 1000);
+        }
+        vec.sort(function (v1, v2) {
+            if (v1 > v2) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        document.write('Vector ordenado en forma ascendente<br>');
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '<br>');
+        }
+        vec.reverse();
+        document.write('Vector ordenado en forma descendente<br>');
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '<br>');
+        }
+    </script>
+    <h1>PROBLEMA</h1>
+    <p>1- Cargar los sueldos de un conjunto de empleados. <br>
+        Finalizar la carga al ingresar cero. <br>
+        Mostrar por pantalla los sueldos ordenados de mayor a menor.</p>
+
+    <script>
+        var sueldos = [];
+        var valor;
+
+        do {
+            valor = prompt('Ingrese el sueldo (cero para finalizar)', '');
+            valor = parseInt(valor);
+
+            if (valor != 0) {
+                sueldos.push(valor);
+            }
+        } while (valor != 0);
+
+        sueldos.sort(function (x, y) {
+            if (x > y) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+
+        document.write('Sueldos ordenados de menor a mayor<br>');
+        var f;
+        for (f = 0; f < sueldos.length; f++) {
+            document.write(sueldos[f] + '<br>');
+        }
+        sueldos.reverse();
+        document.write('Sueldos ordenador de mayor a menor<br>');
+        for (f = 0; f < sueldos.length; f++) {
+            document.write(sueldos[f] + '<br>')
+        }
+    </script>
+</body>
+
+</html>

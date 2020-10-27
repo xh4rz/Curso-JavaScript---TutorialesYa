@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ess">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares</title>
+</head>
+
+<body>
+    <p>
+        Una expresión regular es una técnica que nos permite identificar si un string coincide con un patrón
+        determinado. Un ejemplo clásico es determinar si un email está correctamente tipeado (sabemos que comienza con
+        uno o más caracteres alfanuméricos, luego el carácter @ seguido de uno o más caracteres alfanuméricos, luego el
+        carácter '.' y finalmente otros caracteres alfabéticos). <br><br>
+
+        Sin conocer las expresiones regulares se pueden resolver estos tipos de problemas mediante una serie de if que
+        procesan partes del string para comprobar si cumplen en conjunto todas las reglas que necesitamos validar, pero
+        con las expresiones regulares podemos resolver este tipo de problemas con una sintaxis mucho más compacta.
+        <br><br>
+
+        Existe toda una serie de reglas para crear las expresiones regulares que iremos viendo. <br><br>
+
+        El lenguaje JavaScript administra las expresiones regulares mediante el objeto RegExp:
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Validar si se ingresa un valor entero con exactamente tres dígitos.
+    </p>
+
+    <script>
+        var valor = prompt('Ingrese un número entero positivo de 3 dígitos', '');
+        var patron = new RegExp('^[0-9]{3}$');
+
+        if (patron.test(valor)) {
+            alert('Se ingresó un valor entero positivo de 3 dígitos');
+        } else {
+            alert('No se ingresó un valor entero positivo de 3 dígitos');
+        }
+    </script>
+
+    <p>
+        Veremos luego que para definir expresiones regulares intervienen una serie de caracteres ^ $. * +? =! : | \ / ()
+        [] {} que tienen un significado especial en la definición del lenguaje de expresiones regulares, estos tipos de
+        caracteres suelen llamarse metacaracteres.
+    </p>
+
+    <script>
+        var valor = prompt('Ingrese un número entero positivo de 3 dígitos', '');
+        var patron = /^[0-9]{3}$/;
+
+        if (patron.test(valor)) {
+            alert('Se ingresó un valor entero positivo de 3 dígitos');
+        } else {
+            alert('No se ingresó un valor entero positivo de 3 dígitos');
+        }
+    </script>
+
+    <p>
+        Como podemos ver al definir la variable patron le asignamos una cadena encerrada entre los caracteres '/'
+        (recordar que estamos creando un objeto de tipo RegExp): <br><br>
+
+        var patron=/^[0-9]{3}$/;
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Ingresar una oración por teclado y luego imprimir un mensaje si la oración ingresada contiene la palabra 'hora'
+    </p>
+
+    <script>
+        var oracion = prompt('Ingrese una oración', '');
+        var patron = /hora/;
+        // var patron = new RegExp(/hora/);
+
+        if(patron.test(oracion)){
+            alert('La oración ingresada contiene la palabra \'hora\'');
+        }else{
+            alert('La oración ingresada no contiene la palabra \'hora\'');
+        }
+    </script>
+
+    <p>
+        El método test se verifica verdadero si ingresamos las siguientes oraciones: <br><br>
+
+        Es hora de partir.
+        hora de comer.
+        Pasó muchas horas corriendo.
+        Ahora tenemos ganas de correr.<br><br>
+
+        Se verifica falso si ingresamos la siguiente oración: <br><br>
+
+        El niño ora.
+        Hora de comer.
+    </p>
+
+</body>
+
+</html>

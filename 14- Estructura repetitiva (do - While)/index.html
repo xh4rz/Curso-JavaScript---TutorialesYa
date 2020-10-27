@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura repetitiva (do/while)</title>
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>Escribir un programa que solicite la carga de un número entre 0 y 999, y nos muestre un mensaje de cuántos
+        dígitos tiene el mismo. Finalizar el programa cuando se cargue el valor 0.</p>
+
+    <script>
+        var valor;
+        do {
+            valor = prompt('Ingrese un valor entre 0 y 999:', '');
+            valor = parseInt(valor);
+            document.write('El valor ' + valor);
+
+            if (valor < 10) {
+                document.write(' Tiene 1 digito');
+            } else {
+                if (valor < 100) {
+                    document.write(' Tiene 2 digitos');
+                } else {
+                    document.write(' Tiene 3 digitos');
+                }
+            }
+            document.write('<br>');
+
+        } while (valor != 0);
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Realizar un programa que acumule (sume) valores ingresados por teclado hasta ingresa el 9999 (no sumar dicho
+        valor, solamente indica que ha finalizado la carga). Imprimir el valor acumulado e informar si dicho valor es
+        cero, mayor a cero o menor a cero.</p>
+
+    <script>
+        var valor;
+        var suma = 0;
+
+        do {
+            valor = prompt('Ingrese un valor (9999 para finalizar)', '');
+            valor = parseInt(valor);
+
+            if (valor != 9999) {
+                suma = suma + valor;
+            }
+        } while (valor != 9999);
+        document.write('Valor acumulado total: ' + suma + '<br>');
+
+        if (suma > 0) {
+            document.write('El valor acumulado es mayor a cero');
+        } else {
+            if (suma == 0) {
+                document.write('El valor acumulado es cero');
+            } else {
+                document.write('El valor acumulado es menor a cero');
+            }
+        }
+    </script>
+
+    <p>2- En un banco se procesan datos de las cuentas corrientes de sus clientes. De cada cuenta corriente se conoce:
+        número de cuenta, nombre del cliente y saldo actual. El ingreso de datos debe finalizar al ingresar un valor
+        negativo en el número de cuenta.
+        Se pide confeccionar un programa que lea los datos de las cuentas corrientes e informe:
+        a) De cada cuenta: número de cuenta, nombre del cliente y estado de la cuenta según su saldo, sabiendo que:
+        Estado de la cuenta 'Acreedor' si el saldo es >0.</p>
+    <!-- 'Deudor' si el saldo es <0.
+             'Nulo' si el saldo es=0.
+              b) La suma total de los saldos acreedores
+             -->
+
+    <script>
+        var numero_cuenta, nombre_cliente;
+        var saldo_actual,saldo_acreedor = 0;
+
+        do {
+            numero_cuenta = prompt('Ingrese su numero de cuenta:', '');
+            numero_cuenta = parseInt(numero_cuenta);
+
+            if (numero_cuenta >= 0) {
+                nombre_cliente = prompt('Ingrese nombre del cliente:');
+                saldo_actual = prompt('Ingrese saldo actual:')
+                saldo_actual = parseInt(saldo_actual);
+
+                if (saldo_actual > 0) {
+                    saldo_acreedor = saldo_acreedor + saldo_actual;
+                    document.write(nombre_cliente + ' tiene saldo acreedor<br>');
+                } else {
+                    if (saldo_actual < 0) {
+                        document.write(nombre_cliente + ' tiene saldo deudor<br>');
+                    } else {
+                        document.write(nombre_cliente + ' tiene saldo nulo<br>')
+                    }
+                }
+            }
+        } while (numero_cuenta > 0);
+        document.write('Suma total de saldos acreedores:' + saldo_acreedor);
+    </script>
+
+    <p>3- Se realizó un censo provincial y se desea procesar la información obtenida en dicho censo. De cada una de las
+        personas censadas se tiene la siguiente información: número de documento, edad y sexo ('femenino' o 'masculino')
+        Se pide confeccionar un programa que lea los datos de cada persona censada (para finalizar ingresar el valor
+        cero en el número de documento) e informar:
+
+        a) Cantidad total de personas censadas.
+        b) Cantidad de varones.
+        c) Cantidad de mujeres.
+        d) Cantidad de varones cuya edad varía entre 16 y 65 años.</p>
+
+    <script>
+        var numero_documento;
+        var edad;
+        var cantidad_personas = 0;
+        var hombres = 0;
+        var mujeres = 0;
+        var cantidad_varones_superiores = 0;
+
+        do {
+            numero_documento = prompt('Ingrese número de documeto:', '');
+            numero_documento = parseInt(numero_documento);
+
+            if (numero_documento > 0) {
+                edad = prompt('Ingrese la edad:', '');
+                edad = parseInt(edad);
+                sexo = prompt('Ingrese el sexo (masculino/femenino):', '');
+                if (sexo == 'masculino') {
+                    hombres = hombres + 1;
+                    if (edad >= 16 && edad <= 65) {
+                        cantidad_varones_superiores = cantidad_varones_superiores + 1;
+                    }
+                }
+                if (sexo == 'femenino') {
+                    mujeres = mujeres + 1;
+                }
+                cantidad_personas = cantidad_personas + 1;
+            }
+        } while (numero_documento != 0);
+
+        document.write('Cantidad de total de personas es: ' + cantidad_personas + '<br>');
+        document.write('Cantidad de varones es: ' + hombres + '<br>');
+        document.write('Cantidad de mujeres es: ' + mujeres + '<br>');
+        document.write('Cantidad de varones cuya edad varía entre 16 y 65 años: ' + cantidad_varones_superiores);
+    </script>
+
+
+</body>
+
+</html>

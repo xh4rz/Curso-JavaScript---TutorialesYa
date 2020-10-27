@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Estructura repetitiva 'for of'</title>
+</head>
+
+<body>
+    <p>
+        Con ES6 disponemos una nueva estructura repetitiva para recorrer todos los elementos de un array, string, map,
+        set etc. <br><br>
+
+        En forma muy sencilla podemos acceder por ejemplo a cada caracter de un string: <br><br>
+
+        <pre>
+        const cadena='Hola Mundo';
+        for(let letra of cadena)
+        document.write(`${letra}`);
+        </pre>
+
+        Como resultado de ejecutar éste algoritmo de JavaScript tenemos la impresión de cada caracter en una línea
+        distinta en la página. <br><br>
+
+        Podemos recorrer también un array: <br><br>
+
+        <pre>
+        const vector=[10, 40, 60, 5];
+        let suma=0;
+        for(let elemento of vector)
+           suma+=elemento;
+        document.write(`La suma de todos los elementos del vector es:${suma}`);
+        </pre>
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Se tiene el siguiente vector con 3 objetos literales con los datos de personas. Imprimir el nombre y edad de las
+        personas mayores de edad:
+    </p>
+
+    <pre>
+const personas = [
+                   {
+                     nombre:'juan',
+                     edad:45
+                   },
+                   {
+                     nombre:'ana',
+                     edad:12
+                   },
+                   {
+                     nombre:'luis',
+                     edad:16
+                   },
+                   {
+                     nombre:'cristina',
+                     edad:76
+                   }
+                 ];
+    </pre>
+
+    <p>
+        Luego el programa que recorre el array y accede a cada objeto almacenado mediante un for of:
+    </p>
+
+    <script>
+        const personas = [{
+                nombre: 'juan',
+                edad: 45
+            },
+            {
+                nombre: 'ana',
+                edad: 12
+            },
+            {
+                nombre: 'luis',
+                edad: 16
+            },
+            {
+                nombre: 'cristina',
+                edad: 76
+            }
+        ];
+
+        document.write('<h1>Personas mayores de edad</h1>');
+        for (let persona of personas)
+            if (persona.edad >= 18)
+                document.write(`${persona.nombre} y tiene ${persona.edad} años.<br>`);
+    </script>
+
+    <!--
+    Mediante un for of recorremos cada componente del array. En la variable persona se almacena en cada repetición del
+    for of un elemento del array:
+
+    for(let persona of personas)
+    if (persona.edad>=18)
+    document.write(`${persona.nombre} y tiene ${persona.edad} años.<br>`);
+    -->
+
+    <h1>Recuperar el valor y el índice que ocupa un elemento dentro del arreglo</h1>
+
+    <p>
+        Imprimir todos los elementos de un array y la posición que ocupa dentro del mismo:
+    </p>
+
+    <script>
+        const vector = [10, 40, 60, 5];
+        for (let [indice, valor] of vector.entries())
+            document.write(`${valor} ocupa la posición ${indice}<br>`);
+    </script>
+
+    <!-- 
+        El método entries() devuelve un arreglo con dos valores: la posición del elemento y el valor del mismo:
+
+    for(let [indice, valor] of vector.entries())
+    -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        1- Se tiene el siguiente arreglo con los datos de distintos artículos:
+    </p>
+
+    <pre>
+  const articulos = [
+    {
+      nombre:'sandía',
+      precio:12
+    },
+    {
+      nombre:'manzanas',
+      precio:52
+    },
+    {
+      nombre:'peras',
+      precio:40
+    },
+    {
+      nombre:'naranjas',
+      precio:35
+    }    
+  ]
+    </pre>
+
+    <p>
+        Imprimir primero todo el arreglo y luego mediante otro for of recorrer el arreglo e imprimir todos los
+        artículos
+        con un precio superior a 30.
+    </p>
+
+    <script>
+        const articulos = [{
+                nombre: 'sandía',
+                precio: 12
+            },
+            {
+                nombre: 'manzanas',
+                precio: 52
+            },
+            {
+                nombre: 'peras',
+                precio: 40
+            },
+            {
+                nombre: 'naranjas',
+                precio: 35
+            }
+        ];
+
+        document.write('<h1>Listado completo de artículos</h1>');
+        for (let articulo of articulos)
+            document.write(`${articulo.nombre} - ${articulo.precio}<br>`);
+
+        document.write('<h1>Listado de artículos con un precio superior a 30</h1>');
+        for (let articulo of articulos)
+            if (articulo.precio > 30)
+                document.write(`${articulo.nombre} - ${articulo.precio}<br>`);
+    </script>
+
+</body>
+
+</html>

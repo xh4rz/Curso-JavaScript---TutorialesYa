@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Expresiones regulares: (^ principio $ fin) de cadena</title>
+</head>
+
+<body>
+    <p>
+        Los dos primeros caracteres con un significado especial en una expresión regular son: ^ principio de cadena y $
+        fin de cadena. <br><br>
+
+        Cuando queremos controlar si un string comienza con un determinado carácter o conjunto de caracteres podemos
+        implementar una expresión regular antecediendo al o los caracteres el símbolo ^.
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Ingresar una oración y mostrar un mensaje si la misma comienza con el carácter '-'. <br>
+        Otro mensaje si comienzo con la palabra 'hora'.
+    </p>
+
+    <script>
+        var oracion = prompt('Ingrese una oración', '');
+
+        var patron1 = /^-/;
+        if (patron1.test(oracion)) {
+            alert('Comienza la oración con el carácter -');
+        } else {
+            alert('No Comienza la oración con el carácter -')
+        }
+
+        var patron2 = /^hora/;
+        if (patron2.test(oracion)) {
+            alert('Comienza la oración con la palabra hora');
+        } else {
+            alert('No comienza la oración con la palabra hora');
+        }
+    </script>
+
+    <h1>problema</h1>
+
+    <p>
+        Ingresar una palabra y mostrar un mensaje si la misma finaliza con el string 'ón'
+    </p>
+
+    <script>
+        var oracion = prompt('Ingrese una palabra', '');
+        var patron = /ón$/;
+
+        if (patron.test(oracion)) {
+            alert('La palabra finaliza con los caracteres \'ón\'');
+        } else {
+            alert('La palabra no finaliza con los caracteres \'ón\'');
+        }
+    </script>
+
+    <p>
+        Cuando queremos verificar si una cadena finaliza con un determinado carácter o conjunto de caracteres debemos
+        disponer al final el carácter $ y antecederle el o los caracteres a verificar: <br><br>
+
+        En el ejemplo anterior si ingresamos las palabras 'constitución', 'camión', 'edición' luego el método test
+        retorna verdadero. En cambio si ingresamos 'cama', 'mano' el método test retorna falso ya que dichas palabras no
+        finalizan con el string 'ón'.
+    </p>
+
+
+</body>
+
+</html>

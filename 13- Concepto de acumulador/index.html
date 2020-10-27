@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acumulador</title>
+</head>
+
+<body>
+
+    <h1>Problema:</h1>
+
+    <p>
+        Desarrollar un programa que permita la carga de 5 valores por teclado y nos muestre posteriormente la
+        suma.</p>
+
+
+    <script>
+        var x = 1;
+        var suma = 0;
+        var valor;
+
+        while (x <= 5) {
+            valor = prompt('Ingrese valor:', '');
+            valor = parseInt(valor);
+
+            suma = suma + valor;
+            x = x + 1;
+        }
+        document.write('La suma de los valores es ' + suma + '<br>');
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Escribir un programa que lea 10 notas de alumnos y nos informe cuántos tienen notas mayores o iguales a 7 y
+        cuántos menores.</p>
+
+    <script>
+        var x = 0;
+        var notasMayores = 0;
+        var notasMenores = 0;
+
+        while (x < 10) {
+            var nota;
+
+            nota = prompt('Ingrese nota', '');
+
+            if (nota >= 7) {
+                notasMayores = notasMayores + 1;
+            } else {
+                notasMenores = notasMenores + 1;
+            }
+            x = x + 1;
+        }
+        document.write('Cantidad de alumnos con notas mayores o iguales a 7: ' + notasMayores + '<br>');
+        document.write('Cantidad de alumnos con notas menores a 7: ' + notasMenores);
+    </script>
+
+    <p>2- Se ingresan un conjunto de 5 alturas de personas por teclado. Mostrar la altura promedio de las personas.
+    </p>
+
+    <script>
+        var x = 0;
+        var suma = 0;
+
+        while (x < 5) {
+            var alturas = prompt('Ingrese la altura en centímetros(Ej. 175)', '');
+            alturas = parseInt(alturas);
+
+            suma = suma + alturas;
+            x = x + 1;
+        }
+        var promedio = suma / 5;
+        document.write('La altura promedio de las cinci personas es: ' + promedio);
+    </script>
+
+    <p>3- En una empresa trabajan 5 empleados cuyos sueldos oscilan entre $100 y $500, realizar un programa que lea los
+        sueldos que cobra cada empleado e informe cuántos empleados cobran entre $100 y $300 y cuántos cobran más
+        de$300.
+
+        Además el programa deberá informar el importe que gasta la empresa en sueldos al personal.</p>
+
+    <script>
+        var x = 0;
+        var sueldos;
+        var sueldoEntre = 0;
+        var sueldoMas = 0;
+        var total_gastos = 0;
+
+        while (x < 5) {
+            sueldos = prompt('Ingrese sueldo del empleado: ', '');
+            sueldos = parseInt(sueldos);
+
+            if (sueldos <= 300) {
+                sueldoEntre = sueldoEntre + 1;
+            } else {
+                sueldoMas = sueldoMas + 1;
+            }
+            total_gastos = total_gastos + sueldos;
+            x = x + 1;
+        }
+        document.write('Empleados que cobran entre $100 y $300 son: ' + sueldoEntre + '<br>');
+        document.write('Empleados que cobran más de $300 son: ' + sueldoMas + '<br>');
+        document.write('Los gastos totales de la empresa son: ' + total_gastos);
+    </script>
+
+    <p>4- Realizar un programa que imprima 20 términos de la serie 5 - 10 - 15 - 20, etc. (No se ingresan valores por
+        teclado)</p>
+
+    <script>
+        var x = 0;
+        var serie = 5;
+
+        while (x < 20) {
+            document.write(serie + ' ');
+            x = x + 1;
+            serie = serie + 5;
+        }
+    </script>
+
+    <p>5- Mostrar los múltiplos de 10 hasta el valor 1500.
+        Debe aparecer en pantalla 10 - 20 -30 etc.</p>
+
+    <script>
+        document.write('Múltiplos de 10 hasta el 1500<br>');
+        var mult5 = 10;
+
+        while (mult5 <= 1500) {
+            document.write(mult5 + ' - ');
+            mult5 = mult5 + 10;
+        }
+    </script>
+
+    <p>6- Realizar un programa que permita cargar dos listas de 3 valores cada una. Informar con un mensaje cual de
+        las dos listas tiene un valor acumulado mayor (mensajes 'Lista 1 mayor', 'Lista 2 mayor', 'Listas iguales')
+        Tener en cuenta que puede haber dos o más estructuras repetitivas en un algoritmo.</p>
+
+
+    <script>
+
+        var x = 0;
+        var valores;
+        var lista1mayor = 0;
+        while (x < 3) {
+            valores = prompt('Ingrese valor de la primera lista', '');
+            valores = parseInt(valores);
+
+            lista1mayor = lista1mayor + valores;
+            x = x + 1;
+        }
+
+        var lista2mayor = 0;
+        x = 0;
+        
+        while (x < 3) {
+            valores = prompt('Ingrese valor de la segunda lista', '');
+            valores = parseInt(valores);
+
+            lista2mayor = lista2mayor + valores;
+            x = x + 1;
+        }
+        if (lista1mayor > lista2mayor) {
+            document.write('Lista 1 mayor');
+        } else {
+            if (lista1mayor < lista2mayor) {
+                document.write('Lista 2 mayor');
+            } else {
+                document.write('Tienen el mismo valor acumulado las dos listas');
+            }
+        }
+    </script>
+    
+<p>7- Desarrollar un programa que permita cargar 5 números enteros y luego nos informe cuántos valores fueron pares y
+    cuántos impares.
+    Emplear el operador "%" en la condición de la estructura condicional.
+    if (valor%2==0)
+    El operador "%" retorna el resto de la división valor / 2. Por ejemplo: 12 % 2, retorna 0; 13 % 2, retorna 1, porque
+    el resto de dividir 13 en 2 es 1.</p>
+
+    <script>
+        var x = 0;
+        var pares = 0;
+        var impares = 0;
+        var valor;
+
+        while(x < 5){
+            valor = prompt('Ingrese un valor: ','');
+            valor = parseInt(valor);
+
+            if(valor%2 == 0){
+                pares = pares+1;
+            }else{
+                impares = impares+1;
+            }
+            x = x+1;
+        }
+        document.write('Cantidad de valores pares ingresados son: '+pares+'<br>');
+        document.write('Cantidad de valores impares ingresados son: '+impares);
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

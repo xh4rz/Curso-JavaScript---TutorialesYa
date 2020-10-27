@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Map</title>
+</head>
+
+<body>
+    <p>
+        Con la llegada de ES6 se presenta un nuevo objeto llamado 'Map' que nos evita tener que implementar desde cero
+        una estructura de datos tipo diccionario o mapa. <br><br>
+
+        La estructura de datos tipo 'Map' utiliza una clave para acceder a un valor. <br><br>
+
+        Podemos relacionarlo con conceptos que conocemos: <br><br>
+
+        Un diccionario tradicional que conocemos podemos utilizar un 'Map' para representarlo. La clave sería la palabra
+        y el valor sería la definición de dicha palabra. <br><br>
+
+        Una agenda personal también la podemos representar como un diccionario. La fecha sería la clave y las
+        actividades de dicha fecha sería el valor. <br><br>
+
+        Un conjunto de usuarios de un sitio web podemos almacenarlo en un diccionario. El nombre de usuario sería la
+        clave y como valor podríamos almacenar su mail, clave, fechas de login etc. <br><br>
+
+        Como clave se puede utilizar cualquier tipo de dato primitivo como también de tipo objeto. Podemos almacenar
+        como valor también datos primitivos como objetos.
+    </p>
+
+    <h1>Creación de un Map.</h1>
+
+    <p>
+        1- Podemos crear un Map vacío y posteriormente añadir elementos al mapa mediante el método 'set':
+    </p>
+
+    <script>
+        const mapa1 = new Map();
+        mapa1.set("casa", "house");
+        mapa1.set("rojo", "red");
+        mapa1.set("auto", "car");
+        console.log(mapa1);
+    </script>
+
+    <p>
+        2- Podemos crear un Map e inmediatamente pasar los datos iniciales en el constructor del mismo:
+    </p>
+
+    <script>
+        const mapa2 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+        console.log(mapa2);
+    </script>
+
+    <h1>Recuperar el valor para una determinada clave.</h1>
+
+    <p>
+        Para recuperar un valor para una determinada clave del 'Map' disponemos del método 'get'. <br><br>
+
+        Problema <br><br>
+
+        Ingresar por teclado una palabra en castellano y posteriormente mostrar su traducción al inglés.
+    </p>
+
+    <script>
+        const mapa3 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+
+        const palcastellano = prompt("Ingrese una palabra en castellano:", "");
+        document.write(`La traducción de ${palcastellano} es ${mapa3.get(palcastellano)}`);
+    </script>
+
+    <!-- Como podemos comprobar al ejecutar el algoritmo si ingresamos una palabra que existe en el 'Map' luego el método get
+    nos retorna el valor para dicha palabra. Si ingresamos una palabra que no existe el método nos retorna el valor
+    'undefined'.
+
+    Disponemos de otro método en el objeto 'Map' llamado 'has' que le debemos pasar como parámetro una clave y en el
+    caso que exista nos retorna true, en caso negativo nos retorna false. Luego podemos modificar nuestra aplicación
+    para que nos muestre un mensaje en el caso que no exista la traducción de la palabra ingresada:
+
+    <script>
+        const mapa1 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+        const palcastellano = prompt("Ingrese una palabra en castellano:", "");
+        if (mapa1.has(palcastellano))
+            document.write(`La traducción de ${palcastellano} es ${mapa1.get(palcastellano)}`);
+        else
+            document.write(`No existe una traducción para la palabra ${palcastellano}`)
+    </script> -->
+
+    <h1>Tamaño del Map.</h1>
+
+    <p>
+        Mediante la propiedad 'size' podemos conocer la cantidad de entradas almacenadas en el mapa:
+    </p>
+
+    <script>
+        const mapa4 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+        mapa4.set("ventana", "window");
+        console.log(mapa4.size); // 4
+    </script>
+
+    <h1>Eliminación de elementos del Map.</h1>
+
+    <p>
+        Podemos eliminar elementos mediante el método 'delete':
+    </p>
+
+    <script>
+        const mapa5 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+        mapa5.delete("casa");
+        console.log(mapa5.size); // 2
+    </script>
+
+    <p>
+        El método 'delete' retorna true si se eliminó la entrada en el Map y false en caso que le hayamos pasado una
+        clave que no exista. <br><br>
+
+        Para eliminar todos los elementos del mapa disponemos del método 'clear':
+    </p>
+
+    <script>
+        const mapa6 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+        mapa6.clear();
+        console.log(mapa6.size); // 0
+    </script>
+
+    <h1>Recorrido de un Map.</h1>
+
+    <p>
+        Los elementos almacenado en el 'Map' mantienen el orden en que se agregaron. <br><br>
+
+        Podemos recorrer un mapa mediante la estructura repetitiva 'for of':
+    </p>
+
+    <script>
+        const mapa7 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+
+        document.write("Claves del mapa.<br>")
+        for (let clave of mapa7.keys()) {
+            document.write(clave);
+            document.write("<br>");
+        }
+
+        document.write("Valores del mapa.<br>")
+        for (let valor of mapa7.values()) {
+            document.write(valor);
+            document.write("<br>");
+        }
+
+        document.write("Claves y valores del mapa.<br>")
+        for (let [clave, valor] of mapa7) {
+            document.write(clave + '-' + valor);
+            document.write("<br>");
+        }
+    </script>
+
+    <!-- El objeto Map igual que el objeto Array dispone de un método 'forEach' para iterar sobre los elementos del 'Map':
+
+    <script>
+        const mapa1 = new Map([
+            ["casa", "house"],
+            ["rojo", "red"],
+            ["auto", "car"]
+        ]);
+
+        document.write("Claves y valores del mapa.<br>")
+        mapa1.forEach((valor, clave) => document.write(`${clave}  ${valor}<br>`));
+    </script> -->
+
+    <h1>PROBLEMA</h1>
+
+    <p>
+        Almacenar en un Map los nombres de paises como clave y la cantidad de habitantes como valores. Mostrar en una
+        lista HTML que se debe crear en forma dinámica inmediatamente luego que se carga la página.
+    </p>
+
+    <div id="paises"></div>
+
+    <script>
+        addEventListener('DOMContentLoaded', inicio);
+
+        function inicio() {
+            const paises = new Map([
+                ["Argentina", 45000000],
+                ["España", 46000000],
+                ["Brasil", 190000000],
+                ["Uruguay", 3400000]
+            ]);
+
+            let cadena = '';
+            for (let [pais, cantidad] of paises) {
+                cadena += `<li>${pais} => ${cantidad}</li>`;
+            }
+            document.getElementById("paises").innerHTML = cadena;
+        }
+    </script>
+
+</body>
+
+</html>

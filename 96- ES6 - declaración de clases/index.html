@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - declaración de clases</title>
+</head>
+
+<body>
+
+    <p>
+        En versiones anteriores de JavaScript si bien se pueden definir clases su sintaxis es poco clara si la
+        comparamos con otros lenguajes. <br><br>
+
+        Con ES6 se incorporó una sintaxis precisa para declarar una clase y sus métodos. <br><br>
+
+        Tenemos una serie de palabras claves para declarar una clase y el constructor de la misma.
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Plantear una clase Cliente que permita almacenar el nombre de un cliente y el saldo actual. Definir además del
+        constructor otros dos métodos que permitan depositar y extraer dinero. <br><br>
+        Definir luego dos objetos de dicha clase.
+    </p>
+
+    <script>
+        class Cliente {
+            constructor(nombre, saldo) {
+                this.nombre = nombre;
+                this.saldo = saldo;
+            }
+            depositar(dinero) {
+                this.saldo = this.saldo + dinero;
+            }
+            extraer(dinero) {
+                this.saldo = this.saldo - dinero;
+            }
+        }
+
+        const cliente1 = new Cliente('diego', 1200);
+
+        document.write('Nombre del cliente: ' + cliente1.nombre + '<br>');
+        document.write('Saldo actual: ' + cliente1.saldo + '<br>');
+
+        cliente1.depositar(120);
+        document.write('Saldo luego de depositar $120 ===> ' + cliente1.saldo + '<br>');
+
+        cliente1.extraer(1000);
+        document.write('Saldo luego de extrañar $1000 ===> ' + cliente1.saldo + '<br><br>');
+
+        const cliente2 = new Cliente('ana', 100);
+
+        document.write('Nombre del cliente: ' + cliente2.nombre + '<br>');
+        document.write('Saldo actual: ' + cliente2.saldo + '<br>');
+
+        cliente2.depositar(200);
+        document.write('Saldo luego de depositar $200 ===> ' + cliente2.saldo + '<br>');
+    </script>
+
+    <p>
+        Para declarar una clase en ES6 utilizamos la palabra clave class y seguidamente el nombre de la clase: <br><br>
+
+        <pre>
+        class Cliente {
+        </pre>
+
+        Luego entre llaves encerramos todos los métodos de dicha clase. <br><br>
+
+        Tenemos la palabra clave 'constructor' para definir el primer método que se ejecutará al crear el objeto:
+        <br><br>
+
+        <pre>
+        constructor(nombre, saldo) {
+        this.nombre=nombre;
+        this.saldo=saldo;
+        }            
+        </pre>
+
+        Los atributos se les debe anteceder la palabra clave this <br><br>
+
+        Los atributos que definamos se tiene acceso en todos los métodos de la clase: <br><br>
+
+        <pre>
+        depositar(dinero)
+        {
+        this.saldo=this.saldo+dinero;
+        }
+        </pre>
+
+        Cuando creamos un objeto de la clase Cliente lo primero que se ejecuta es el constructor, debemos pasar los
+        datos a los parámetros: <br><br>
+
+        <pre>
+        const cliente1=new Cliente('diego',1200);
+        </pre>
+
+        A los demás métodos del objeto 'cliente1' los llamamos antecediendo primero el nombre del objeto: <br><br>
+
+        <pre>
+        cliente1.depositar(120);
+        </pre>
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Plantear una clase llamada Menu que administre una lista de enlaces. Definir como atributos dos vectores
+        paralelos que almacenen en uno la 'url' y en el otro la 'descipcion' de dicho enlace. Permitir insertar enlaces
+        y finalmente mediante un método que le pasamos el 'id' de un elemento HTML proceda a crearlo al menú.
+    </p>
+
+    <div id="menu"></div>
+
+    <script>
+        class Menu {
+            constructor() {
+                this.enlaces = [];
+                this.descripcion = [];
+            }
+
+            insertar(enlace, descripcion) {
+                this.enlaces.push(enlace);
+                this.descripcion.push(descripcion);
+            }
+
+            mostrar(elemento) {
+                let cadena = '<div>';
+                for (let x = 0; x < this.enlaces.length; x++)
+                    cadena += `[<a href = "${this.enlaces[x]}">${this.descripcion[x]}</a>]`;
+                cadena += '</div>';
+                document.getElementById(elemento).innerHTML = cadena;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', iniciar, false);
+
+        function iniciar() {
+            const menu = new Menu();
+            menu.insertar("http://www.google.com", "Google");
+            menu.insertar("http://www.bing.com", "Bing");
+            menu.insertar("http://www.yahoo.com", "Yahoo");
+            menu.mostrar('menu');
+        }
+    </script>
+
+    <p>
+        Cuando se termina de cargar la página completa procedemos a crear un objeto de la clase Menu, insertar un
+        conjunto de enlaces y finalmente generar la anclas: <br><br>
+
+        <pre>
+        window.addEventListener('DOMContentLoaded', iniciar, false); 
+
+        function iniciar() { 
+        const menu=new Menu(); 
+        menu.insertar("http://www.google.com","Google"); 
+        menu.insertar("http://www.bing.com","Bing"); 
+        menu.insertar("http://www.yahoo.com","Yahoo"); 
+        menu.mostrar('menu'); 
+        }
+        </pre>
+
+        La clase Menu encapsula la administración de los enlaces y descripciones de dichos enlaces. En el constructor
+        creamos los dos vectores: <br><br>
+
+        <pre>
+        class Menu { 
+        constructor() { 
+        this.enlaces=[]; 
+        this.descripcion=[]; 
+        }
+        </pre>
+
+        El método insertar llegan dos string con el enlace y descripción de dicho enlace, procedemos a agregarlos a los
+        vectores: <br><br>
+
+        <pre>
+        insertar(enlace, descripcion) {
+        this.enlaces.push(enlace);
+        this.descripcion.push(descripcion);
+        }
+        </pre>
+
+        El método mostrar recibe el 'id' del elemento HTML donde se debe insertar todas las anclas: <br><br>
+
+        <pre>
+        mostrar(elemento) { 
+        let cadena='&lt;div&gt;'; 
+        for(let x=0;x&lt;this.enlaces.length;x++) 
+        cadena += `[&lt;a href="${this.enlaces[x]}"&gt;${this.descripcion[x]}&lt;/a&gt;]`; 
+        cadena += '&lt;/div&gt;'; 
+        document.getElementById(elemento).innerHTML=cadena; 
+     }
+   }
+    </pre>
+    </p>
+
+    <h1>PROBLEMAS</h1>
+
+    <p>
+        1- Confeccionar una clase que permita carga el nombre y la edad de una persona. Mostrar los datos cargados.
+        Imprimir un mensaje si es mayor de edad (edad>=18)
+    </p>
+    <script>
+        const jugador1 = {
+            nombre: 'ana',
+            puntos: 0,
+            imprimir() {
+                document.write('Nombre:' + this.nombre + '<br>');
+                document.write('Puntos:' + this.puntos + '<br>');
+            },
+            aumentarpuntos(cant) {
+                this.puntos = this.puntos + cant;
+            },
+            verificarsigano() {
+                if (this.puntos > 1000)
+                    document.write('Gano<br>');
+                else
+                    document.write('No gano<br>');
+            }
+        };
+
+        jugador1.imprimir();
+        jugador1.aumentarpuntos(500);
+        jugador1.verificarsigano();
+        jugador1.aumentarpuntos(501);
+        jugador1.verificarsigano();
+        jugador1.imprimir();
+    </script>
+
+    <p>
+        2- Plantear una clase ListaOrdenada. En el constructor definir un atributo de tipo vector vacío.
+        Luego definir dos métodos, uno que permita agregar elementos a la lista y otro que lo muestre en la página.
+    </p>
+
+    <script>
+        class ListaOrdenada {
+            constructor() {
+                this.opciones = [];
+            }
+
+            agregar(elemento) {
+                this.opciones.push(elemento);
+            }
+
+            imprimir() {
+                let lista = '<ol>';
+                for (let x = 0; x < this.opciones.length; x++)
+                    lista += `<li>${this.opciones[x]}</li>`;
+                lista += '</ol>';
+                document.write(lista);
+            }
+        }
+
+        const lista1 = new ListaOrdenada();
+
+        lista1.agregar('Opcion a');
+        lista1.agregar('Opcion b');
+        lista1.agregar('Opcion c');
+        lista1.agregar('Opcion d');
+        lista1.imprimir();
+    </script>
+    
+</body>
+
+</html>

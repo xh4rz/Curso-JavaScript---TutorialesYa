@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones con parámetros.</title>
+</head>
+
+<body>
+    <h1>Ejemplo:</h1>
+    <p>Confeccionar una función que reciba dos números y muestre en la página los valores comprendidos entre ellos de
+        uno en uno. Cargar por teclado esos dos valores.</p>
+
+    <script>
+        function mostrarComprendidos(x1, x2) {
+            var inicio;
+            for (inicio = x1; inicio <= x2; inicio++) {
+                document.write(inicio + ' ');
+            }
+        }
+
+        var valor1, valor2;
+
+        valor1 = prompt('Ingrese valor inferior:', '');
+        valor1 = parseInt(valor1);
+
+        valor2 = prompt('Ingrese valor superior:', '');
+        valor2 = parseInt(valor2);
+
+        mostrarComprendidos(valor1, valor2);
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>1- Elaborar una función a la cual le enviemos tres enteros y muestre el menor.</p>
+
+    <script>
+        function mostrarMenor(x1, x2, x3) {
+            if (x1 < x2 && x1 < x3) {
+                document.write('El menor de los tres valores es: ' + x1);
+            } else {
+                if (x2 < x3) {
+                    document.write('El menor de los tres valores es: ' + x2);
+                } else {
+                    document.write('El menor de los tres valores es: ' + x3);
+                }
+            }
+        }
+
+        var valor1, valor2, valor3;
+
+        valor1 = prompt('Ingrese primer valor', '');
+        valor1 = parseInt(valor1);
+        valor2 = prompt('Ingrese segundo valor', '');
+        valor2 = parseInt(valor2);
+        valor3 = prompt('Ingrese tercer valor', '');
+        valor3 = parseInt(valor3);
+
+        document.write('Los tres valores ingresados son: ' + valor1 + ' ' + valor2 + ' ' + valor3 + '<br>');
+
+        mostrarMenor(valor1, valor2, valor3);
+    </script>
+
+    <P>2- Confeccionar una función a la cual le envíe tres enteros y los muestre ordenados de menor a mayor.</P>
+
+    <script>
+        function mostrarOrdenados(x1, x2, x3) {
+            if (x1 < x2 && x1 < x3) {
+                document.write(x1 + ' ');
+
+                if (x2 < x3) {
+                    document.write(x2 + ' ' + x3);
+                } else {
+                    document.write(x3 + ' ' + x2);
+                }
+            } else {
+                if (x2 < x3) {
+                    document.write(x2 + ' ');
+                    if (x1 < x3) {
+                        document.write(x1 + ' ' + x3);
+                    } else {
+                        document.write(x3 + ' ' + x1);
+                    }
+                } else {
+                    document.write(x3 + ' ');
+                    if (x1 < x2) {
+                        document.write(x1 + ' ' + x2);
+                    } else {
+                        document.write(x2 + ' ' + x1);
+                    }
+                }
+            }
+        }
+
+        var valor1, valor2, valor3;
+
+        valor1 = prompt('Ingrese primer valor:', '');
+        valor1 = parseInt(valor1);
+        valor2 = prompt('Ingrese segundo valor:', '');
+        valor2 = parseInt(valor2);
+        valor3 = prompt('Ingrese tercer valor:', '');
+        valor3 = parseInt(valor3);
+
+        document.write('Los tres valores ingresados son: ' + valor1 + ' ' + valor2 + ' ' + valor3 + '<br>');
+        document.write('Los valores ordenados de menor a mayor son: ');
+        mostrarOrdenados(valor1, valor2, valor3);
+    </script>
+
+</body>
+
+</html>

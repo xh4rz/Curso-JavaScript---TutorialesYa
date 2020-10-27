@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos: load y DOMContentLoaded</title>
+</head>
+
+<body>
+    <p>
+        Como hemos visto hasta ahora uno de los usos principales de JavaScript es la implementación de algoritmos que
+        reaccionan a eventos que se producen en una página web. Cuando se termina de cargar completamente una página web
+        se dispara el evento onload, cuando se presiona un botón de tipo submit se dispara el evento onsubmit, cuando
+        movemos la flecha del mouse se dispara onmousemove y otra gran cantidad de eventos que nos informa el navegador
+        y nosotros podemos capturarlos y hacer un algoritmo a nuestra medida.
+    </p>
+
+    <p>
+        JavaScript implementa tres formas distintas de capturar los eventos que emite el navegador.
+    </p>
+
+    <p>
+        <h1>Eventos definidos directamente en la marca HTML.</h1>
+        Esta metodología esta en desuso, de todos modos muchos sitios antiguos implementan esta técnica.
+    </p>
+
+    <h1>Problema</h1>
+    <p>
+        Implementar un formulario que solicite la carga del nombre de usuario y su clave. Mostrar un mensaje si no se
+        ingresan datos en alguno de los dos controles.
+    </p>
+
+    <form method="post" action="procesar.php" onsubmit="validar();" id="formulario1">
+
+        <label>Ingrese Nombre:</label> <br>
+        <input type="text" name="usuario" id="usuario" size="20">
+        <br><br>
+        <Label>Ingese Clave:</Label> <br>
+        <input type="password" name="clave" id="clave" size="20">
+        <br><br>
+        <input type="submit" name="confirmar" id="confirmar" value="confirmar">
+
+    </form>
+
+    <script>
+        window.onload = inicio;
+
+        function inicio() {
+            document.getElementById("formulario1").onsubmit = validar;
+        }
+
+        function validar() {
+            var usu = document.getElementById("usuario").value;
+            var cla = document.getElementById("clave").value;
+
+            if (usu.length == 0 || cla.length == 0) {
+                alert('El nombre de usuario o clave está vacío');
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+    <p>
+        La misma metodología pero utilizando funciones anónimas para cada evento el código ahora queda condensado:
+    </p>
+
+    <form action="procesar.php" method="post" id="formulario2">
+        <label>Ingrese Nombre:</label> <br>
+        <input type="text" name="usuario" id="usuario" size="20">
+        <br><br>
+        <Label>Ingese Clave:</Label> <br>
+        <input type="password" name="clave" id="clave" size="20">
+        <br><br>
+        <input type="submit" name="confirmar" id="confirmar" value="confirmar">
+    </form>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("formulario2").onsubmit = function () {
+                var usu = document.getElementById("usuario").value;
+                var cla = document.getElementById("clave").value;
+
+                if (usu.length == 0 || cla.length == 0) {
+                    alert('El nombe del usuario o clave está vacío');
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    </script>
+
+    <h1>Modelo de eventos definidos por W3C (World Wide Web Consortium)</h1>
+
+    Este modelo de eventos se basa en la implementación de un método para todos los objetos que nos permite registrar
+    eventos. La sintaxis del método es: <br><br>
+
+    addEventListener(evento, método a ejecutar, false); <br><br>
+    Veamos como implementamos el problema anterior utilizando este nuevo modelo de eventos: <br><br>
+
+    <form method="post" action="procesar.php" id="formulario3">
+        <label>Ingrese Nombre:</label> <br>
+        <input type="text" id="usuario" name="usuario" size="20">
+        <br><br>
+        <Label>Ingese Clave:</Label> <br>
+        <input type="password" id="clave" name="clave" size="20">
+        <br><br>
+        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+    </form>
+
+    <script>
+        window.addEventListener('load', inicio, false);
+
+        function inicio() {
+            document.getElementById("formulario3").addEventListener('submit', validar, false);
+        }
+
+        function validar(evt) {
+            var usu = document.getElementById("usuario").value;
+            var cla = document.getElementById("clave").value;
+            if (usu.length == 0 || cla.length == 0) {
+                alert('El nombe de usuario o clave está vacío');
+                evt.preventDefault();
+            }
+        }
+    </script>
+
+    <h1>Evento DOMContentLoaded</h1>
+
+    <p>
+        - Evento 'load': El evento load se dispara cuando el contenido del archivo HTML y las referencias a todos los
+        recursos
+        asociados (imágenes, hojas de estilo etc.) se han cargado en memoria del navegador. <br><br>
+
+        - Evento 'DOMContentLoaded': El evento DOMContentLoaded se dispara cuando el contenido del archivo HTML se ha
+        cargado
+        en el navegador, sin necesitar esperar imágenes, hojas de estilo etc.
+        Es muy conveniente en la mayoría de las veces inicializar script de JavaScript utilizando éste evento en lugar
+        del
+        evento 'load'. Todos los navegadores modernos disponen del evento 'DOMContentLoaded'.
+        <br><br>
+
+        En el problema anterior solo cambiamos la referencia del evento load por DOMContentLoaded:
+    </p>
+
+    <form method="post" action="procesar.php" id="formulario4">
+        <label>Ingrese Nombre:</label> <br>
+        <input type="text" id="usuario" name="usuario" size="20">
+        <br><br>
+        <Label>Ingese Clave:</Label> <br>
+        <input type="password" id="clave" name="clave" size="20">
+        <br><br>
+        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+    </form>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', inicio, false);
+
+        function inicio(){
+            document.getElementById("formulario4").addEventListener('submit', validar, false);
+        }
+
+        function validar(evt){
+            var usu = document.getElementById("usuario").value;
+            var cla = document.getElementById("clave").value;
+
+            if(usu.length == 0 || cla.length == 0){
+                alert('El nombe de usuario o clave está vacío');
+                evt.preventDefault();
+            }
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

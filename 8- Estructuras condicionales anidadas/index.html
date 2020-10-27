@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales Anidadas</title>
+</head>
+
+<body>
+    <h1>Ejemplo:</h1>
+    <p>
+        Confeccionar un programa que pida por teclado tres notas de un alumno, calcule el promedio e imprima alguno de
+        estos mensajes:
+
+        <!-- 
+    Si el promedio es >=7 mostrar "Promocionado".
+    Si el promedio es >=4 y <7 mostrar "Regular" .
+    Si el promedio es <4 mostrar "Reprobado" . 
+    -->
+    </p>
+
+    <script>
+        var nota1, nota2, nota3;
+
+        nota1 = prompt('Ingrese primera nota:', '');
+        nota2 = prompt('Ingrese segunda nota:', '');
+        nota3 = prompt('Ingrese tercera nota:', '');
+
+        //Convertimos los 3 string en enteros
+        nota1 = parseInt(nota1);
+        nota2 = parseInt(nota2);
+        nota3 = parseInt(nota3);
+
+        var promedio = (nota1 + nota2 + nota3) / 3;
+
+        if (promedio >= 7) {
+            document.write('Promocionado');
+        } else {
+            if (promedio >= 4) {
+                document.write('Regular');
+            } else {
+                document.write('Reprobado')
+            }
+        }
+    </script>
+
+    <h1>PROBLEMAS</h1>
+    <p>
+        1- Se cargan por teclado tres números distintos. Mostrar por pantalla el mayor de ellos.
+    </p>
+
+    <script>
+        var num1, num2, num3;
+
+        num1 = prompt('Ingrese primer número:', '');
+        num2 = prompt('Ingrese segundo número:', '');
+        num3 = prompt('Ingrese tercer número:', '');
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        num3 = parseInt(num3);
+
+        if (num1 > num2) {
+            if (num1 > num3) {
+                document.write('El número mayor es: ' + num1);
+            } else {
+                document.write('El número mayor es: ' + num3);
+            }
+        } else {
+            if (num2 > num3) {
+                document.write('El número mayor es: ' + num2);
+            } else {
+                document.write('El número mayor es: ' + num3);
+            }
+        }
+    </script>
+
+    <p>
+        2- Se ingresa por teclado un valor entero, mostrar una leyenda que indique si el número es positivo, cero o
+        negativo.
+    </p>
+
+    <script>
+        var num;
+
+        num = prompt('Ingrese el valor: ', '');
+        num = parseInt(num);
+
+        if (num == 0) {
+            document.write('El valor ingresado es cero');
+        } else {
+            if (num >= 1) {
+                document.write('El valor ingresado es positivo')
+            } else {
+                document.write('El valor ingresado es negativo')
+            }
+        }
+    </script>
+
+    <p>
+        3- Confeccionar un programa que permita cargar un número entero positivo de hasta tres cifras y muestre un
+        mensaje indicando si tiene 1, 2, o 3 cifras.
+    </p>
+
+    <script>
+        var num;
+
+        num = prompt('Ingrese un número de 1,2 o 3 dígitos', '')
+        num = parseInt(num);
+
+        if (num < 10) {
+            document.write('Tiene un dígito');
+        } else {
+            if (num < 100) {
+                document.write('Tiene dos dígitos');
+            } else {
+                document.write('Tiene tres dígitos');
+            }
+        }
+    </script>
+
+    <p>
+        4- De un postulante a un empleo, que realizó un test de capacitación, se obtuvo la siguiente información: nombre
+        del postulante, cantidad total de preguntas que se le realizaron y cantidad de preguntas que contestó
+        correctamente. Se pide confeccionar un programa que lea los datos del postulante e informe el nivel del mismo
+        según el porcentaje de respuestas correctas que ha obtenido, y sabiendo que:
+        <!-- 
+        Nivel superior: Porcentaje>=90%.
+        Nivel medio: Porcentaje>=75% y <90%.
+        Nivel regular: Porcentaje>=50% y <75%.
+        Fuera de nivel: Porcentaje<50%
+      -->
+          </p>
+
+        <script>
+            var nombre, cantpreguntas, cantcorrectas, porcentaje;
+
+            nombre = prompt('Ingrese el nombre del postulante', '');
+
+            cantpreguntas = prompt('Ingrese cantidad de preguntas')
+
+            cantcorrectas = prompt('Ingrese cantidad de preguntas correctas')
+
+         
+            cantpreguntas = parseInt(cantpreguntas);
+
+            cantcorrectas = parseInt(cantcorrectas);
+
+            porcentaje = cantcorrectas / cantpreguntas * 100;
+
+            if (porcentaje >= 90) {
+                document.write('Nivel superior');
+            } else {
+                if (porcentaje >= 75) {
+                    document.write('Nivel medio');
+                } else {
+                    if (porcentaje >= 50) {
+                        document.write('Nivel regular');
+                    } else {
+                        document.write('Fuera de nivel');
+                    }
+                }
+            }
+        </script>
+
+
+
+
+</body>
+
+</html>

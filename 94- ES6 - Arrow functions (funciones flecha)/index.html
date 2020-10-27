@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Arrow functions (funciones flecha)</title>
+</head>
+
+<body>
+
+    <p>
+        Las funciones flecha es una nueva sintaxis propuesta en ES6 para expresar las funciones anónimas. <br><br>
+
+        Un ejemplo de definir una arrow function es: <br><br>
+
+        const mayor = (x,y) => { <br>
+        if (x>y) <br>
+        return x; <br>
+        else <br>
+        return y; <br>
+        } <br><br>
+
+        document.write(mayor(10,2)); <br><br>
+
+        Como es una función anónima si queremos guardar una referencia a la misma se la debemos asignar a una constante
+        o variable. Indicamos entre paréntesis los parámetros de la función luego la flecha => y finalmente entre llaves
+        el algoritmo propiamente de la función.<br><br>
+
+
+        Con la sintaxis anterior de JavaScript este algoritmo lo codificamos con la sintaxis: <br><br>
+
+        const mayor = function(x,y) { <br>
+        if (x>y)<br>
+        return x;<br>
+        else<br>
+        return y;<br>
+        }<br><br>
+
+        document.write(mayor(10,2));
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Ordenar un vector de enteros mediante el método sort, pasar una arrow function.
+    </p>
+
+    <script>
+        const vec = [100, 22, 17, 50, 3];
+        vec.sort((x, y) => {
+            if (x > y)
+                return 1;
+            else
+                return -1;
+        })
+
+        document.write(vec.toString());
+    </script>
+
+    <p>
+        A la función sort le pasamos una función flecha.
+    </p>
+
+    <h1>
+        Funciones flecha con un único parámetro.
+    </h1>
+
+    <p>
+        Cuando una función flecha tiene un parámetro no es necesario encerrarlo entre paréntesis: <br><br>
+
+        const vec = [100, 22, 17, 50, 3]; <br>
+        vec.forEach(elemento => { <br>
+        document.write(elemento+' '); <br>
+        }) <br><br>
+
+        En este ejemplo el parámetro 'elemento 'es único y por eso no lo encerramos entre paréntesis.
+    </p>
+
+    <h1>
+        Funciones flecha de una única línea.
+    </h1>
+
+    <p>
+        Podemos definir funciones flecha de una única línea, en dichas situaciones no es necesario encerrar entre llaves
+        el algoritmo. <br><br>
+
+        const doble = x => x*2; <br><br>
+
+        document.write(doble(10)); //20 <br>
+        document.write(doble(7)); //14<br><br>
+
+        La función tiene un único parámetro llamado x y su algoritmo es multiplicar el valor que llega por 2. La función
+        retorna el resultado sin tener que indicar la palabra clave return. <br><br>
+
+        Otro ejemplo de arrow function con dos parámetros y resuelto con una única expresión: <br><br>
+
+        const mayor = (x, y) => (x>y)?x:y; <br><br>
+
+        document.write(mayor(7, 20)) // 20<br>
+        document.write(mayor(60, 40)) // 60<br><br>
+
+        Conociendo entonces que podemos definir funciones flecha de una única línea podemos plantear el algoritmo de
+        ordenar un vector con una sintaxis más concisa: <br><br>
+
+        const vec = [100, 22, 17, 50, 3];<br>
+        vec.sort((x,y) => (x>y)?1:-1);<br><br>
+
+        document.write(vec.toString());
+    </p>
+
+    <h1>Problema</h1>
+
+    <p>
+        Definir un vector con un conjunto de elementos. Generar un nuevo vector llamando al método filter pasando una
+        función de flecha para definir cuales rescatar.
+    </p>
+
+    <script>
+        const vec2 = [100, 22, 17, 50, 3, 78];
+        const pares = vec2.filter(elemento => elemento % 2 == 0);
+
+        document.write('Vector completo:' + vec2.toString());
+        document.write('<br>');
+        document.write('Vector generado con elemenros pares: ' + pares.toString());
+    </script>
+
+    <h1>Funciones flecha sin parámetros.</h1>
+
+    <p>
+        Una función flecha que no tiene parámetros debemos disponer en forma obligatoria los paréntesis abiertos y
+        cerrados previos a la flecha:
+    </p>
+
+    <script>
+        window.addEventListener(
+            'DOMContentLoaded',
+            setTimeout(() => alert('Pasó 3 segundos desde que se cargó la página'), 3000), false);
+    </script>
+
+    <p>
+        Registramos en el evento 'DOMContentLoaded' de la página la referencia de la llamada a la función setTimeout
+        pasando a esta función una función de flecha que no tiene parámetros y que tiene por objetivo mostrar una
+        ventana de alerta. <br><br>
+
+        El uso de las arrow functions se está generalizando en la programación en JavaScript.
+    </p>
+
+    <h1>
+        Diferencia con las funciones tradicionales cuando se trata de un método.
+    </h1>
+
+    <script>
+        var objeto1 = {
+            x: 10,
+            metodo1: function () {
+                alert(this.x);
+            },
+            metodo2: () => {
+                alert(this.x);
+            }
+        }
+
+        objeto1.metodo1(); //10
+        objeto1.metodo2(); //undefined
+    </script>
+
+    <p>
+        Cuando definimos un método con funciones flecha no existe el contexto de this para acceder a las propiedades del
+        objeto. Es decir que las funciones flecha son más adecuadas cuando las trabajamos como funciones independientes
+        y no como métodos de un objeto.
+    </p>
+
+    <h1>
+        PROBLEMA
+    </h1>
+
+    <p>
+        1- Definir una función de flecha que reciba un valor entero y retorne otro valor entero aleatorio comprendido
+        entre 1 y el valor que llega como parámetro. Asignar dicha función de flecha a una constante para permitir
+        llamarla en sucesivas ocaciones.
+    </p>
+
+    <script>
+        const aleatorio = valor => Math.trunc(Math.random() * valor) + 1;
+        document.write(aleatorio(3));
+        document.write('<br>');
+        document.write(aleatorio(50));
+        document.write('<br>');
+        document.write(aleatorio(100));
+        document.write('<br>');
+    </script>
+
+
+
+</body>
+
+</html>

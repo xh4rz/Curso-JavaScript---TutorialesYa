@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: no densos o dispersos</title>
+</head>
+
+<body>
+    <p>
+        Hasta ahora siempre que inicializamos los array no dejamos espacios sin utilizar. Javascript permite crear array
+        e
+        inicializar componentes no contiguas.</p>
+    <p>Por ejemplo podemos crear un vector e inicializar las componentes con subíndice 5 y 10:</p>
+
+    var vec=[]; <br>
+    vec[5]=100; <br>
+    vec[10]=200; <br><br>
+    Este tipo de array se los llama array dispersos ya que no tenemos todas las componentes contiguas ocupadas. <br><br>
+    Veamos con un ejemplo que pasa con la propiedad length y cuando accedemos a componentes que no existen en el vector:
+    <br><br>
+
+    <script>
+        var vec = [];
+        vec[5] = 100;
+        vec[10] = 200;
+
+        document.write('Atributo lenght: ' + vec.length + '<br>');
+        var f;
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '<br>');
+        }
+    </script>
+
+    <h1>EJEMPLO</h1>
+    <p>Ingresar por teclado un nro de cliente y el monto a depositar. Almacenar en un vector, utilizar como subíndice el
+        nro de cliente y almacenar el monto depositado. <br><br>
+        Sumar todos los depósitos recorriendo el vector e identificando
+        las componentes cargadas (es decir las que tienen un valor distinto a null). <br> <br>Imprimir la suma total
+        depositada y
+        la cantidad de clientes que depositaron.</p>
+
+    <script>
+        var depositos = [];
+        var nro, monto;
+
+        do {
+            nro = prompt('Ingrese nro de cliente', '');
+            nro = parseInt(nro);
+
+            if (nro != 0) {
+                monto = prompt('Ingrese monto a depositar', '');
+                monto = parseInt(monto);
+                depositos[nro] = monto;
+            }
+        } while (nro != 0);
+
+        var suma = 0;
+        var canti = 0;
+        for (var f = 0; f < depositos.length; f++) {
+            if (depositos[f] !== undefined) {
+                suma = suma + depositos[f];
+                canti++;
+            }
+        }
+        document.write('Cantidad de depósitos: ' + canti + '<br>');
+        document.write('Total depositado por todos los clientes: ' + suma);
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Crear un vector disperso que representen premios de una rifa. Las posiciones indican los números que tienen
+        premio. <br><br>
+     Almacenar en dichas posiciones los premios.<br>
+    Genera 10 premios con los montos 1000,2000,3000 etc.<br>
+    La cantidad de números de la rifa son 1000.<br>
+    Generar valores aleatorios para los números con premio.<br>
+    Imprimir Los números con premio y los montos de los mismos.</p>
+
+    <script>
+        var carton = [];
+        var f;
+        var cant = 0;
+
+        do{
+            var premio = parseInt(Math.random()*1000);
+            carton[premio] = 100*(cant+1);
+            cant++;
+        }while(cant!=11);
+
+        for(f=0; f<carton.length; f++){
+            if(carton[f]!==undefined){
+                document.write('Carton '+f+' tiene un premio de '+carton[f]+'<br>');
+            }
+        }
+    </script>
+
+</body>
+</html>

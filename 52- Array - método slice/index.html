@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: método slice</title>
+</head>
+
+<body>
+    <h1>El método slice</h1>
+    <p>
+        (traducido al castellano: trozo) retorna un trozo del vector. La sintaxis es: <br><br>
+
+        vec.slice(2,4);<br><br>
+        El primer parámetro indica a partir de que elementos debe retornar y el segundo parámetro hasta cual elemento
+        (sin incluir dicha posición) <br><br>
+        El método slice no modifica el vector original, sino que retorna otro vector con las componentes indicadas.
+        <br><br>
+
+        Veamos con un ejemplo el empleo del método slice:
+    </p>
+
+    <script>
+        var vec = [10, 20, 30, 40, 50, 60];
+        document.write('Vector Original: ');
+        var f;
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '-');
+        }
+        document.write('<br>');
+        var vec2 = vec.slice(1, 4);
+        document.write('Vector resultante de la llamada a slice: ');
+        for (f = 0; f < vec2.length; f++) {
+            document.write(vec2[f] + '-');
+        }
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>
+        1- Crear un vector de 10 elementos con valores aleatorios comprendidos entre 0 y 1000. Buscar el menor y luego
+        generar otro vector a partir de dicha posición hasta el final.
+    </p>
+
+    <script>
+        var vec = [];
+        var f;
+        for (f = 0; f < 10; f++) {
+            vec[f] = parseInt(Math.random() * 1001);
+        }
+        document.write('Vector original<br>');
+        for (f = 0; f < vec.length; f++) {
+            document.write(vec[f] + '-');
+        }
+        document.write('<br><br>')
+
+        var menor = vec[0];
+        var pos = 0;
+        for (f = 1; f < vec.length; f++) {
+            if (vec[f] < menor) {
+                menor = vec[f];
+                pos = f;
+            }
+        }
+        document.write('Elemento menor del vector: ' + menor);
+        document.write('<br><br>');
+
+        var vec2 = vec.slice(pos);
+        document.write('Vector resultante de la llamada a slice<br>');
+        for (f = 0; f < vec2.length; f++) {
+            document.write(vec2[f] + '-');
+        }
+    </script>
+
+
+</body>
+
+</html>

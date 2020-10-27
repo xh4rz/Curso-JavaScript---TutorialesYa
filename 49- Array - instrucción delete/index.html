@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array: instrucción delete</title>
+</head>
+<body>
+    Javascript tiene una instrucción que permite eliminar un elemento de un vector llamada delete. <br>
+
+    Al comando delete le pasamos el nombre del vector y la posición que queremos borrar: <br><br>
+
+    delete vec[3]; <br>
+    Con el comando anterior estamos eliminando la componente de la posición 3 del vector. <br>
+    Cuando se elimina una componente no se modifica la propiedad length y el vector se convierte en no denso. <br>
+    Si luego tratamos de acceder a dicha posición el resultado es el valor undefined. <br>
+
+    <h1>PROBLEMA</h1>
+    <p>Crear un vector de 10 elementos y almacenar valores aleatorios en el mismo. <br>
+        Luego borrar los elementos de las posiciones pares e imprimir el vector antes y después de borrar las componentes, inclusive tratar de acceder a las componentes que acabamos de borrar.</p>
+
+        <script>
+            var vec = [];
+            var f;
+            for(f=0; f<10; f++){
+                var valor = parseInt(Math.random()*1000);
+                vec.push(valor);
+            }
+            document.write('Vector antes de borrar<br>');
+            for(f=0; f<10; f++){
+                document.write(vec[f]+'<br>');
+            }
+            for(f=0; f<10; f=f+2){
+                delete vec[f];
+            }
+            document.write('Vector luego de borrar las posiciones pares<br>');
+            for(f=0; f<10; f++){
+                document.write(vec[f]+'<br>');
+            }
+        </script>
+</body>
+</html>

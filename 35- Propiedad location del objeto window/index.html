@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objeto window</title>
+</head>
+
+<body>
+    <img src="location.jpg">
+    <p>
+        El objeto location colabora directamente con el objeto window:
+    </p>
+
+    <h1>EJEMPLO</h1>
+    <p>
+        Implementaremos un pequeño ejemplo para ver la utilidad de esta propiedad: Supongamos que tenemos un botón que
+        al ser presionado ingrese al periódico La Nación, pero primero muestre una ventana de confirmación, si queremos
+        ingresar al periódico. En caso que el visitante presione el botón afirmativo, redireccionamos al sitio de La
+        Nación, en caso contrario mostramos un mensaje:
+    </p>
+
+    <script>
+        function verificarEntrada() {
+            if (window.confirm('Desea salir del sitio e ingresar al periódico la Nación?')) {
+                window.location = 'http://www.lanacion.com.ar';
+            } else {
+                window.alert('No hay problema');
+            }
+        }
+    </script>
+
+
+    <button onclick="verificarEntrada()">Ingresar a la Nación</button>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Confeccionar una página que tenga un botón. Cuando se presione dicho botón generar un valor aleatorio entre 0
+        y 2. Si se genera el 0 llamar al webmail de Outlook, si se genera un 1 llamar a gmail en caso de generarse un 2
+        llamar a yahoo.
+        Para generar un valor aleatorio utilizar la función random del objeto Math.</p>
+
+
+    <script>
+        function verificarAleatorio() {
+            var num;
+            num = Math.random() * 3; //se guarda en num un valor comprendido entre 0.00001 y 2.99999
+            num = parseInt(num); //guardamos solo la parte entera de la variable num
+
+            if (num == 0){
+               window.location = 'https://outlook.com';
+            }if(num == 1){
+                window.location = 'https://mail.google.com/'
+            }if(num == 2){
+                window.location = 'https://espanol.yahoo.com/'
+            }
+        }
+    </script>
+
+
+    <button onclick="verificarAleatorio()">Generar valor aleatorio</button>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - WeakMap y WeakSet</title>
+</head>
+
+<body>
+
+    <p>
+        Son dos objetos con funcionalidades similares a Map y Set pero con la capacidad de que el recolector de basura
+        de JavaScript elimine elementos de los mismos cuando lo considere oportuno. <br><br>
+
+        <b>WeakSet</b>: Solo pueden almacenar datos de tipo objeto (es lógico ésto debido a que los tipos de datos
+        primitivos
+        no pueden tener la referencia de más de una variable)
+        Las referencias a objetos en la colección de tipo WeakSet se mantienen débilmente, ésto significa que si en
+        algún momento durante la ejecución del algoritmo se deja de tener referencias del objeto, luego el recolector de
+        basura de JavaScript libera espacio de la colección WeakSet.
+    </p>
+
+    <script>
+        const conjunto1 = new WeakSet();
+        let usuario1 = {
+            nombre: "juan",
+            puntos: 200
+        };
+        conjunto1.add(usuario1);
+        console.log(conjunto1.has(usuario1)); //true
+        usuario1 = null;
+    </script>
+
+    <p>
+        Una vez que la variable 'usuario1' se elimina al asignar el valor null, el "garbage collector" (recolector de
+        basura) de JavaScript se encarga de eliminar el elemento del objeto conjunto1. <br><br>
+
+        <b>WeakMap</b> Solo se puenden almacenar en la clave del mapa un valor de tipo objeto. JavaScript se encarga de
+        eliminar elementos del mapa cuando se dejan de tener referencias al objeto que actúa como clave dentro del
+        WeakMap.
+    </p>
+
+    <h1>Acotaciones</h1>
+
+    <p>
+        Los objetos WeakMap y WeakSet no disponen la capacidas de recorrer sus elementos mediante la estructura for of,
+        tampoco podemos conocer la cantidad de elementos. <br><br>
+
+        Podemos eliminar un elemento de la colección mediante el método 'delete', pero no dispone de un método para
+        borrar todos los elementos. <br><br>
+
+        El uso de estos objetos tiene sentido cuando sabemos que durante la ejecución del algoritmo se eliminarán muchos
+        objetos que actúan como claves, en caso contrario es conveniente emplear los objetos Map y Set.
+    </p>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Date</title>
+    <!-- <meta http-equiv="refresh" content="1"> -->
+</head>
+
+<body>
+    <h1>EJEMPLO</h1>
+    <p>Mostrar en una página la fecha y la hora actual.</p>
+
+    <script>
+        function mostrarFechaHora() {
+            var fecha
+            fecha = new Date();
+
+            document.write('Hoy es ');
+
+            document.write(fecha.getDate() + '/');
+            document.write((fecha.getMonth() + 1 + '/'));
+            document.write(fecha.getFullYear());
+
+            document.write('<br>');
+
+            document.write('Es la hora ');
+            document.write(fecha.getHours() + ':');
+            document.write(fecha.getMinutes() + ':');
+            document.write(fecha.getSeconds());
+
+        }
+
+        //llamada a la función
+        mostrarFechaHora();
+    </script>
+
+    <h1>PROBLEMA</h1>
+    <p>1- Confeccionar un programa que muestre en que cuatrimestre del año nos encontramos. Para esto obtener el mes.</p>
+
+    <script>
+        var fecha
+        fecha = new Date();
+        var mes = fecha.getMonth();
+
+        if (mes < 4) {
+            document.write('Nos encontramos en el primer cuatrimestre del año');
+        } else {
+            if (mes < 8) {
+                document.write('Nos encontramos en el segundo cuatrimestre del año');
+            } else {
+                document.write('Nos encontramos en el tercer cuatrimestre del año');
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
