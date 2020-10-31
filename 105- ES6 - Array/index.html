@@ -102,18 +102,18 @@
 
         Por ejemplo no son iterables los objetos WeakMap, WeapSet, Object etc. -->
 
-        <p>
-            El método 'from' tiene opcionalmente un segundo parámetro al cual podemos pasar una función que reciba cada
-            elemento del arreglo y retorne el dato a almacenar:
-        </p>
+    <p>
+        El método 'from' tiene opcionalmente un segundo parámetro al cual podemos pasar una función que reciba cada
+        elemento del arreglo y retorne el dato a almacenar:
+    </p>
 
-        <script>
-            const arreglo3 = [10, 20, 30];
-            const arreglo4 = Array.from(arreglo3, (elemento) => elemento * 2);
-            console.log(arreglo4); // [20, 40, 60]
-        </script>
+    <script>
+        const arreglo3 = [10, 20, 30];
+        const arreglo4 = Array.from(arreglo3, (elemento) => elemento * 2);
+        console.log(arreglo4); // [20, 40, 60]
+    </script>
 
-        <!-- La función anonima retorna que valor debe almacenar en el arreglo que se crea, en éste caso almacenamos los
+    <!-- La función anonima retorna que valor debe almacenar en el arreglo que se crea, en éste caso almacenamos los
         valores originarios del arreglo1 pero multiplicados por 2.
 
         Recordemos que las funciones flecha son ámpliamente utilizadas a partir de ES6 ya que nos permiten generar un
@@ -127,128 +127,128 @@
             console.log(arreglo4); // [20, 40, 60]
         </script> -->
 
-        <h1>Método estático 'of'.</h1>
+    <h1>Método estático 'of'.</h1>
 
-        <p>
-            El método estático 'of' retorna la referencia de un objeto de tipo Array a partir de una lista de valores
-            que le pasamos a dicho método:
-        </p>
+    <p>
+        El método estático 'of' retorna la referencia de un objeto de tipo Array a partir de una lista de valores
+        que le pasamos a dicho método:
+    </p>
 
-        <script>
-            const arreglo5 = Array.of(10, 20, 30, 40);
-            console.log(arreglo5); // [10, 20, 30, 40]
-        </script>
+    <script>
+        const arreglo5 = Array.of(10, 20, 30, 40);
+        console.log(arreglo5); // [10, 20, 30, 40]
+    </script>
 
-        <h1>Métodos 'keys', 'values' y 'entries'.</h1>
+    <h1>Métodos 'keys', 'values' y 'entries'.</h1>
 
-        <p>
-            El objeto Array implementan los métodos que permiten iterar sobre sus claves y valores:
-        </p>
+    <p>
+        El objeto Array implementan los métodos que permiten iterar sobre sus claves y valores:
+    </p>
 
-        <script>
-            const lenguajes = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    <script>
+        const lenguajes = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
 
-            for (let indice of lenguajes.keys())
-                console.log(indice); // 0 1 2 3 4 5 6
-            for (let valor of lenguajes.values())
-                console.log(valor); // "domingo" "lunes" "martes" "miércoles" "jueves" "viernes" "sábado"
-            for (let componente of lenguajes.entries())
-                console.log(
-                    componente
-                ); // [0, "domingo"] [1, "lunes"] [2, "martes"] [3, "miércoles"] [4, "jueves"] [5, "viernes"] [6, "sábado"] [7, "domingo"]
-        </script>
+        for (let indice of lenguajes.keys())
+            console.log(indice); // 0 1 2 3 4 5 6
+        for (let valor of lenguajes.values())
+            console.log(valor); // "domingo" "lunes" "martes" "miércoles" "jueves" "viernes" "sábado"
+        for (let componente of lenguajes.entries())
+            console.log(
+                componente
+            ); // [0, "domingo"] [1, "lunes"] [2, "martes"] [3, "miércoles"] [4, "jueves"] [5, "viernes"] [6, "sábado"] [7, "domingo"]
+    </script>
 
-        <p>
-            En un solo 'for of' podemos recuperar cada componente y guardarlo en un Array el índice por un lado y el
-            valor por otro: <br><br>
+    <p>
+        En un solo 'for of' podemos recuperar cada componente y guardarlo en un Array el índice por un lado y el
+        valor por otro: <br><br>
 
-            for (let [indice,valor] of lenguajes.entries()) <br>
-            console.log(indice,valor);
-        </p>
+        for (let [indice,valor] of lenguajes.entries()) <br>
+        console.log(indice,valor);
+    </p>
 
-        <h1>Método 'fill'.</h1>
+    <h1>Método 'fill'.</h1>
 
-        <p>
-            El método 'fill' permite cambiar el contenido de todas o algunas componentes de un arreglo existente. En
-            ningún caso permite redimensionarlo. <br><br>
+    <p>
+        El método 'fill' permite cambiar el contenido de todas o algunas componentes de un arreglo existente. En
+        ningún caso permite redimensionarlo. <br><br>
 
-            Veamos un ejemplo y los efectos del método 'fill':
-        </p>
+        Veamos un ejemplo y los efectos del método 'fill':
+    </p>
 
-        <script>
-            const arreglo6 = [9, 9, 9, 9, 9, 9, 9];
-            // fijamos el valor 3 a todas las componentes del arreglo
-            arreglo6.fill(3);
-            console.log(arreglo6); // [3, 3, 3, 3, 3, 3, 3]
-            // fijamos el valor 0 desde la componente 3 del arreglo
-            // hasta el final
+    <script>
+        const arreglo6 = [9, 9, 9, 9, 9, 9, 9];
+        // fijamos el valor 3 a todas las componentes del arreglo
+        arreglo6.fill(3);
+        console.log(arreglo6); // [3, 3, 3, 3, 3, 3, 3]
+        // fijamos el valor 0 desde la componente 3 del arreglo
+        // hasta el final
 
-            arreglo6.fill(0, 3);
-            console.log(arreglo6); // [3, 3, 3, 0, 0, 0, 0]
+        arreglo6.fill(0, 3);
+        console.log(arreglo6); // [3, 3, 3, 0, 0, 0, 0]
 
-            // fijamos el valor 5 a todas las componentes
-            arreglo6.fill(5);
-            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+        // fijamos el valor 5 a todas las componentes
+        arreglo6.fill(5);
+        console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
 
-            // fijamos el valor 5 desde la componente 3 hasta
-            // la componente 5 sin incluirla
-            arreglo6.fill(100, 3, 5);
-            console.log(arreglo6); // [5, 5, 5, 100, 100, 5, 5]
+        // fijamos el valor 5 desde la componente 3 hasta
+        // la componente 5 sin incluirla
+        arreglo6.fill(100, 3, 5);
+        console.log(arreglo6); // [5, 5, 5, 100, 100, 5, 5]
 
-            // fijamos el valor 5 a todas las componentes
-            arreglo6.fill(5);
-            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+        // fijamos el valor 5 a todas las componentes
+        arreglo6.fill(5);
+        console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
 
-            // fijamos el valor 100 en las dos últimas componentes
-            arreglo6.fill(100, -2);
-            console.log(arreglo6); // [5, 5, 5, 5, 5, 100, 100]
+        // fijamos el valor 100 en las dos últimas componentes
+        arreglo6.fill(100, -2);
+        console.log(arreglo6); // [5, 5, 5, 5, 5, 100, 100]
 
-            // fijamos el valor 5 a todas las componentes
-            arreglo6.fill(5);
-            console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
+        // fijamos el valor 5 a todas las componentes
+        arreglo6.fill(5);
+        console.log(arreglo6); // [5, 5, 5, 5, 5, 5, 5]
 
-            // fijamos el valor 100 en la antepenúltima y penúltima
-            // posición
-            arreglo6.fill(100, -3, -1);
-            console.log(arreglo6); // [5, 5, 5, 5, 100, 100, 5]
-        </script>
+        // fijamos el valor 100 en la antepenúltima y penúltima
+        // posición
+        arreglo6.fill(100, -3, -1);
+        console.log(arreglo6); // [5, 5, 5, 5, 100, 100, 5]
+    </script>
 
-        <p>
-            Si indicamos un solo valor se modifican todas las componentes del arreglo: <br><br>
+    <p>
+        Si indicamos un solo valor se modifican todas las componentes del arreglo: <br><br>
 
-            arreglo1.fill(3); <br><br>
+        arreglo1.fill(3); <br><br>
 
-            Podemos indicar desde que posición se comienza a modificar: <br><br>
+        Podemos indicar desde que posición se comienza a modificar: <br><br>
 
-            // fijamos el valor 0 desde la componente 3 del arreglo <br>
-            // hasta el final <br>
-            arreglo1.fill(0, 3); <br><br>
+        // fijamos el valor 0 desde la componente 3 del arreglo <br>
+        // hasta el final <br>
+        arreglo1.fill(0, 3); <br><br>
 
-            También podemos indicar desde y hasta que componente se deben modificar: <br><br>
+        También podemos indicar desde y hasta que componente se deben modificar: <br><br>
 
-            // fijamos el valor 5 desde la componente 3 hasta <br>
-            // la componente 5 sin incluirla <br>
-            arreglo1.fill(100, 3, 5); <br><br>
+        // fijamos el valor 5 desde la componente 3 hasta <br>
+        // la componente 5 sin incluirla <br>
+        arreglo1.fill(100, 3, 5); <br><br>
 
-            Finalmente podemos indicar con valores negativos comenzar desde el final del arreglo: <br><br>
+        Finalmente podemos indicar con valores negativos comenzar desde el final del arreglo: <br><br>
 
-            // fijamos el valor 100 en las dos últimas componentes <br>
-            arreglo1.fill(100, -2); <br>
-            console.log(arreglo1); // [5, 5, 5, 5, 5, 100, 100] <br>
-            // fijamos el valor 100 en la antepenúltima y penúltima <br>
-            // posición <br>
-            arreglo1.fill(100, -3, -1); <br>
-            console.log(arreglo1); // [5, 5, 5, 5, 100, 100, 5]
-        </p>
+        // fijamos el valor 100 en las dos últimas componentes <br>
+        arreglo1.fill(100, -2); <br>
+        console.log(arreglo1); // [5, 5, 5, 5, 5, 100, 100] <br>
+        // fijamos el valor 100 en la antepenúltima y penúltima <br>
+        // posición <br>
+        arreglo1.fill(100, -3, -1); <br>
+        console.log(arreglo1); // [5, 5, 5, 5, 100, 100, 5]
+    </p>
 
-        <h1>Método 'copyWithin'.</h1>
+    <h1>Método 'copyWithin'.</h1>
 
-        <p>
-            El método 'copyWithin' permite copiar algunas componentes de un arreglo en otra parte del mismo arreglo. En
-            ningún caso permite redimensionarlo. <br><br>
+    <p>
+        El método 'copyWithin' permite copiar algunas componentes de un arreglo en otra parte del mismo arreglo. En
+        ningún caso permite redimensionarlo. <br><br>
 
-            Veamos un ejemplo y los efectos del método 'copyWithin':
-        </p>
+        Veamos un ejemplo y los efectos del método 'copyWithin':
+    </p>
 </body>
 
 </html>
